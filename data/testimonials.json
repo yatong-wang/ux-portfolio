@@ -1,0 +1,41 @@
+{
+  "testimonials": [
+    {
+      "id": "john-haines",
+      "quote": "She's an <span class='font-medium text-primary'>excellent collaborator</span> and has become extremely skilled and consistent at <span class='font-medium text-primary'>breaking the silos</span> between design and devlopment.",
+      "note": "(excerpt from performance appraisal)",
+      "author": {
+        "name": "John Haines",
+        "role": "Technical Product Manager"
+      }
+    },
+    {
+      "id": "peyman-ardekani",
+      "quote": "Whenever we ran into limitations with certain React libraries or packages, Yatong always found <span class='font-medium text-primary'>smart, creative solutions</span> that kept the project <span class='font-medium text-primary'>moving forward</span>.",
+      "note": "(LinkedIn recommendation)",
+      "author": {
+        "name": "Peyman Ardekani",
+        "role": "Senior Full-Stack Developer"
+      }
+    },
+    {
+      "id": "amber-chen",
+      "quote": "Yatong's <span class='font-medium text-primary'>leadership</span> skills have truly set her apart...she led the UX community of practice, driving process improvements that have positively impacted the entire team.",
+      "note": "(LinkedIn recommendation)",
+      "author": {
+        "name": "Amber Chen",
+        "role": "Senior UX Designer"
+      }
+    },
+    {
+      "id": "tony-bacon",
+      "quote": "If you want to be on the best path to <span class='font-medium text-primary'>success</span> for your application you need Yatong <span class='font-medium text-primary'>doing the groundwork</span> with the client and expected user base.",
+      "note": "(LinkedIn recommendation)",
+      "author": {
+        "name": "Tony Bacon",
+        "role": "Tech Lead / Architect"
+      }
+    }
+  ]
+}
+

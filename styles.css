@@ -1,0 +1,1082 @@
+/**
+ * Modern CSS Stylesheet
+ * Extracted from landing-code.html
+ * 
+ * A standalone stylesheet with CSS custom properties and modern features
+ * Can be used alongside Tailwind CSS or independently
+ */
+
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+   /**
+ * Dark Mode (Default)
+ * These are the default dark mode color values.
+ * Light mode overrides can be added in the .light section below.
+ */
+:root {
+  /* Colors */
+  --color-primary: #36e27b;
+  --color-background-light: #f6f8f7;
+  --color-background-dark: #112117;
+  --color-card-bg: #1c2620;
+  --color-border: #29382f;
+  --color-bg-darker: #111714;
+  
+  /* Typography - Font Stacks */
+  --font-body: "Spline Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  --font-heading: "Syne", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Typography - Font Sizes (body) */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px base */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.75rem; /* 28px */
+  --font-size-4xl: 2rem; /* 32px */
+  --font-size-5xl: 2.25rem; /* 36px */
+  --font-size-6xl: 2.5rem; /* 40px */
+  --font-size-7xl: 2.75rem; /* 44px */
+  --font-size-8xl: 3rem; /* 48px */
+
+  
+  /* Typography - Line Heights */
+  --line-height-none: 1;
+  --line-height-tight: 1.1;
+  --line-height-tighter: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  
+  /* Typography - Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* Typography - Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 800;
+
+  /* Border Radius */
+  --radius-default: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  /* Scrollbar */
+  --scrollbar-width: 10px;
+  --scrollbar-track-bg: var(--color-bg-darker);
+  --scrollbar-thumb-bg: var(--color-border);
+  --scrollbar-thumb-hover: var(--color-primary);
+  --scrollbar-thumb-radius: 8px;
+  
+  /* Animations */
+  --animation-marquee-duration: 20s;
+  --animation-reveal-blur: 10px;
+  --animation-reveal-translate: 100px;
+}
+
+/* ==========================================================================
+   Light Mode Support
+   ========================================================================== */
+
+/**
+ * Light Mode Overrides
+ * Add light mode color values here when ready.
+ * Apply this class to <html> or <body> to switch themes.
+ * 
+ * Example usage:
+ * <html class="light"> or <html data-theme="light">
+ * 
+ * TODO: Add light mode color overrides
+ */
+.light {
+  /* Light mode color overrides will go here */
+  /* Example:
+  --color-background-dark: var(--color-background-light);
+  --color-card-bg: #ffffff;
+  --color-border: #e5e7eb;
+  --color-bg-darker: #f9fafb;
+  --scrollbar-track-bg: var(--color-bg-darker);
+  --scrollbar-thumb-bg: var(--color-border);
+  */
+  /* Placeholder to prevent empty ruleset warning */
+  color: inherit;
+}
+
+/* ==========================================================================
+   Custom Scrollbar Styling
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: var(--scrollbar-thumb-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ==========================================================================
+   Typography Base Styles
+   ========================================================================== */
+
+/**
+ * Base Typography
+ * Applies default typography settings to body and headings
+*/
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
+  font-weight: var(--font-weight-normal);
+}
+
+/**
+ * Heading Styles (h1-h4)
+ * Uses Syne font with responsive sizing
+ */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/**
+ * Stroke Text Utility
+ * Creates text with a stroke outline effect
+ */
+.stroke-text {
+  -webkit-text-stroke: 1px var(--color-primary);
+  color: transparent;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+/**
+* Wave Animation
+* Creates a waving hand motion
+*/
+.animate-wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+/* Group hover support - triggers animation when parent group is hovered */
+.group:hover .animate-wave-on-hover {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+}
+
+/* Define the actual waving motion */
+@keyframes wave-animation {
+  0% { transform: rotate(-12.0deg) }
+  10% { transform: rotate(2.0deg) }  /* -12 + 14 = 2 */
+  20% { transform: rotate(-20.0deg) }  /* -12 - 8 = -20 */
+  30% { transform: rotate(2.0deg) }  /* -12 + 14 = 2 */
+  40% { transform: rotate(-16.0deg) }  /* -12 - 4 = -16 */
+  50% { transform: rotate(-2.0deg) }  /* -12 + 10 = -2 */
+  60% { transform: rotate(-12.0deg) } /* Back to initial */
+  100% { transform: rotate(-12.0deg) }
+}
+
+/**
+ * Marquee Animation
+ * Creates a continuous horizontal scrolling effect
+ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/**
+ * Marquee Animation Class
+ * Applies the marquee animation with infinite loop
+ */
+.animate-marquee {
+  animation: marquee var(--animation-marquee-duration) linear infinite;
+}
+
+/**
+ * Reveal Animation
+ * Creates a fade-in and scale-up effect with blur
+ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(var(--animation-reveal-translate)) scale(0.95);
+    filter: blur(var(--animation-reveal-blur));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/**
+ * Reveal on Scroll
+ * Uses modern scroll-timeline API for scroll-triggered animations
+ * Falls back gracefully in browsers that don't support scroll-timeline
+ */
+.reveal-on-scroll {
+  animation: reveal linear both;
+  animation-timeline: view();
+  animation-range: entry 5% cover 30%;
+  will-change: transform, opacity, filter;
+}
+
+/**
+ * Nudge Animation
+ * Creates a tiny up/down nudge, longer pause
+ */
+@keyframes nudge {
+  0%, 70%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(5px); }
+}
+
+.animate-nudge {
+  animation: nudge 3s ease-in-out infinite;
+}
+
+/**
+ * Fade Soft Animation
+ * Creates a subtle hint with no movement
+ */
+@keyframes fade-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-fade-soft {
+  animation: fade-soft 3s ease-in-out infinite;
+}
+
+/**
+ * Pulse Soft Animation
+ * Creates a subtle pulse gloweffect with no movement
+ */
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(40, 224, 157, 0.18); }
+  50% { box-shadow: 0 0 0 12px rgba(40, 224, 157, 0); }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/**
+ * Float Soft Animation
+ * Creates a gentle float with small vertical drift with easing
+ */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float-soft {
+  animation: float-soft 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Hero Loading Animations
+   ========================================================================== */
+
+/**
+ * Nav Fade In Animation
+ * Simple opacity fade-in for navigation bar
+ */
+@keyframes nav-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-nav-fade-in {
+  animation: nav-fade-in 0.8s ease-out forwards;
+}
+
+/**
+ * Background Slide Down Blur Animation
+ * Combines translateY, opacity, and filter blur for hero background
+ */
+@keyframes bg-slide-down-blur {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+    filter: blur(20px);
+  }
+  to {
+    opacity: 0.6;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-bg-slide-down-blur {
+  animation: bg-slide-down-blur 1s ease-out forwards;
+}
+
+/**
+ * Slide In From Left Animation
+ * translateX + opacity animation for description
+ */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 1s ease-out forwards;
+}
+
+/**
+ * Hero Fade In Animation
+ * Simple opacity fade-in for arrow element
+ */
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-hero-fade-in {
+  animation: hero-fade-in 0.6s ease-out forwards;
+}
+
+/**
+ * Typewriter Cursor Blink Animation
+ * Blinking cursor for typewriter effect
+ */
+@keyframes cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.8em;
+  background-color: var(--color-primary);
+  margin-left: 2px;
+  animation: cursor-blink 0.8s infinite;
+  vertical-align: baseline;
+  line-height: 0; /* Prevents cursor from affecting line box height */
+  position: relative;
+}
+
+/**
+ * Hero Animation Initial States
+ * Elements start hidden and are revealed by animations
+ */
+.hero-animate-initial {
+  opacity: 0;
+}
+
+.hero-bg-initial {
+  opacity: 0;
+  transform: translateY(-30px);
+  filter: blur(20px);
+}
+
+.hero-slide-left-initial {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+/**
+ * Initial Hidden States for Hero Elements
+ * These rules hide elements before JavaScript loads content
+ * to prevent flash of unstyled content (FOUC)
+ */
+.nav-container {
+  opacity: 0;
+}
+
+[data-hero-bg] {
+  opacity: 0;
+  transform: translateY(-30px);
+  filter: blur(20px);
+}
+
+[data-hero-title] {
+  opacity: 0;
+}
+
+[data-hero-description] {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+[data-section="hero"] .animate-float-soft {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+[data-section="hero"] .animate-float-soft.hero-visible {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Browser Support Fallbacks
+   ========================================================================== */
+
+/**
+ * For browsers that don't support animation-timeline,
+ * the reveal animation will still work but won't be scroll-triggered
+ */
+@supports not (animation-timeline: view()) {
+  .reveal-on-scroll {
+    animation: none;
+    opacity: 0;
+    transform: translateY(var(--animation-reveal-translate)) scale(0.95);
+    filter: blur(var(--animation-reveal-blur));
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out;
+  }
+  
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* ==========================================================================
+   Print Styles (Optional Enhancement)
+   ========================================================================== */
+
+@media print {
+  .animate-marquee,
+  .reveal-on-scroll {
+    animation: none;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Button Styles
+   ========================================================================== */
+/**
+ * Primary Button
+ * Reusable button style for primary actions
+ */
+.btn-primary {
+  width: 50%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-radius: 2.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-primary);
+  color: var(--color-bg-darker);
+  white-space: nowrap;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: white;
+  color: var(--color-bg-darker);
+  border-color: var(--color-background-dark);
+}
+
+/**
+ * Primary Button Icon
+ * Styles the icon inside the primary button
+ */
+.btn-primary-icon {
+  font-size: var(--font-size-2xl);
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .btn-primary-icon {
+  transform: translateX(0.4rem);
+}
+
+/**
+ * Primary Button Responsiveness
+ * Ensure buttons have full width on smaller screens
+ */
+@media (max-width: 768px) {   
+    .btn-primary {
+    display: block;
+    width: 100%;
+  }
+}
+
+/**
+ * Secondary Button
+ * Reusable button style for secondary actions
+ */
+.btn-secondary {
+  width: 100%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-radius: 2rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-darker);
+  color: white;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg-darker);
+  border-color: var(--color-primary);
+}
+
+/**
+ * Secondary Button Icon
+ * Styles the icon inside the secondary button
+ */
+.btn-secondary-icon {
+  font-size: var(--font-size-2xl);
+  transition: transform 0.3s ease;
+}
+
+.btn-secondary:hover .btn-secondary-icon {
+  transform: translateX(0.4rem);
+}
+
+/**
+ * Tertiary Button
+ * Reusable button style for tertiary actions
+ */
+.btn-tertiary {
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2.5rem;
+  padding-right: 1.75rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  background-color: none;
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-tertiary:hover {
+  background-color: var(--color-background-dark);
+  color: var(--color-background-light);
+  border: 1px solid var(--color-primary);
+}
+
+/**
+ * Tertiary Button Icon
+ * Styles the icon inside the tertiary button
+ */
+.btn-tertiary-icon {
+  font-size: var(--font-size-2xl);
+  transition: transform 0.3s ease;
+}
+
+.btn-tertiary:hover .btn-tertiary-icon {
+  transform: translateX(0.4rem);
+}
+
+/**
+ * Disabled Button State
+ * Shared state for placeholder/coming-soon buttons and links (href="#")
+ */
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.btn-primary.btn-disabled:hover,
+.btn-secondary.btn-disabled:hover,
+.btn-tertiary.btn-disabled:hover {
+  background-color: inherit;
+  color: inherit;
+  border-color: inherit;
+}
+
+.btn-primary.btn-disabled:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg-darker);
+  border-color: var(--color-border);
+}
+
+.btn-secondary.btn-disabled:hover {
+  background-color: var(--color-bg-darker);
+  color: white;
+  border-color: var(--color-border);
+}
+
+.btn-tertiary.btn-disabled:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-primary.btn-disabled:hover .btn-primary-icon,
+.btn-secondary.btn-disabled:hover .btn-secondary-icon,
+.btn-tertiary.btn-disabled:hover .btn-tertiary-icon {
+  transform: none;
+}
+
+/**
+ * Coming Soon tooltip (CSS-only) for disabled buttons/links
+ */
+.btn-disabled::after {
+  content: "Coming Soon";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-disabled:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* ==========================================================================
+   Link Styles
+   ========================================================================== */
+
+/**
+ * Logo/Brand Link
+ * Logo link with hover scale effect
+ */
+.link-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.link-logo:hover {
+  transform: scale(1.05);
+}
+
+/**
+ * Navigation Link
+ * Base navigation link styles (shared by desktop and mobile)
+ */
+.link-nav {
+  color: #d1d5db; /* gray-300 */
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease-in-out;
+}
+
+.link-nav:hover {
+  color: white;
+  background-color: var(--color-border);
+  transform: scale(1.05);
+}
+
+/**
+ * Active Navigation Link State
+ * Highlights the current page link
+ */
+.link-nav.active {
+  color: var(--color-primary);
+  background-color: var(--color-border);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Disable hover effect on active links */
+.link-nav.active {
+  color: var(--color-primary);
+  background-color: var(--color-border);
+  pointer-events: none; /* Disables all mouse interactions */
+}
+
+/**
+ * Mobile Navigation Link
+ * Mobile-specific variant with text-right alignment
+ */
+.link-nav-mobile {
+  width: 100%;
+  text-align: right;
+}
+
+.link-nav.link-nav-mobile:hover {
+  transform: scale(1.025);
+}
+
+/**
+ * Call-to-Action Link
+ * CTA link with underline and arrow icon
+ */
+.link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.link-cta:hover {
+  color: var(--color-primary);
+}
+
+/**
+ * Button-Style Link
+ * Link styled as a button with background
+ */
+.link-button {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  background-color: var(--color-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  transition: all 0.3s ease;
+}
+
+.link-button:hover {
+  background-color: white;
+  color: var(--color-bg-darker);
+}
+
+/**
+ * Email CTA Link
+ * Email CTA with dark background and icon
+ */
+.link-email-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-bg-darker);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.link-email-cta:hover {
+  transform: scale(1.05);
+}
+
+/**
+ * Footer Link
+ * Footer link base styles
+ */
+.link-footer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-full);
+  color: #9ca3af; /* gray-400 */
+  transition: color 0.3s ease;
+}
+
+.link-footer:hover {
+  color: white;
+}
+
+/**
+ * Footer Link Text
+ * Footer link text with underline on hover
+ */
+.link-footer-text {
+  transition: text-decoration 0.3s ease;
+}
+
+.link-footer:hover .link-footer-text {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+  text-decoration-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Email Copy Tooltip
+   ========================================================================== */
+
+/**
+ * Email Copy Tooltip
+ * Custom tooltip for mailto links that shows "Copy" on hover
+ * and "Copied!" after successful copy
+ */
+.email-copy-tooltip {
+  position: absolute;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.email-copy-tooltip.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.email-copy-tooltip[aria-hidden="true"] {
+  display: none;
+}
+
+/* ==========================================================================
+   Mobile Hamburger Menu
+   ========================================================================== */
+
+/**
+ * Expanded Nav State
+ * Changes nav from rounded-full to rounded-lg when menu is open
+ */
+nav[data-menu-open="true"] {
+  border-radius: var(--radius-lg);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/**
+ * Mobile Menu Items Container
+ * Hidden by default, shown when menu is open
+ * Stacked column layout with justify-end alignment
+ */
+#mobile-menu-items {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out, padding 0.3s ease-in-out;
+  width: 100%;
+  order: 3;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: rgba(28, 38, 32, 0.8);
+  border: 1px solid #29382f;
+  border-radius: 1.5rem;
+  margin-top: 0.125rem;
+}
+
+#mobile-menu-items[data-menu-visible="true"] {
+  max-height: 300px;
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/**
+ * Mobile Menu Button
+ * Ensures proper styling for the hamburger/close button
+ */
+#mobile-menu-button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#mobile-menu-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/**
+ * Mobile Menu Links
+ * Styling for navigation links in mobile menu
+ */
+#mobile-menu-items a {
+  display: block;
+  text-align: right;
+}
+
+/* ==========================================================================
+   Testimonial Carousel
+   ========================================================================== */
+
+/**
+ * Testimonial Carousel Container
+ * Horizontal scrolling container for testimonial cards
+ */
+.testimonial-carousel {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  justify-content: space-between;
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/**
+ * Testimonial Card
+ * Individual card styling within the carousel
+ */
+.testimonial-card {
+  min-width: 350px;
+  max-height: 500px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+}
+
+/**
+ * Carousel Arrow Buttons
+ * Navigation arrows for scrolling the carousel
+ */
+.carousel-arrow {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-arrow:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.carousel-arrow.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/**
+ * Carousel Arrow Positioning
+ * Position arrows on sides of carousel with offset
+ */
+.carousel-arrow-left {
+  left: -0.5rem;
+}
+
+.carousel-arrow-right {
+  right: -1rem;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  /* Responsive arrow positioning for smaller screens */
+  .carousel-arrow-left {
+    left: -0.5rem;
+  }
+  .carousel-arrow-right {
+    right: -0.5rem;
+  }
+
+  /* Ensure section has padding for arrows on larger screens */
+  #testimonials {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   Responsiveness
+   ========================================================================== */

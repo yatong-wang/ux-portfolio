@@ -1,0 +1,41 @@
+{
+  "projects": [
+    {
+      "id": "usda-enterprise-app-integration",
+      "year": "2025",
+      "category": "B2B • research • ia",
+      "title": "USDA Enterprise App Intergration",
+      "description": "Help field staff complete assessments faster by embedding and simplifying workflows from complex scientific tools",
+      "image": {
+        "url": "assets/projects/enterprise/thumbnail-case-enterprise.webp",
+        "alt": "Geospatial web application with tabbed form inputs over a map interface"
+      },
+      "link": "#"
+    },
+    {
+      "id": "conservation-practice-effects-tool",
+      "year": "2023",
+      "category": "Web App • UI/UX",
+      "title": "Conservation Practice Effects Tool",
+      "description": "Empower producers with land challenges to explore conservation practices, by transforming spreadsheet data into interactive screening tools",
+      "image": {
+        "url": "assets/projects/cppe/thumbnail-case-cppe.webp",
+        "alt": "USDA conservation practices screening toolinterface showing CPPE scores, filters, and detailed practice information"
+      },
+      "link": "#"
+    },
+    {
+      "id": "accessible-chart-component",
+      "year": "2024",
+      "category": "Design System • Accessibility",
+      "title": "Accessible Chart Component for Data Visualization",
+      "description": "Design a data visualization dashboard and create developer-ready specs for a chart component",
+      "image": {
+        "url": "assets/projects/dashboard/thumbnail-case-dashboard.webp",
+        "alt": "Dashboard visualizing estimated water quality outcomes on cropland, including nitrogen, phosphorus, sediment, and wind erosion trends"
+      },
+      "link": "#"
+    }
+  ]
+}
+

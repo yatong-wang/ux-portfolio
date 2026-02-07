@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yatong - Product Design</title>
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#36e27b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112117", 
+                    },
+
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "2rem", 
+                        "xl": "3rem", 
+                        "full": "9999px"
+                    },
+                    cursor: {
+                        wave: 'url("./assets/cursors/wave.svg") 16 16, pointer',
+                    },
+                },
+            },
+        }
+    </script>
+    <script>
+        // #region agent log
+        (function() {
+            const log = (msg, data) => {
+                fetch('http://127.0.0.1:7242/ingest/e1a8b0d8-63de-4e90-b89f-977a6030ee70', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        location: 'index.html:script',
+                        message: msg,
+                        data: data || {},
+                        timestamp: Date.now(),
+                        sessionId: 'debug-session',
+                        runId: 'run1'
+                    })
+                }).catch(() => {});
+            };
+            
+            // Hypothesis A: Check if @supports query matches
+            const supportsTimeline = CSS.supports('animation-timeline', 'view()');
+            log('Hypothesis A: animation-timeline support', {supportsTimeline, userAgent: navigator.userAgent});
+            
+            // Hypothesis B: Check reveal-on-scroll elements state
+            document.addEventListener('DOMContentLoaded', () => {
+                const revealElements = document.querySelectorAll('.reveal-on-scroll');
+                log('Hypothesis B: reveal-on-scroll elements found', {
+                    count: revealElements.length,
+                    firstElementStyles: revealElements[0] ? {
+                        opacity: window.getComputedStyle(revealElements[0]).opacity,
+                        transform: window.getComputedStyle(revealElements[0]).transform,
+                        filter: window.getComputedStyle(revealElements[0]).filter,
+                        display: window.getComputedStyle(revealElements[0]).display,
+                        visibility: window.getComputedStyle(revealElements[0]).visibility,
+                        zIndex: window.getComputedStyle(revealElements[0]).zIndex
+                    } : null
+                });
+                
+                // Hypothesis C: Check if animation is applied
+                const firstReveal = revealElements[0];
+                if (firstReveal) {
+                    const computed = window.getComputedStyle(firstReveal);
+                    log('Hypothesis C: Animation state', {
+                        animationName: computed.animationName,
+                        animationDuration: computed.animationDuration,
+                        animationTimeline: computed.animationTimeline || 'not supported'
+                    });
+                }
+                
+                // Hypothesis D: Check CSS custom properties resolution
+                if (firstReveal) {
+                    const root = getComputedStyle(document.documentElement);
+                    log('Hypothesis D: CSS custom properties', {
+                        revealTranslate: root.getPropertyValue('--animation-reveal-translate'),
+                        revealBlur: root.getPropertyValue('--animation-reveal-blur'),
+                        primaryColor: root.getPropertyValue('--color-primary')
+                    });
+                }
+                
+                // Hypothesis E: Check stacking context
+                if (firstReveal) {
+                    const parent = firstReveal.parentElement;
+                    log('Hypothesis E: Stacking context', {
+                        parentZIndex: window.getComputedStyle(parent).zIndex,
+                        parentPosition: window.getComputedStyle(parent).position,
+                        elementZIndex: window.getComputedStyle(firstReveal).zIndex,
+                        elementPosition: window.getComputedStyle(firstReveal).position
+                    });
+                }
+                
+                // Check if fallback should apply
+                setTimeout(() => {
+                    if (!supportsTimeline && revealElements.length > 0) {
+                        log('Hypothesis B: Applying fallback manually', {action: 'adding revealed class'});
+                        revealElements.forEach(el => el.classList.add('revealed'));
+                    }
+                }, 100);
+            });
+        })();
+        // #endregion
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div data-nav-placeholder></div>
+<main class="flex-grow w-full flex flex-col items-center w-full pb-20">
+<div class="w-full relative overflow-hidden]">
+<section class="min-h-[85vh] h-screen max-h-[960px] flex flex-col justify-end pb-12 md:pb-16" data-section="hero">
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-overlay pointer-events-none" data-hero-bg>
+</div>
+<div class="relative bg-gradient-to-t from-background-dark via-transparent to-background-dark/80 z-0 pointer-events-none"></div>
+<div class="w-full max-w-[1280px] mx-auto">
+<div class="z-10 px-4 md:px-20 mt-32">
+<div class="flex flex-col md:flex-row items-center md:items-end justify-between gap-8">
+<div class="max-w-4xl">
+<div class="group relative">
+<h1 class="cursor-default group-hover:cursor-wave text-[3.5rem] lg:text-7xl font-bold md:leading-tighter leading-none text-white mb-6" data-hero-title>
+    <span class='text-gray-500'>I'm </span>Yat<span class='font-extrabold'>o</span>ng<span class='text-gray-500'>, a </span>Product Designer</h1>
+<div class="absolute top-[-300px] opacity-20 -rotate-12 group-hover:opacity-30 animate-wave-on-hover duration-500 pointer-events-none">
+    <span class="material-symbols-outlined text-[#111714] text-[300px]">waving_hand</span>
+</div>
+</div>
+<p class="text-2xl lg:text-3xl max-w-xl leading-tight md:leading-normal md:max-w-2xl font-light" data-hero-description></p>
+</div>
+<div class="flex flex-col items-center md:items-end pt-4 animate-float-soft">
+<a class="w-16 h-16 rounded-full border border-[#29382f] flex items-center justify-center animate-fade-soft text-primary bg-[#1c2620]" href="#work">
+<span class="material-symbols-outlined">arrow_downward</span>
+</a>
+<span class="text-xs font-mono text-gray-500 text-right uppercase tracking-widest pt-4 whitespace-nowrap">see my work</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<section class="w-full overflow-hidden py-6 border-y border-[#29382f] bg-[#111714] mb-20" data-marquee-container>
+<div class="flex whitespace-nowrap gap-8 animate-marquee">
+<div class="flex items-center gap-8" data-marquee-items>
+<!-- Marquee items loaded from marquee.json -->
+</div>
+</div>
+</section>
+<div class="w-full max-w-[1280px]">
+<section class="mb-20 px-4 md:px-20" id="work" data-section="projects">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-[#29382f] pb-6">
+<h2 class="text-4xl lg:text-5xl font-bold uppercase">selected works</h2>
+<div class="hidden md:flex items-center -mb-2">
+<button type="button" class="btn-tertiary btn-disabled" aria-disabled="true" title="Coming Soon">
+                                     all works
+                                     <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-12" data-projects-container>
+<!-- Projects will be dynamically loaded here -->
+</div>
+<div class="md:hidden mt-8 flex justify-center">
+<button type="button" class="btn-tertiary btn-disabled" aria-disabled="true" title="Coming Soon">
+                                     all works
+                                     <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+</button>
+</div>
+</section>
+<section>
+<div class="relative px-4 md:px-20">
+    <div class="flex flex-col justify-between mb-12 border-b border-[#29382f] pb-6">
+        <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what people are saying</span>
+        <h2 class="text-4xl lg:text-5xl font-bold uppercase">kind words</h2>
+    </div>
+</div>
+<div class="relative px-4 md:px-20" id="testimonials">
+<!-- Left Arrow -->
+<button id="carousel-arrow-left" class="carousel-arrow carousel-arrow-left w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#29382f] flex items-center justify-center text-primary bg-[#1c2620] hover:bg-primary hover:text-[#1c2620] hover:border-primary transition-all duration-300 absolute left-0 top-1/2 -translate-y-1/2 z-10 opacity-0 pointer-events-none" aria-label="Scroll left">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+
+<!-- Carousel Container -->
+<div id="testimonial-carousel" class="testimonial-carousel flex gap-6 overflow-x-auto pt-2 scroll-smooth snap-x snap-mandatory">
+<!-- Testimonials will be dynamically loaded here -->
+</div>
+
+<!-- Right Arrow -->
+<button id="carousel-arrow-right" class="carousel-arrow carousel-arrow-right w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#29382f] flex items-center justify-center text-primary bg-[#1c2620] hover:bg-primary hover:text-[#1c2620] hover:border-primary transition-all duration-300 absolute right-0 top-1/2 -translate-y-1/2 z-10 opacity-0 pointer-events-none" aria-label="Scroll right">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<div data-footer-placeholder></div>
+</div>
+<script src="js/content-loader.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    document.querySelectorAll('h2').forEach(heading => {
+      heading.innerHTML = heading.innerHTML.replace(/o/gi, match => `<span class="font-extrabold">${match}</span>`);
+    });
+</script>
+</body>
+</html>
+
