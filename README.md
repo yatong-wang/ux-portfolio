@@ -16,45 +16,50 @@ The site is independently developed by me, so no formal peer code review exists 
 ---
 ## Table of Contents
 - [Live Site](#live-site)
-- [Tech Stack](#tech-stack)
-- [Repository Structure](#repository-structure)
-- [Deployment](#deployment)
+- [Technical Overview](#technical-overview)
+  - [Tech Stack](#tech-stack)
+  - [Repository Structure](#repository-structure)
+  - [Deployment](#deployment)
 - [AI-Powered Design & Coding Flow](#ai-powered-design--coding-flow)
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
 - [License](#license)
----
 
 ## Live Site
+[↑ Back to top](#table-of-contents)
+
 > Coming soon
 
 [placeholder for site preview screenshot]
 
 
-## Tech Stack
+
+## Technical Overview
+[↑ Back to top](#table-of-contents)
+
+### Tech Stack
 - **HTML** (semantic structure)
 - **Tailwind CSS** + custom `styles.css`
 - **Vanilla JavaScript**
 - **JSON** for dynamic content management
 
 
-## Repository Structure
+### Repository Structure
 - `assets/` → Images, cursors, and visual assets
 - `data/` → Content and copy stored as JSON
 - `js/` → Content loaders and interaction scripts
 
 This separation keeps content, logic, and presentation cleanly decoupled.
 
-## Deployment
+### Deployment
 Stay tuned! Currently evaluating:
 - **GitHub Pages** — simplest option; native GitHub integration
 - **Netlify** — some learning curve; but better build previews, redirects and deployment controls
 
----
 
 ## AI-Powered Design & Coding Flow
-[(Back to top)](#table-of-contents)
+[↑ Back to top](#table-of-contents)
 
 ### Tools I Use
 - **Design:** Stitch with Google, Figma, Pencil
@@ -77,6 +82,8 @@ All AI-generated output is reviewed, modified and checked by me.
 
 
 ## Roadmap
+[↑ Back to top](#table-of-contents)
+
 - [ ] Add an "About Me" page
 - [ ] Generate templates and components for case studies page
 - [ ] Write content for case studies
@@ -86,3 +93,5 @@ All AI-generated output is reviewed, modified and checked by me.
 
 ## License
 All rights reserved.
+
+[↑ Back to top](#table-of-contents)
