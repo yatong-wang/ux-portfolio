@@ -10,12 +10,19 @@ I've chosen to build with a simple frontend stack rather than popular frameworks
 ### Current Progress
 Homepage is complete.
 
+### Live Site
+[↑ Back to top](#table-of-contents)
+URL: https://yatong-wang.netlify.app
+
+>  Landing Page Preview
+[![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
+
+
 ### Disclaimer
 The site is independently developed by me, so no formal peer code review exists in place to ensure code quality, security and maintenability. But I’m aware of the vital importance of readable and clean code; I use my best knowledge to combat AI slop.
 
 ---
 ## Table of Contents
-- [Live Site](#live-site)
 - [Technical Overview](#technical-overview)
   - [Tech Stack](#tech-stack)
   - [Repository Structure](#repository-structure)
@@ -27,13 +34,6 @@ The site is independently developed by me, so no formal peer code review exists 
   - [WIP](#wip)
 - [Archive Branch](#archive-branch)
 - [License](#license)
-
-## Live Site
-[↑ Back to top](#table-of-contents)
-URL: https://yatong-wang.netlify.app
-
-### Landing Page Preview
-[![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
 
 
 ## Technical Overview

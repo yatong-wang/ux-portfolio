@@ -427,8 +427,8 @@
 
         // Create footer HTML with responsive classes matching case2.html
         const footerHTML = `
-            <footer class="border-t border-[#29382f] w-full pt-12 pb-10 px-4 md:px-8 lg:px-20 lg:pb-4">
-                <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-4 mb-12">
+            <footer class="border-t border-[#29382f] w-full pt-6 pb-6 px-4 md:px-8 lg:px-20 lg:pb-4">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-4 mb-2">
                     <div class="flex flex-col items-center md:items-start gap-2">
                         <p class="inline-flex items-center gap-2 text-white font-mono uppercase">
                             <span class="relative flex h-2 w-2">
@@ -477,7 +477,7 @@
 
         // Update site title
         const titleEl = document.querySelector('title');
-        if (titleEl && data.site.title) {
+        if (titleEl && data.site.title && document.documentElement.getAttribute('data-page') !== '404') {
             titleEl.textContent = data.site.title;
         }
 

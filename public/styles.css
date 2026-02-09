@@ -570,6 +570,12 @@ h4 {
     display: block;
     width: 100%;
   }
+  .btn-primary.btn-icon-left {
+    display: flex;
+  }
+  .btn-primary.btn-hug {
+    width: auto;
+  }
 }
 
 /**
@@ -656,6 +662,37 @@ h4 {
 
 .btn-tertiary:hover .btn-tertiary-icon {
   transform: translateX(0.4rem);
+}
+
+/**
+ * Button Hug Modifier
+ * Combine with any button variant (btn-primary, btn-secondary, btn-tertiary)
+ * to make the button width fit its content with even horizontal padding.
+ */
+.btn-hug {
+  width: auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+/**
+ * Button Icon Left Modifier
+ * Combine with any button variant to show icon on the left of the text.
+ */
+.btn-icon-left {
+  flex-direction: row-reverse;
+}
+
+.btn-primary.btn-icon-left:hover .btn-primary-icon,
+.btn-secondary.btn-icon-left:hover .btn-secondary-icon,
+.btn-tertiary.btn-icon-left:hover .btn-tertiary-icon {
+  transform: translateX(-0.4rem);
+}
+
+.btn-primary.btn-icon-left.btn-disabled:hover .btn-primary-icon,
+.btn-secondary.btn-icon-left.btn-disabled:hover .btn-secondary-icon,
+.btn-tertiary.btn-icon-left.btn-disabled:hover .btn-tertiary-icon {
+  transform: none;
 }
 
 /**

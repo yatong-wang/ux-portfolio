@@ -1,6 +1,9 @@
 .cursor/
 data/about.json
 wip/re-enable-buttons.md
+wip/data/
+wip/js
+wip/styles.css
 .DS_Store
 **/.DS_Store
 archive/

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" data-page="404">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 - Page Not Found | Yatong</title>
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#36e27b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112117",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    cursor: {
+                        wave: 'url("./assets/cursors/wave.svg") 16 16, pointer',
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div data-nav-placeholder></div>
+<main class="flex-grow w-full flex flex-col items-center">
+<section class="flex-1 w-full flex flex-col items-center justify-center relative px-4 min-h-0" data-section="hero">
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-overlay pointer-events-none" data-hero-bg>
+</div>
+<div class="relative bg-gradient-to-t from-background-dark via-transparent to-background-dark/80 z-0 pointer-events-none"></div>
+<div class="relative z-10 text-center flex flex-col items-center max-w-2xl mx-auto">
+<div class="relative">
+<h1 class="text-[10rem] md:text-[18rem] font-extrabold leading-none tracking-tighter text-white opacity-5 select-none">
+                    404
+                </h1>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<h2 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                        Lost in space
+</h2>
+<p class="text-gray-300 text-lg md:text-xl font-light leading-relaxed max-w-md">
+      This page is currently unavailable or never existed. It stopped thinking after leaving Earth's orbit...
+                    </p>
+</div>
+</div>
+<div class="mt-12 md:mt-16 flex justify-center">
+<a href="index.html" class="btn-primary btn-hug btn-icon-left">
+                    escape the void
+                    <span class="material-symbols-outlined btn-primary-icon">arrow_back</span>
+</a>
+</div>
+<p class="text-gray-500 font-mono text-xs uppercase tracking-widest mt-8">Error Code: 0x404_NOT_FOUND</p>
+</div>
+</section>
+</main>
+<div data-footer-placeholder></div>
+</div>
+<script src="js/content-loader.js"></script>
+<script src="js/scripts.js"></script>
+<script>
+    document.querySelectorAll('h2').forEach(heading => {
+      heading.innerHTML = heading.innerHTML.replace(/o/gi, match => `<span class="font-extrabold">${match}</span>`);
+    });
+</script>
+</body>
+</html>
