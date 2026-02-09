@@ -24,8 +24,8 @@ The site is independently developed by me, so no formal peer code review exists 
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
-- [Archive](#archive)
-- [WIP](#wip)
+  - [WIP](#wip)
+- [Archive Branch](#archive-branch)
 - [License](#license)
 
 ## Live Site
@@ -89,12 +89,12 @@ All AI-generated output is reviewed, modified and checked by me.
 - [ ] Implement dark mode
 - [ ] Add a "Fun / Experiments" page
 
-
-## Archive
-Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` folder for reference.
-
-## WIP
+### WIP
 Ongoing work drafts and explorations that are not yet production-ready are stored in `wip` folder for reference.
+
+
+## Archive Branch
+Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` branch for reference.
 
 
 ## License
