@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio Landing Page</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#36e27b",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112117", 
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "2rem", 
+                        "xl": "3rem", 
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111714; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #29382f; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #36e27b; 
+        }
+        .stroke-text {
+            -webkit-text-stroke: 1px #36e27b;
+            color: transparent;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }@keyframes reveal {
+            from { 
+                opacity: 0; 
+                transform: translateY(100px) scale(0.95); 
+                filter: blur(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+                filter: blur(0); 
+            }
+        }
+        .reveal-on-scroll {animation: reveal linear both;
+            animation-timeline: view();
+            animation-range: entry 5% cover 30%;
+            will-change: transform, opacity, filter;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6">
+<nav class="bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-8 shadow-lg max-w-[960px] w-full mx-auto">
+<a class="flex items-center gap-2 pl-4 group transition-transform hover:scale-105" href="#">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined filled" style="font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 24;">bolt</span>
+</div>
+<span class="text-white font-bold tracking-tight">CREATIVE<span class="text-primary">.</span></span>
+</a>
+<div class="hidden md:flex items-center gap-1 bg-[#111714]/50 rounded-full px-1 py-1">
+<a class="text-gray-400 hover:text-white hover:bg-[#29382f] px-5 py-2 rounded-full text-sm font-medium transition-all" href="#work">Work</a>
+<a class="text-gray-400 hover:text-white hover:bg-[#29382f] px-5 py-2 rounded-full text-sm font-medium transition-all" href="#services">Services</a>
+<a class="text-gray-400 hover:text-white hover:bg-[#29382f] px-5 py-2 rounded-full text-sm font-medium transition-all" href="#about">About</a>
+</div>
+<a class="flex items-center justify-center bg-primary text-[#111714] hover:bg-white hover:scale-105 transition-all rounded-full px-6 py-2.5 text-sm font-bold" href="#contact">
+                Let's Talk
+            </a>
+</nav>
+</div>
+<main class="flex-grow flex flex-col items-center w-full pt-32 pb-20 px-4 md:px-10">
+<div class="w-full max-w-[1280px]">
+<section class="min-h-[85vh] flex flex-col justify-end pb-12 md:pb-24 relative rounded-[2.5rem] overflow-hidden mb-8 md:mb-16">
+<div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-40 mix-blend-overlay" data-alt="Abstract dark aesthetic fluid 3D forms with subtle green lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2aJmijAzpgBwefY40PPJTDMzGaR2BqYhx_OPbLB5YIkB8kWnTMlUn4tMG-1nbLd4ROMa-PNiyFR7VSFMPfdSpGypb_j8WeEUqFImy-0hiDmXakNFbzhueRbgeKzEMn1hRBs91g-jhWVTXWpN94lVclZH47nPh0oaEZXhwgSh2B6vfuIWh9WG_XsVyOkvDpD2zPEcEsiK6xP4pvvzMu_iHe7Y8RAklcgExeh8pQJ3FpmfOti9840n0GHcfab1RYLQHRb39EJopMgsO");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/80 z-0"></div>
+<div class="relative z-10 px-6 md:px-12 w-full">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-4xl">
+<h1 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-white mb-6">
+                                Digital Craftsman <br/>
+<span class="text-gray-500">&amp;</span> Visual Storyteller<span class="text-primary">.</span>
+</h1>
+<p class="text-lg md:text-xl text-gray-300 max-w-xl leading-relaxed font-light">
+                                Creating immersive web experiences and brand identities for forward-thinking companies that dare to be different.
+                            </p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-4">
+<div class="w-16 h-16 rounded-full border border-[#29382f] flex items-center justify-center animate-bounce text-primary bg-[#1c2620]">
+<span class="material-symbols-outlined">arrow_downward</span>
+</div>
+<span class="text-xs font-mono text-gray-500 uppercase tracking-widest">Scroll to explore</span>
+</div>
+</div>
+</div>
+</section>
+<div class="w-full overflow-hidden py-10 border-y border-[#29382f] bg-[#111714] mb-20">
+<div class="flex whitespace-nowrap gap-8 animate-marquee">
+<div class="flex items-center gap-8">
+<span class="text-4xl md:text-6xl font-black text-transparent stroke-text stroke-primary opacity-20">STRATEGY</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-white">DESIGN</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-transparent stroke-text stroke-primary opacity-20">DEVELOPMENT</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-white">MOTION</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+</div>
+<div class="flex items-center gap-8">
+<span class="text-4xl md:text-6xl font-black text-transparent stroke-text stroke-primary opacity-20">STRATEGY</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-white">DESIGN</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-transparent stroke-text stroke-primary opacity-20">DEVELOPMENT</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+<span class="text-4xl md:text-6xl font-black text-white">MOTION</span>
+<span class="material-symbols-outlined text-primary text-3xl">star</span>
+</div>
+</div>
+</div>
+<section class="mb-32 px-4 md:px-0" id="work">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-[#29382f] pb-6">
+<h2 class="text-4xl md:text-6xl font-bold tracking-tight text-white">Selected Works<span class="text-primary">.</span></h2>
+<a class="hidden md:flex items-center gap-2 text-primary hover:text-white transition-colors group" href="#">
+<span class="font-medium">View All Projects</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 gap-12">
+<div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll">
+<div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" data-alt="Modern fashion magazine cover redesign featuring bold typography and red accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB2ms1t3Z54rmcYEXUoeZ3t4gKjqJJRqBxt9nL3VbxwRVtqOd6JNC0snjtLNef36oL2YLahXlxBMm2lxKisFaJk-1ILAGZCOdkLzBVU8MuOmJqy_57uUG7buu6rTJByp93upNZIoMyKCyPrhBrpMRywWzsSbfDRvSh5mrOJ7cvibX3oBO7Xbqt7xX3GPy6NGASjrFmT5cygUYq5iuL_aVvx9-qTpOGiRxxiL5cOiQ79urygV_7yG7MY8VxJpXcjOM0ctG0qi71Edb6i");'></div>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+<div class="absolute top-6 right-6 z-20">
+<div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
+                                    2023
+                                </div>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<span class="text-primary text-xs font-bold tracking-widest uppercase mb-3 block">Editorial • Web Design</span>
+<h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Vogue Redesign</h3>
+<p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                                     Reimagining the digital presence of a fashion icon. We focused on high-impact visual storytelling and typographic elegance to seamlessly bridge the gap between print heritage and digital innovation.
+                                 </p>
+</div>
+<div class="mt-auto md:mt-0">
+<button class="w-full py-4 rounded-xl border border-[#29382f] bg-[#111714] text-white font-bold hover:bg-primary hover:text-[#111714] hover:border-primary transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                     View Project
+                                     <span class="material-symbols-outlined text-lg group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll">
+<div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist fintech mobile application dashboard with dark mode interface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3gDm3Dg8VsPD13VddiRwFZkp0pnD2nNNmle6JEwgqY_ztEziAgH8KdhVe9XLn70qLxBMCYC4myQurTEm_IG4oNoraBHTzeaA5Oa7kq0Lt2ABgJGg6pwJevAIIm6-bYm93afgePxACVdJv9n0dWKuPHredAKE61ydvM28DCqe5vPjAES8QJWEZki6LCl-zIFLTxtE6R3agMGmY2mESq_EKV8rc0BtTlHBcAelHA_zSezER587dUzhzSTjSAsNnAzyfIfRd9wPy0dY3");'></div>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+<div class="absolute top-6 right-6 z-20">
+<div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
+                                    2023
+                                </div>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<span class="text-primary text-xs font-bold tracking-widest uppercase mb-3 block">Product • UI/UX</span>
+<h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Fintech App 2.0</h3>
+<p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                                     Simplifying complex financial data into an intuitive, user-centric mobile dashboard. The redesign focused on accessibility and trust, creating a clear path for users to manage their assets.
+                                 </p>
+</div>
+<div class="mt-auto md:mt-0">
+<button class="w-full py-4 rounded-xl border border-[#29382f] bg-[#111714] text-white font-bold hover:bg-primary hover:text-[#111714] hover:border-primary transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                     View Project
+                                     <span class="material-symbols-outlined text-lg group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll">
+<div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" data-alt="Abstract architectural photography with strong shadows and geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACKGrLRoQ_9mPvZFZGCrSTfvSH3Gr2SXt0ko59qpY7PyLHnOdukvJk3iSgJ14p3sSzahoqDQQCRATxiu1mRYY2k6T8qP8j-WrsEx4r5NPJ3l1hSXppDVx45rGs-5NSDPMZWCTcDRWfFCulcQCC8AZjVjCK6krjVRCAoM_0h1xG-5abJGGcfrhOIIj9ZNl7pckHY21_L2vn2UwtvIPMOYx1Pw4BLhjfCfMnfHAmZqJIwO6zHqxFIPZl3B9JWW87t42tu4t-HLdvqb_e");'></div>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+<div class="absolute top-6 right-6 z-20">
+<div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
+                                    2022
+                                </div>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<span class="text-primary text-xs font-bold tracking-widest uppercase mb-3 block">Branding • Identity</span>
+<h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Arch Studio</h3>
+<p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                                     Developing a minimal yet bold brand identity that reflects the studio's philosophy of structural purity. The project included a complete logo system, stationery, and digital guidelines.
+                                 </p>
+</div>
+<div class="mt-auto md:mt-0">
+<button class="w-full py-4 rounded-xl border border-[#29382f] bg-[#111714] text-white font-bold hover:bg-primary hover:text-[#111714] hover:border-primary transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                     View Project
+                                     <span class="material-symbols-outlined text-lg group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll">
+<div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" data-alt="Vibrant neon lights at a music festival night event" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwG8_IDk0lhoEAPjTM8hwcnipFu8MlkhbiYHt0MJnlJiXy-w6h-xW6Pei2GVzdV3Ns-wnvkfyvqlU9c84b4JIGZUy2AYcJOPxWt3STomBPFprpQal_IBxosWXO1KGanS9nPzIa_i4cCuK9OTFT8lI20jn0bp4sZy970ryuYGGys2zhkVE-YmKvKbhy_ah-6hC4DnOsVQazd4uz1mts4pbn-24o393s-1dPMH9ESrvCBE29ucj5Z4hrcICKUUxC89qkxRD1Yadj2XUA");'></div>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+<div class="absolute top-6 right-6 z-20">
+<div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
+                                    2022
+                                </div>
+</div>
+</div>
+<div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="mb-6">
+<span class="text-primary text-xs font-bold tracking-widest uppercase mb-3 block">Event • Art Direction</span>
+<h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Neon Nights</h3>
+<p class="text-gray-400 text-sm md:text-base leading-relaxed">
+                                     Crafting an immersive event identity with vibrant visuals and motion graphics. We captured the electric atmosphere of the festival through a dynamic color palette and kinetic typography.
+                                 </p>
+</div>
+<div class="mt-auto md:mt-0">
+<button class="w-full py-4 rounded-xl border border-[#29382f] bg-[#111714] text-white font-bold hover:bg-primary hover:text-[#111714] hover:border-primary transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                                     View Project
+                                     <span class="material-symbols-outlined text-lg group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="md:hidden mt-8 flex justify-center">
+<a class="flex items-center gap-2 text-primary hover:text-white transition-colors group px-6 py-3 border border-primary/30 rounded-full" href="#">
+<span class="font-medium">View All Projects</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</section>
+<section class="mb-32 bg-[#1c2620]/30 rounded-[3rem] p-8 md:p-16 border border-[#29382f]" id="services">
+<div class="flex flex-col md:flex-row gap-16">
+<div class="flex-1">
+<h2 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                            Delivering comprehensive <br/>design solutions.
+                        </h2>
+<p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-md">
+                            From initial concept to final execution, I help brands navigate the digital landscape with clarity and purpose.
+                        </p>
+<a class="inline-flex items-center gap-2 text-white border-b border-primary pb-1 hover:text-primary transition-colors" href="#contact">
+                            Start a project
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="flex-1 flex flex-col gap-6">
+<div class="group border-b border-[#29382f] pb-6 hover:border-primary/50 transition-colors">
+<div class="flex items-start gap-4">
+<div class="mt-1 p-2 rounded-full bg-[#29382f] text-primary group-hover:bg-primary group-hover:text-[#111714] transition-colors">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-2">Art Direction</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Guiding visual narratives for impactful brand storytelling across all mediums.</p>
+</div>
+</div>
+</div>
+<div class="group border-b border-[#29382f] pb-6 hover:border-primary/50 transition-colors">
+<div class="flex items-start gap-4">
+<div class="mt-1 p-2 rounded-full bg-[#29382f] text-primary group-hover:bg-primary group-hover:text-[#111714] transition-colors">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-2">UI/UX Design</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Crafting intuitive, accessible, and pixel-perfect digital interfaces for web and mobile.</p>
+</div>
+</div>
+</div>
+<div class="group border-b border-[#29382f] pb-6 hover:border-primary/50 transition-colors">
+<div class="flex items-start gap-4">
+<div class="mt-1 p-2 rounded-full bg-[#29382f] text-primary group-hover:bg-primary group-hover:text-[#111714] transition-colors">
+<span class="material-symbols-outlined">movie</span>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-2">3D Motion</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Adding depth, dynamism, and interactivity through custom motion graphics and 3D assets.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24" id="about">
+<div class="md:col-span-7 bg-[#1c2620] rounded-[2.5rem] p-8 md:p-12 border border-[#29382f] relative overflow-hidden group">
+<div class="relative z-10 flex flex-col h-full justify-between gap-8">
+<div class="flex items-center gap-6">
+<div class="h-20 w-20 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-primary/50 shrink-0">
+<img alt="Portrait of the creative professional smiling" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnSKlS734M6v3Z7eRn8PnP3lkPwwp5r_w7oaGvpGljPLi_XrWhefmAiJL3J5BI3QWIEwKuiMsIW1sFelnPrkvhjChANouToCKj33Q68QHPDvkur6CvnK4t4B_dOOBj-fszMyvO7p1mGJwdxyFOHYTrK1ST2dttmbno0pVETBamTkpnE8fSlRlHDoW9fie6a6g0mQlNPtM4WXj2jtXjR1LW8t82PWw7BnPI2Qhbib9igWxRK6-cHsSU8Uk8ufniDE0TaDl1cGw4EUdG"/>
+</div>
+<div>
+<h3 class="text-2xl font-bold text-white">Hi, I'm Alex.</h3>
+<p class="text-gray-400 text-sm mt-1">Based in San Francisco</p>
+</div>
+</div>
+<p class="text-gray-300 text-lg md:text-xl font-light leading-relaxed">
+                            I'm a multidisciplinary designer with over 8 years of experience. I bridge the gap between functional design and emotional storytelling, believing that every pixel serves a purpose.
+                        </p>
+<div class="flex gap-4">
+<a class="text-sm font-bold text-white bg-[#29382f] hover:bg-white hover:text-[#111714] transition-colors px-6 py-3 rounded-full" href="#">Read More</a>
+<div class="flex gap-4">
+<a class="inline-flex items-center text-sm font-medium border-b border-transparent gap-2 text-gray-300 hover:text-primary hover:border-primary transition-colors" href="https://www.linkedin.com/in/yatong-wang/#recommendations" target="_blank">
+        Read on LinkedIn
+        <span class="material-symbols-outlined text-sm">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+</div>
+<div class="md:col-span-5 bg-primary rounded-[2.5rem] p-8 md:p-12 flex flex-col justify-between relative overflow-hidden group" id="contact">
+<div class="relative z-10">
+<h3 class="text-[#111714] text-3xl md:text-4xl font-black mb-2">Let's work together.</h3>
+<p class="text-[#111714]/80 text-lg font-medium mb-8">Have a project in mind?</p>
+<a class="inline-flex items-center gap-2 bg-[#111714] text-white px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg" href="mailto:hello@creative.com">
+<span class="material-symbols-outlined text-primary text-xl">mail</span>
+                            hello@creative.com
+                        </a>
+</div>
+<div class="absolute right-[-20px] bottom-[-20px] opacity-10 rotate-12 group-hover:rotate-0 transition-transform duration-500">
+<span class="material-symbols-outlined text-[#111714] text-[180px]">send</span>
+</div>
+</div>
+</section>
+<footer class="border-t border-[#29382f] pt-12 pb-8 px-4">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+<div class="flex flex-col items-center md:items-start gap-2">
+<h4 class="text-white text-2xl font-bold tracking-tight">CREATIVE<span class="text-primary">.</span></h4>
+<p class="text-gray-500 text-sm">© 2024 Alex Creative. All rights reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="w-12 h-12 rounded-full border border-[#29382f] flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-12 h-12 rounded-full border border-[#29382f] flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+<a class="w-12 h-12 rounded-full border border-[#29382f] flex items-center justify-center text-gray-400 hover:text-primary hover:border-primary transition-all" href="#">
+<span class="material-symbols-outlined">link</span>
+</a>
+<a class="hover:text-white transition-colors hover:underline hover:underline-offset-4 hover:decoration-primary" href="mailto:yatong4wang@gmail.com">Email</a>
+<a class="hover:text-white transition-colors hover:underline hover:underline-offset-4 hover:decoration-primary" href="https://www.linkedin.com/in/yatong-wang/" target="_blank">LinkedIn</a>
+<a class="hover:text-white transition-colors hover:underline hover:underline-offset-4 hover:decoration-primary" href="#" target="_blank">Resume</a>
+</div>
+</div>
+<div class="flex justify-center md:justify-end gap-8 text-sm text-gray-500 font-medium">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

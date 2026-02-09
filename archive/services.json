@@ -1,0 +1,26 @@
+{
+  "title": "Delivering comprehensive <br/>design solutions.",
+  "description": "From initial concept to final execution, I help brands navigate the digital landscape with clarity and purpose.",
+  "cta": {
+    "text": "Start a project",
+    "link": "#contact"
+  },
+  "services": [
+    {
+      "icon": "palette",
+      "title": "Art Direction",
+      "description": "Guiding visual narratives for impactful brand storytelling across all mediums."
+    },
+    {
+      "icon": "layers",
+      "title": "UI/UX Design",
+      "description": "Crafting intuitive, accessible, and pixel-perfect digital interfaces for web and mobile."
+    },
+    {
+      "icon": "movie",
+      "title": "3D Motion",
+      "description": "Adding depth, dynamism, and interactivity through custom motion graphics and 3D assets."
+    }
+  ]
+}
+
