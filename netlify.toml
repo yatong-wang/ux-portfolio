@@ -1,0 +1,11 @@
+[build]
+  publish = "."
+
+[build.processing]
+  skip_processing = true
+
+[build.ignore]
+  paths = [
+    "archive/**",
+    "wip/**"
+  ]
