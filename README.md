@@ -24,8 +24,9 @@ The site is independently developed by me, so no formal peer code review exists 
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
-- [License](#license)
 - [Archive](#archive)
+- [WIP](#wip)
+- [License](#license)
 
 ## Live Site
 [↑ Back to top](#table-of-contents)
@@ -92,12 +93,14 @@ All AI-generated output is reviewed, modified and checked by me.
 - [ ] Add a "Fun / Experiments" page
 
 
+## Archive
+Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` folder for reference.
+
+## WIP
+Ongoing work drafts and explorations that are not yet production-ready are stored in `wip` folder for reference.
+
+
 ## License
 All rights reserved.
-
-
-## Archive
-(not committed to main branch, personal usage)
-Initial html concept files created with Stitch and any discarded sections are stored in `archive` for reference.
 
 [↑ Back to top](#table-of-contents)
