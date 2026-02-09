@@ -30,11 +30,10 @@ The site is independently developed by me, so no formal peer code review exists 
 
 ## Live Site
 [↑ Back to top](#table-of-contents)
+URL: https://yatong-wang.netlify.app
 
-> Coming soon
-
-[placeholder for site preview screenshot]
-
+### Landing Page Preview
+[![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
 
 
 ## Technical Overview
@@ -55,9 +54,7 @@ The site is independently developed by me, so no formal peer code review exists 
 This separation keeps content, logic, and presentation cleanly decoupled.
 
 ### Deployment
-Stay tuned! Currently evaluating:
-- **GitHub Pages** — simplest option; native GitHub integration
-- **Netlify** — some learning curve; but better build previews, redirects and deployment controls
+Deployed on [Netlify](https://www.netlify.com) (free plan) with automatic updates from the `main` branch.
 
 
 ## AI-Powered Design & Coding Flow
