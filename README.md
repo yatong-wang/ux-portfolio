@@ -7,20 +7,17 @@ My personal UX / product design portfolio built from scratch to demonstrate how 
 
 I've chosen to build with a simple frontend stack rather than popular frameworks, for the sake of easy maintenance. This project is also a playground for me to tinker with AI tools, use Git for version controls, and get a taste of how web deployment works.
 
-### Current Release
-
-
 ### Live Site
 [↑ Back to top](#table-of-contents)
 
-URL: https://yatong-wang.netlify.app
+URL: https://lab.yatongwang.com (redirects to https://yatong-wang.netlify.app)
 
 >  Landing Page Preview
 [![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
 
 
 ### Disclaimer
-The site is independently developed by me, so no formal peer code review exists in place to ensure code quality, security and maintenability. But I’m aware of the vital importance of readable and clean code; I use my best knowledge to combat AI slop.
+The site is *independently* developed by me, so no formal peer code review exists in place to ensure code quality. But I’m aware of the vital importance of readable and clean code; I use my best knowledge to combat AI slop.
 
 ---
 ## Table of Contents
@@ -48,11 +45,12 @@ The site is independently developed by me, so no formal peer code review exists 
 
 
 ### Repository Structure
-- `assets/` → Images, cursors, and visual assets
-- `data/` → Content and copy stored as JSON
-- `js/` → Content loaders and interaction scripts
+- `public/` → 
+  - `assets/` → Images, cursors, and visual assets
+  - `data/` → Content and copy stored as JSON
+  - `js/` → Content loaders and interaction scripts
+- `wip/` → Ongoing work drafts and explorations that are not yet production-ready
 
-This separation keeps content, logic, and presentation cleanly decoupled.
 
 ### Deployment
 Deployed on [Netlify](https://www.netlify.com) (free plan) with automatic updates from the `main` branch.
@@ -89,9 +87,6 @@ All AI-generated output is reviewed, modified and checked by me.
 - [ ] Write content for case studies
 - [ ] Implement dark mode
 - [ ] Add a "Fun / Experiments" page
-
-### WIP
-Ongoing work drafts and explorations that are not yet production-ready are stored in `wip` folder for reference.
 
 
 ## Archive Branch
