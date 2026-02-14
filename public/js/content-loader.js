@@ -336,6 +336,39 @@
     }
 
     /**
+     * Loads and renders the global top banner (non-dismissible)
+     */
+    async function loadBanner() {
+        const data = await fetchJSON('data/site.json');
+        const placeholder = document.querySelector('[data-banner-placeholder]');
+        if (!placeholder) return;
+
+        // Turn banner off by setting "enabled": false (or omit "banner") in site.json
+        if (!data || !data.banner || data.banner.enabled === false) {
+            placeholder.replaceWith(document.createDocumentFragment());
+            return;
+        }
+
+        const cta = data.banner.cta;
+        const ctaHTML = cta && cta.href
+            ? `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${cta.target ? ' target="_blank" rel="noopener"' : ''}>${escapeHTML(cta.text || '')}</a>`
+            : '';
+
+        const bannerHTML = `
+            <div class="sticky top-0 z-[100] w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a]" id="top-banner">
+                <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+                    <p class="text-sm font-medium tracking-tight text-[#111714]">
+                        <span class="mr-2">🚧</span>${escapeHTML(data.banner.message)}
+                    </p>
+                    ${ctaHTML}
+                </div>
+            </div>
+        `;
+        const fragment = createHTML(bannerHTML);
+        placeholder.replaceWith(fragment);
+    }
+
+    /**
      * Loads and renders the global navigation component
      */
     async function loadNav() {
@@ -359,7 +392,7 @@
 
         // Create nav HTML
         const navHTML = `
-            <div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6">
+            <div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-2">
                 <nav class="relative nav-container bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-2 shadow-lg max-w-[960px] w-full mx-auto" data-menu-open="false">  
                 <a class="flex link-logo items-center" href="index.html" aria-label="Yatong Wang - Home">
                         <div class="items-center size-6 text-primary">
@@ -398,6 +431,22 @@
     }
 
     /**
+     * Updates the fixed nav wrapper's top offset so it sits below the top banner
+     * when present.
+     */
+    function updateNavPosition() {
+        const banner = document.getElementById('top-banner');
+        const navWrapper = document.querySelector('.nav-container')?.parentElement;
+        if (!navWrapper) return;
+
+        const bannerVisible = banner && banner.style.display !== 'none';
+        navWrapper.style.top = bannerVisible ? `${banner.offsetHeight}px` : '0';
+    }
+
+    // Expose for inline dismiss button and resize handling
+    window.updateNavPosition = updateNavPosition;
+
+    /**
      * Loads and renders the global footer component
      */
     async function loadFooter() {
@@ -428,7 +477,7 @@
         // Create footer HTML with responsive classes matching case2.html
         const footerHTML = `
             <footer class="border-t border-[#29382f] w-full pt-6 pb-6 px-4 md:px-8 lg:px-20 lg:pb-4">
-                <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-4 mb-2">
+                <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-2 mb-2">
                     <div class="flex flex-col items-center md:items-start gap-2">
                         <p class="inline-flex items-center gap-2 text-white font-mono uppercase">
                             <span class="relative flex h-2 w-2">
@@ -443,7 +492,7 @@
                         </div>
                         </div>
                     </div>
-                     <div class="flex flex-col md:flex-col-reverse md:items-end items-center md:gap-2 gap-6">
+                     <div class="flex flex-col md:flex-col-reverse md:items-end items-center md:gap-2 gap-3">
                         <p class="text-gray-500 tracking-tight" data-footer-copyright>${escapeHTML(data.footer.copyright || '')}</p>
                          <img src="assets/images/built-with-cursor.svg" alt="Built with Cursor" class="w-30 h-8">
                     </div>
@@ -537,6 +586,7 @@
         try {
             // Load all content in parallel
             await Promise.all([
+                loadBanner(),
                 loadNav(),
                 loadHero(),
                 loadMarquee(),
@@ -562,6 +612,10 @@
                     window.initHeroAnimations();
                 }
             });
+
+            // Position nav below banner when banner is visible
+            updateNavPosition();
+            window.addEventListener('resize', updateNavPosition);
 
             window.dispatchEvent(new CustomEvent('portfolioContentReady'));
         } catch (error) {

@@ -2,49 +2,28 @@
   "site": {
     "title": "Yatong Wang - UX and Product Designer"
   },
-  "navigation": [
-    {
-      "text": "Work",
-      "href": "/work",
-      "disabled": true
-    },
-    {
-      "text": "About",
-      "href": "/about",
-      "disabled": true
-    },
-    {
-      "text": "Fun",
-      "href": "/fun",
-      "disabled": true
-    },
-    {
-      "text": "Resume",
-      "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link",
+  "banner": {
+    "enabled": true,
+    "message": "Portfolio live rebuild in progress. Powered by AI tools.",
+    "cta": {
+      "text": "See where it started →",
+      "href": "https://yatongwang.com",
       "target": "_blank"
     }
+  },
+  "navigation": [
+    {"text": "Work", "href": "/work", "disabled": true},
+    {"text": "About", "href": "/about", "disabled": true},
+    {"text": "Fun", "href": "/fun", "disabled": true},
+    {"text": "Resume", "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link", "target": "_blank"}
   ],
   "footer": {
     "status": "Open to work",
     "copyright": "© 2025-2026 Yatong Wang. All rights reserved.",
     "links": [
-      {
-        "text": "Email",
-        "href": "mailto:yatong4wang@gmail.com",
-        "icon": "mail"
-      },
-      {
-        "text": "LinkedIn",
-        "href": "https://www.linkedin.com/in/yatong-wang/",
-        "icon": "arrow_outward",
-        "target": "_blank"
-      },
-      {
-        "text": "Resume",
-        "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link",
-        "icon": "arrow_outward",
-        "target": "_blank"
-      }
+      {"text": "Email", "href": "mailto:yatong4wang@gmail.com", "icon": "mail"},
+      {"text": "LinkedIn", "href": "https://www.linkedin.com/in/yatong-wang/", "icon": "arrow_outward", "target": "_blank"},
+      {"text": "Resume", "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link", "icon": "arrow_outward", "target": "_blank"}
     ]
   }
 }

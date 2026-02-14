@@ -7,11 +7,12 @@ My personal UX / product design portfolio built from scratch to demonstrate how 
 
 I've chosen to build with a simple frontend stack rather than popular frameworks, for the sake of easy maintenance. This project is also a playground for me to tinker with AI tools, use Git for version controls, and get a taste of how web deployment works.
 
-### Current Progress
-Homepage is complete.
+### Current Release
+
 
 ### Live Site
 [↑ Back to top](#table-of-contents)
+
 URL: https://yatong-wang.netlify.app
 
 >  Landing Page Preview
