@@ -8,3 +8,4 @@ wip/styles.css
 .DS_Store
 **/.DS_Store
 archive/
+.env/

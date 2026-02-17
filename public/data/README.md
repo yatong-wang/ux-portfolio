@@ -8,7 +8,7 @@ This directory contains JSON files that store all dynamic content for the portfo
 - **marquee.json** - Marquee/status section items
 - **projects.json** - Portfolio projects with images, descriptions, and metadata
 - **testimonials.json** - Testimonial cards with quotes and author information
-- **site.json** - Site-wide content (navigation, footer, site metadata)
+- **site.json** - Site-wide content (navigation, footer, site metadata, banner)
 
 ## How to Update Content
 

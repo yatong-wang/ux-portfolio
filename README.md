@@ -8,9 +8,9 @@ My personal UX / product design portfolio built from scratch to demonstrate how 
 I've chosen to build with a simple frontend stack rather than popular frameworks, for the sake of easy maintenance. This project is also a playground for me to tinker with AI tools, use Git for version controls, and get a taste of how web deployment works.
 
 ### Live Site
-[↑ Back to top](#table-of-contents)
 
-URL: https://lab.yatongwang.com (redirects to https://yatong-wang.netlify.app)
+🔗 URL: https://lab.yatongwang.com 
+>(redirects to https://yatong-wang.netlify.app)
 
 >  Landing Page Preview
 [![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
@@ -32,10 +32,11 @@ The site is *independently* developed by me, so no formal peer code review exist
   - [WIP](#wip)
 - [Archive Branch](#archive-branch)
 - [License](#license)
+- [AI Usage Disclosure](#ai-usage-disclosure)
 
 
 ## Technical Overview
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 ### Tech Stack
 - **HTML** (semantic structure)
@@ -57,14 +58,14 @@ Deployed on [Netlify](https://www.netlify.com) (free plan) with automatic update
 
 
 ## AI-Powered Design & Coding Flow
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 ### Tools I Use
 - **Design:** Stitch with Google, Figma, Pencil
 - **Primary IDE:** Cursor
 - **Minor coding assistance:** Claude, ChatGPT (Codex)
 
-All AI-generated output is reviewed, modified and checked by me. 
+All AI-generated output is reviewed and fine tuned before being committed.
 
 ### Workflow
 1. Prompt in Stitch with Google for page designs. Draw inspirations from my older portfolio and online examples. Iterate each page until satisfied.
@@ -80,7 +81,7 @@ All AI-generated output is reviewed, modified and checked by me.
 
 
 ## Roadmap
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 - [ ] Add an "About Me" page
 - [ ] Generate templates and components for case studies page
@@ -90,10 +91,25 @@ All AI-generated output is reviewed, modified and checked by me.
 
 
 ## Archive Branch
+[↑ Back to TOC](#table-of-contents)
+
 Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` branch for reference.
 
 
 ## License
-All rights reserved.
+[↑ Back to TOC](#table-of-contents)
+See the [LICENSE file](LICENSE.md) for details.
 
-[↑ Back to top](#table-of-contents)
+
+## AI Usage Disclosure
+[↑ Back to TOC](#table-of-contents)
+
+This portfolio is being rebuilt in public using AI tools including Cursor, Claude and ChatGPT.
+
+AI was used to accelerate scaffolding, refactoring, technical exploration and copywriting.
+
+All design decisions, system architecture choices and final implementations were reviewed, modified and validated by me.
+
+This project is intended to showcase my ability to apply AI tools in a production-ready UX and frontend development workflow.
+
+[↑ Back to top](#yatongs-ux-portfolio)
