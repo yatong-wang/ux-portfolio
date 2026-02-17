@@ -99,7 +99,8 @@ All AI-generated output is reviewed and fine tuned before being committed.
 
 ## License
 [↑ Back to TOC](#table-of-contents)
-See the [LICENSE file](LICENSE.md) for details.
+
+See the [LICENSE file](LICENSE.md) for details. In short, the repo is publicly viewable for evaluation only. All rights reserved.
 
 
 ## AI Usage Disclosure
