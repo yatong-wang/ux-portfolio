@@ -1,11 +1,6 @@
 .cursor/
-data/about.json
-wip/re-enable-buttons.md
-wip/case2.html
-wip/data/
-wip/js
-wip/styles.css
+re-enable-buttons.md
+branch-workflow-cheatsheet.md
 .DS_Store
 **/.DS_Store
-archive/
 .env/

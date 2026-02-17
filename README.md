@@ -29,8 +29,7 @@ The site is *independently* developed by me, so no formal peer code review exist
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
-  - [WIP](#wip)
-- [Archive Branch](#archive-branch)
+- [Branch](#branch)
 - [License](#license)
 - [AI Usage Disclosure](#ai-usage-disclosure)
 
@@ -54,7 +53,10 @@ The site is *independently* developed by me, so no formal peer code review exist
 
 
 ### Deployment
-Deployed on [Netlify](https://www.netlify.com) (free plan) with automatic updates from the `main` branch.
+- Hosting: Netlify (Free Plan)
+- Production Branch: `main`
+- Preview / Staging: `dev` via pull requests
+- Auto Deploy: Enabled for `main` only
 
 
 ## AI-Powered Design & Coding Flow
@@ -90,10 +92,13 @@ All AI-generated output is reviewed and fine tuned before being committed.
 - [ ] Add a "Fun / Experiments" page
 
 
-## Archive Branch
+##  Branch
 [↑ Back to TOC](#table-of-contents)
 
-Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` branch for reference.
+- `main` → production (auto-deployed via Netlify)
+- `dev`  → release candidate
+- `wip`  → drafts and sandbox
+- `archive` → storage for concept files and references
 
 
 ## License
