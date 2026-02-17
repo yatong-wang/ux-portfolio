@@ -272,6 +272,7 @@
                 const resumeLink = document.createElement('a');
                 resumeLink.className = 'btn-secondary inline-flex';
                 resumeLink.href = escapeHTML(data.bio.links.resume.href);
+                if (data.bio.links.resume.target) resumeLink.setAttribute('target', data.bio.links.resume.target);
                 resumeLink.innerHTML = `${escapeHTML(data.bio.links.resume.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(resumeLink);
             }
@@ -280,6 +281,7 @@
                 const linkedinLink = document.createElement('a');
                 linkedinLink.className = 'btn-secondary inline-flex';
                 linkedinLink.href = escapeHTML(data.bio.links.linkedin.href);
+                if (data.bio.links.linkedin.target) linkedinLink.setAttribute('target', data.bio.links.linkedin.target);
                 linkedinLink.innerHTML = `${escapeHTML(data.bio.links.linkedin.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(linkedinLink);
             }
