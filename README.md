@@ -24,12 +24,12 @@ The site is *independently* developed by me, so no formal peer code review exist
 - [Technical Overview](#technical-overview)
   - [Tech Stack](#tech-stack)
   - [Repository Structure](#repository-structure)
+  - [Branch](#branch)
   - [Deployment](#deployment)
 - [AI-Powered Design & Coding Flow](#ai-powered-design--coding-flow)
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
-- [Branch](#branch)
 - [License](#license)
 - [AI Usage Disclosure](#ai-usage-disclosure)
 
@@ -49,7 +49,12 @@ The site is *independently* developed by me, so no formal peer code review exist
   - `assets/` → Images, cursors, and visual assets
   - `data/` → Content and copy stored as JSON
   - `js/` → Content loaders and interaction scripts
-- `wip/` → Ongoing work drafts and explorations that are not yet production-ready
+
+### Branch
+- `main` → production branch (auto-deployed via Netlify)
+- `dev`  → release candidate branch
+- `wip`  → drafts and sandbox work
+- `archive` → storage for initial concept files and references
 
 
 ### Deployment
@@ -92,15 +97,6 @@ All AI-generated output is reviewed and fine tuned before being committed.
 - [ ] Add a "Fun / Experiments" page
 
 
-##  Branch
-[↑ Back to TOC](#table-of-contents)
-
-- `main` → production (auto-deployed via Netlify)
-- `dev`  → release candidate
-- `wip`  → drafts and sandbox
-- `archive` → storage for concept files and references
-
-
 ## License
 [↑ Back to TOC](#table-of-contents)
 See the [LICENSE file](LICENSE.md) for details.
@@ -109,7 +105,7 @@ See the [LICENSE file](LICENSE.md) for details.
 ## AI Usage Disclosure
 [↑ Back to TOC](#table-of-contents)
 
-This portfolio is being rebuilt in public using AI tools including Cursor, Claude and ChatGPT.
+This portfolio is being rebuilt in public using AI tools including Cursor, Claude, ChatGPT, Stitch with Google and more.
 
 AI was used to accelerate scaffolding, refactoring, technical exploration and copywriting.
 
