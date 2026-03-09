@@ -1,12 +1,7 @@
 .cursor/
 re-enable-buttons.md
-<<<<<<< HEAD
-.DS_Store
-**/.DS_Store
 branch-workflow-cheatsheet.md
-=======
-branch-workflow-cheatsheet.md
+git-commands-cheatsheet.md
 .DS_Store
 **/.DS_Store
 .env/
->>>>>>> dev
