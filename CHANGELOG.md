@@ -9,16 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - About page
 
 ---
-## [0.2.2] - 2026-02-13
+## [0.2.1] - 2026-02-13
 ### Added
 - Global top banner indicating WIP status
 
 ### Fixed
 - Minor sizing and spacing refinements
-
-
-## [0.2.1] - 2026-02-09
-### Fixed
 - 404 page layout and mobile responsiveness
 
 

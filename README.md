@@ -8,9 +8,9 @@ My personal UX / product design portfolio built from scratch to demonstrate how 
 I've chosen to build with a simple frontend stack rather than popular frameworks, for the sake of easy maintenance. This project is also a playground for me to tinker with AI tools, use Git for version controls, and get a taste of how web deployment works.
 
 ### Live Site
-[↑ Back to top](#table-of-contents)
 
-URL: https://lab.yatongwang.com (redirects to https://yatong-wang.netlify.app)
+🔗 URL: https://lab.yatongwang.com 
+>(redirects to https://yatong-wang.netlify.app)
 
 >  Landing Page Preview
 [![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
@@ -24,18 +24,18 @@ The site is *independently* developed by me, so no formal peer code review exist
 - [Technical Overview](#technical-overview)
   - [Tech Stack](#tech-stack)
   - [Repository Structure](#repository-structure)
+  - [Branch](#branch)
   - [Deployment](#deployment)
 - [AI-Powered Design & Coding Flow](#ai-powered-design--coding-flow)
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
 - [Roadmap](#roadmap)
-  - [WIP](#wip)
-- [Archive Branch](#archive-branch)
 - [License](#license)
+- [AI Usage Disclosure](#ai-usage-disclosure)
 
 
 ## Technical Overview
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 ### Tech Stack
 - **HTML** (semantic structure)
@@ -49,22 +49,31 @@ The site is *independently* developed by me, so no formal peer code review exist
   - `assets/` → Images, cursors, and visual assets
   - `data/` → Content and copy stored as JSON
   - `js/` → Content loaders and interaction scripts
-- `wip/` → Ongoing work drafts and explorations that are not yet production-ready
+
+### Branch
+- `main` → production (auto-deployed via Netlify)
+- `dev`  → release candidates
+- `wip`  → drafts and sandbox work
+- `archive` → storage for initial concepts and references
 
 
 ### Deployment
-Deployed on [Netlify](https://www.netlify.com) (free plan) with automatic updates from the `main` branch.
+- **Hosting**: Netlify (Free Plan)
+- **Production Branch**: `main`
+- **Preview / Staging**: `dev` via pull requests
+- **Auto Deploy**: Enabled for `main` only
 
 
 ## AI-Powered Design & Coding Flow
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 ### Tools I Use
 - **Design:** Stitch with Google, Figma, Pencil
 - **Primary IDE:** Cursor
-- **Minor coding assistance:** Claude, ChatGPT (Codex)
+- **Coding & Engineering Guidance:** Claude, ChatGPT  
+  - (for minor coding problem assistance, Git/GitHub best practices, repo architecture, version control workflows, etc.)
 
-All AI-generated output is reviewed, modified and checked by me. 
+All AI-generated output is reviewed and fine tuned before being committed.
 
 ### Workflow
 1. Prompt in Stitch with Google for page designs. Draw inspirations from my older portfolio and online examples. Iterate each page until satisfied.
@@ -72,7 +81,7 @@ All AI-generated output is reviewed, modified and checked by me.
 3. Create a repo in GitHub. Clone the repo in Cursor to work locally and commit changes when ready.
 4. In Cursor, refractor the raw HTML files by setting up the repo structure (external CSS stylesheets.
 5. Ask, plan and build in Cursor, and learn by tinkering.
-6. Make small code tweaks by asking Claude / ChatGPT, or simply modify them manually...***so that your AI tokens won't be gone in a heartbeat***.
+6. Make small code tweaks by asking Claude / ChatGPT, or modify them manually...***so that your AI tokens won't be gone in a heartbeat***.
 
    <img width="515" height="244" alt="image of this is fine meme" src="https://github.com/user-attachments/assets/6d2dba03-dbab-4913-a275-722818e38743" />
 7. Create assets and components in Figma.
@@ -80,20 +89,33 @@ All AI-generated output is reviewed, modified and checked by me.
 
 
 ## Roadmap
-[↑ Back to top](#table-of-contents)
+[↑ Back to TOC](#table-of-contents)
 
 - [ ] Add an "About Me" page
 - [ ] Generate templates and components for case studies page
 - [ ] Write content for case studies
-- [ ] Implement dark mode
+- [ ] Build and publish one case study
+- [ ] Build remaining case studies
+- [ ] Evaluate and implement analytics tools
+- [ ] Design and implement dark mode
 - [ ] Add a "Fun / Experiments" page
 
 
-## Archive Branch
-Initial html concept files created with Stitch with Google, past iterations and discarded sections are stored in `archive` branch for reference.
-
-
 ## License
-All rights reserved.
+[↑ Back to TOC](#table-of-contents)
 
-[↑ Back to top](#table-of-contents)
+See the [LICENSE file](LICENSE.md) for details. In short, the repo is publicly viewable for evaluation only. All rights reserved.
+
+
+## AI Usage Disclosure
+[↑ Back to TOC](#table-of-contents)
+
+This portfolio is being built in public using AI tools including Cursor, Claude, ChatGPT, Stitch with Google and more.
+
+AI was used to accelerate scaffolding, refactoring, technical exploration and copywriting.
+
+All design decisions, system architecture choices and final implementations were reviewed, modified and validated by me.
+
+This project is intended to showcase my ability to apply AI tools in a production-ready UX and frontend development workflow.
+
+[↑ Back to top](#yatongs-ux-portfolio)

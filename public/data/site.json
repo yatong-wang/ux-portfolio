@@ -23,7 +23,7 @@
     "links": [
       {"text": "Email", "href": "mailto:yatong4wang@gmail.com", "icon": "mail"},
       {"text": "LinkedIn", "href": "https://www.linkedin.com/in/yatong-wang/", "icon": "arrow_outward", "target": "_blank"},
-      {"text": "Resume", "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link", "icon": "arrow_outward", "target": "_blank"}
+      {"text": "GitHub", "href": "https://github.com/yatong-wang", "icon": "arrow_outward", "target": "_blank"}
     ]
   }
 }
