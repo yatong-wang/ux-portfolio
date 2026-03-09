@@ -51,17 +51,17 @@ The site is *independently* developed by me, so no formal peer code review exist
   - `js/` → Content loaders and interaction scripts
 
 ### Branch
-- `main` → production branch (auto-deployed via Netlify)
-- `dev`  → release candidate branch
+- `main` → production (auto-deployed via Netlify)
+- `dev`  → release candidates
 - `wip`  → drafts and sandbox work
-- `archive` → storage for initial concept files and references
+- `archive` → storage for initial concepts and references
 
 
 ### Deployment
-- Hosting: Netlify (Free Plan)
-- Production Branch: `main`
-- Preview / Staging: `dev` via pull requests
-- Auto Deploy: Enabled for `main` only
+- **Hosting**: Netlify (Free Plan)
+- **Production Branch**: `main`
+- **Preview / Staging**: `dev` via pull requests
+- **Auto Deploy**: Enabled for `main` only
 
 
 ## AI-Powered Design & Coding Flow
@@ -70,7 +70,8 @@ The site is *independently* developed by me, so no formal peer code review exist
 ### Tools I Use
 - **Design:** Stitch with Google, Figma, Pencil
 - **Primary IDE:** Cursor
-- **Minor coding assistance:** Claude, ChatGPT (Codex)
+- **Coding & Engineering Guidance:** Claude, ChatGPT  
+  - (for minor coding problem assistance, Git/GitHub best practices, repo architecture, version control workflows, etc.)
 
 All AI-generated output is reviewed and fine tuned before being committed.
 
@@ -80,7 +81,7 @@ All AI-generated output is reviewed and fine tuned before being committed.
 3. Create a repo in GitHub. Clone the repo in Cursor to work locally and commit changes when ready.
 4. In Cursor, refractor the raw HTML files by setting up the repo structure (external CSS stylesheets.
 5. Ask, plan and build in Cursor, and learn by tinkering.
-6. Make small code tweaks by asking Claude / ChatGPT, or simply modify them manually...***so that your AI tokens won't be gone in a heartbeat***.
+6. Make small code tweaks by asking Claude / ChatGPT, or modify them manually...***so that your AI tokens won't be gone in a heartbeat***.
 
    <img width="515" height="244" alt="image of this is fine meme" src="https://github.com/user-attachments/assets/6d2dba03-dbab-4913-a275-722818e38743" />
 7. Create assets and components in Figma.
@@ -93,7 +94,10 @@ All AI-generated output is reviewed and fine tuned before being committed.
 - [ ] Add an "About Me" page
 - [ ] Generate templates and components for case studies page
 - [ ] Write content for case studies
-- [ ] Implement dark mode
+- [ ] Build and publish one case study
+- [ ] Build remaining case studies
+- [ ] Evaluate and implement analytics tools
+- [ ] Design and implement dark mode
 - [ ] Add a "Fun / Experiments" page
 
 
@@ -106,7 +110,7 @@ See the [LICENSE file](LICENSE.md) for details. In short, the repo is publicly v
 ## AI Usage Disclosure
 [↑ Back to TOC](#table-of-contents)
 
-This portfolio is being rebuilt in public using AI tools including Cursor, Claude, ChatGPT, Stitch with Google and more.
+This portfolio is being built in public using AI tools including Cursor, Claude, ChatGPT, Stitch with Google and more.
 
 AI was used to accelerate scaffolding, refactoring, technical exploration and copywriting.
 
