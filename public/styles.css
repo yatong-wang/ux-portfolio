@@ -925,6 +925,28 @@ h4 {
 }
 
 /* ==========================================================================
+   In-page Section Navigation
+   ========================================================================== */
+
+/**
+ * In-page Section Navigation
+ * Sticky nav bar for jumping between page sections. Use with .link-nav on
+ * anchor links; add .active to the current section's link via JS (e.g. scroll spy).
+ */
+.nav-in-page {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  background-color: var(--color-background-dark);
+}
+
+/* ==========================================================================
    Email Copy Tooltip
    ========================================================================== */
 
