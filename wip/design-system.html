@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Design System Reference — Internal</title>
+<link rel="icon" type="image/svg+xml" href="../public/assets/images/logo.svg"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../public/styles.css"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#36e27b",
+                    "background-light": "#f6f8f7",
+                    "background-dark": "#112117",
+                },
+                borderRadius: {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+                },
+                cursor: {
+                    wave: 'url("../public/assets/cursors/wave.svg") 16 16, pointer',
+                },
+            },
+        },
+    }
+</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+<div class="max-w-[1280px] mx-auto px-4 md:px-20 py-12">
+
+<!-- Page Header -->
+<header class="mb-16">
+    <p class="text-primary font-bold tracking-widest text-xs uppercase mb-4">internal reference</p>
+    <h1 class="text-5xl lg:text-7xl font-bold leading-none text-white mb-6">Design System</h1>
+    <p class="text-xl text-gray-400 font-light max-w-2xl">Visual inventory of every token and component used across the portfolio. Nothing here is new — it documents only what already exists in <code class="text-primary">styles.css</code> and Tailwind config.</p>
+</header>
+
+<!-- In-page Navigation -->
+<nav class="nav-in-page">
+    <a href="#typography" class="link-nav">Typography</a>
+    <a href="#colors" class="link-nav">Colors</a>
+    <a href="#buttons" class="link-nav">Buttons</a>
+    <a href="#links" class="link-nav">Links</a>
+    <a href="#cards" class="link-nav">Cards</a>
+    <a href="#spacing" class="link-nav">Spacing &amp; Layout</a>
+    <a href="#interactive" class="link-nav">Interactive States</a>
+    <a href="#in-page-nav" class="link-nav">In-page nav</a>
+</nav>
+
+
+<!-- ================================================================
+     1. TYPOGRAPHY
+     ================================================================ -->
+<section id="typography" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">01 / Typography</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <!-- Font Families -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Font Families</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-4xl font-bold text-white mb-2" style="font-family: var(--font-heading);">Syne</p>
+                <p class="text-gray-400 mb-4">Heading typeface (h1–h4)</p>
+                <p class="text-xs text-gray-500 font-mono">--font-heading · font-family: "Syne"</p>
+            </div>
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-4xl font-bold text-white mb-2" style="font-family: var(--font-body);">Spline Sans</p>
+                <p class="text-gray-400 mb-4">Body typeface (default)</p>
+                <p class="text-xs text-gray-500 font-mono">--font-body · font-family: "Spline Sans"</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Heading Levels -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Heading Levels</h3>
+
+        <div class="space-y-8">
+            <!-- H1 - Hero -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <h1 class="text-[3.5rem] lg:text-7xl font-bold leading-none text-white mb-4">
+                    <span class="text-gray-500">I'm </span>Yat<span class="font-extrabold">o</span>ng<span class="text-gray-500">, a </span>Product Designer
+                </h1>
+                <p class="text-xs text-gray-500 font-mono mt-4">h1 · text-[3.5rem] lg:text-7xl font-bold leading-none</p>
+            </div>
+
+            <!-- H2 - Section -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <h2 class="text-4xl lg:text-5xl font-bold uppercase text-white mb-4">Selected W<span class="font-extrabold">o</span>rks</h2>
+                <p class="text-xs text-gray-500 font-mono mt-4">h2 · text-4xl lg:text-5xl font-bold uppercase</p>
+            </div>
+
+            <!-- H3 - Card Title -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <h3 class="text-3xl md:text-4xl md:leading-tighter font-bold text-white mb-4">Project Card Title</h3>
+                <p class="text-xs text-gray-500 font-mono mt-4">h3 · text-3xl md:text-4xl md:leading-tighter font-bold</p>
+            </div>
+
+            <!-- H4 -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <h4 class="text-xl font-bold text-white mb-4">Service Card Title</h4>
+                <p class="text-xs text-gray-500 font-mono mt-4">h4 · text-xl font-bold</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Body & Paragraph Styles -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Body &amp; Paragraph Styles</h3>
+        <div class="space-y-8">
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-2xl lg:text-3xl max-w-2xl font-light text-white mb-4">Hero description — large paragraph text used below the hero heading.</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-2xl lg:text-3xl font-light</p>
+            </div>
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-xl md:text-2xl font-light text-gray-400 mb-4">Project card description text for brief summaries.</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-xl md:text-2xl font-light text-gray-400</p>
+            </div>
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-lg md:text-xl font-light text-gray-300 leading-relaxed mb-4">Testimonial quote text — medium-weight paragraph style used in the carousel cards.</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-lg md:text-xl font-light text-gray-300 leading-relaxed</p>
+            </div>
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-sm text-gray-400 mb-4">Small body text — used for supporting descriptions and card meta.</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-sm text-gray-400</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Text Styles -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Special Text Styles</h3>
+        <div class="space-y-8">
+            <!-- Section Label -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">section label text</span>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-primary font-bold tracking-widest text-xs uppercase</p>
+            </div>
+
+            <!-- Accent / Highlighted -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-gray-300 text-lg font-light mb-4">Regular text with <span class="font-medium text-primary">highlighted accent words</span> used in testimonials.</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">Inline: font-medium text-primary</p>
+            </div>
+
+            <!-- Muted Text -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-gray-400 mb-1">Gray-400 muted text</p>
+                <p class="text-gray-500 mb-4">Gray-500 muted text</p>
+                <p class="text-xs text-gray-500 font-mono mt-4">text-gray-400 · text-gray-500</p>
+            </div>
+
+            <!-- Monospace / Code -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">see my work</span>
+                <p class="text-xs text-gray-500 font-mono mt-6">text-xs font-mono text-gray-500 uppercase tracking-widest</p>
+            </div>
+
+            <!-- Stroke Text (Marquee) -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <span class="text-2xl md:text-3xl font-mono font-black tracking-wide text-transparent stroke-text opacity-80 uppercase">stroke text</span>
+                <span class="text-2xl md:text-3xl font-mono font-black tracking-wide text-white uppercase ml-6">solid text</span>
+                <p class="text-xs text-gray-500 font-mono mt-6">.stroke-text → -webkit-text-stroke: 1px var(--color-primary); color: transparent</p>
+            </div>
+
+            <!-- Year Badge -->
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider inline-block">2025</div>
+                <p class="text-xs text-gray-500 font-mono mt-6">bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wider</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Font Size Scale -->
+    <div>
+        <h3 class="text-2xl font-bold text-white mb-6">Font Size Scale (CSS Custom Properties)</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f] space-y-4">
+            <p style="font-size: var(--font-size-xs);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-xs</span> 0.75rem (12px)</p>
+            <p style="font-size: var(--font-size-sm);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-sm</span> 0.875rem (14px)</p>
+            <p style="font-size: var(--font-size-base);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-base</span> 1rem (16px)</p>
+            <p style="font-size: var(--font-size-lg);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-lg</span> 1.125rem (18px)</p>
+            <p style="font-size: var(--font-size-xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-xl</span> 1.25rem (20px)</p>
+            <p style="font-size: var(--font-size-2xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-2xl</span> 1.5rem (24px)</p>
+            <p style="font-size: var(--font-size-3xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-3xl</span> 1.75rem (28px)</p>
+            <p style="font-size: var(--font-size-4xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-4xl</span> 2rem (32px)</p>
+            <p style="font-size: var(--font-size-5xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-5xl</span> 2.25rem (36px)</p>
+            <p style="font-size: var(--font-size-6xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-6xl</span> 2.5rem (40px)</p>
+            <p style="font-size: var(--font-size-7xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-7xl</span> 2.75rem (44px)</p>
+            <p style="font-size: var(--font-size-8xl);" class="text-white"><span class="text-gray-500 font-mono text-xs inline-block w-40">--font-size-8xl</span> 3rem (48px)</p>
+        </div>
+    </div>
+
+    <!-- Font Weights -->
+    <div class="mt-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Font Weights</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f] space-y-3">
+            <p class="text-xl text-white font-light"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-light (300)</span> The quick brown fox</p>
+            <p class="text-xl text-white font-normal"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-normal (400)</span> The quick brown fox</p>
+            <p class="text-xl text-white font-medium"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-medium (500)</span> The quick brown fox</p>
+            <p class="text-xl text-white font-semibold"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-semibold (600)</span> The quick brown fox</p>
+            <p class="text-xl text-white font-bold"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-bold (700)</span> The quick brown fox</p>
+            <p class="text-xl text-white font-extrabold"><span class="text-gray-500 font-mono text-xs inline-block w-48">--font-weight-black (800)</span> The quick brown fox</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     2. COLORS
+     ================================================================ -->
+<section id="colors" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">02 / Colors</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <!-- CSS Custom Property Colors -->
+    <h3 class="text-2xl font-bold text-white mb-6">CSS Custom Properties</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-primary);"></div>
+            <p class="text-white text-sm font-bold">Primary</p>
+            <p class="text-gray-500 font-mono text-xs">#36e27b</p>
+            <p class="text-gray-500 font-mono text-xs">--color-primary</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-background-dark);"></div>
+            <p class="text-white text-sm font-bold">Background Dark</p>
+            <p class="text-gray-500 font-mono text-xs">#112117</p>
+            <p class="text-gray-500 font-mono text-xs">--color-background-dark</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-background-light);"></div>
+            <p class="text-white text-sm font-bold">Background Light</p>
+            <p class="text-gray-500 font-mono text-xs">#f6f8f7</p>
+            <p class="text-gray-500 font-mono text-xs">--color-background-light</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-card-bg);"></div>
+            <p class="text-white text-sm font-bold">Card BG</p>
+            <p class="text-gray-500 font-mono text-xs">#1c2620</p>
+            <p class="text-gray-500 font-mono text-xs">--color-card-bg</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-border);"></div>
+            <p class="text-white text-sm font-bold">Border</p>
+            <p class="text-gray-500 font-mono text-xs">#29382f</p>
+            <p class="text-gray-500 font-mono text-xs">--color-border</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: var(--color-bg-darker);"></div>
+            <p class="text-white text-sm font-bold">BG Darker</p>
+            <p class="text-gray-500 font-mono text-xs">#111714</p>
+            <p class="text-gray-500 font-mono text-xs">--color-bg-darker</p>
+        </div>
+    </div>
+
+    <!-- Tailwind Theme Colors -->
+    <h3 class="text-2xl font-bold text-white mb-6">Tailwind Theme Colors</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
+        <div>
+            <div class="aspect-[3/1] rounded-[2rem] mb-3 bg-primary"></div>
+            <p class="text-white text-sm font-bold">primary</p>
+            <p class="text-gray-500 font-mono text-xs">bg-primary · text-primary</p>
+        </div>
+        <div>
+            <div class="aspect-[3/1] rounded-[2rem] mb-3 bg-background-dark border border-[#29382f]"></div>
+            <p class="text-white text-sm font-bold">background-dark</p>
+            <p class="text-gray-500 font-mono text-xs">bg-background-dark</p>
+        </div>
+        <div>
+            <div class="aspect-[3/1] rounded-[2rem] mb-3 bg-background-light"></div>
+            <p class="text-white text-sm font-bold">background-light</p>
+            <p class="text-gray-500 font-mono text-xs">bg-background-light</p>
+        </div>
+    </div>
+
+    <!-- Gray Scale in Use -->
+    <h3 class="text-2xl font-bold text-white mb-6">Gray Scale &amp; Neutrals in Use</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 bg-white"></div>
+            <p class="text-white text-sm font-bold">White</p>
+            <p class="text-gray-500 font-mono text-xs">#ffffff</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 bg-gray-300"></div>
+            <p class="text-white text-sm font-bold">Gray 300</p>
+            <p class="text-gray-500 font-mono text-xs">#d1d5db</p>
+            <p class="text-gray-500 font-mono text-xs">text-gray-300</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 bg-gray-400"></div>
+            <p class="text-white text-sm font-bold">Gray 400</p>
+            <p class="text-gray-500 font-mono text-xs">#9ca3af</p>
+            <p class="text-gray-500 font-mono text-xs">text-gray-400</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 bg-gray-500"></div>
+            <p class="text-white text-sm font-bold">Gray 500</p>
+            <p class="text-gray-500 font-mono text-xs">#6b7280</p>
+            <p class="text-gray-500 font-mono text-xs">text-gray-500</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: #1c2620;"></div>
+            <p class="text-white text-sm font-bold">Card BG</p>
+            <p class="text-gray-500 font-mono text-xs">#1c2620</p>
+            <p class="text-gray-500 font-mono text-xs">bg-[#1c2620]</p>
+        </div>
+        <div>
+            <div class="aspect-square rounded-[2rem] mb-3 border border-[#29382f]" style="background-color: #111714;"></div>
+            <p class="text-white text-sm font-bold">BG Darker</p>
+            <p class="text-gray-500 font-mono text-xs">#111714</p>
+            <p class="text-gray-500 font-mono text-xs">bg-[#111714]</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     3. BUTTONS
+     ================================================================ -->
+<section id="buttons" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">03 / Buttons</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <div class="space-y-12">
+        <!-- Primary Button -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Primary Button</p>
+            <div class="max-w-md mb-6">
+                <button type="button" class="btn-primary">
+                    primary action
+                    <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-primary · hover → bg white, border dark · icon: .btn-primary-icon (translateX on hover)</p>
+        </div>
+
+        <!-- Primary Button + Hug -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Primary Button — Hug Width</p>
+            <div class="mb-6">
+                <button type="button" class="btn-primary btn-hug">
+                    hug width
+                    <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-primary .btn-hug · width: auto; padding-left/right: 2.5rem</p>
+        </div>
+
+        <!-- Primary Button + Icon Left -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Primary Button — Icon Left</p>
+            <div class="max-w-md mb-6">
+                <button type="button" class="btn-primary btn-hug btn-icon-left">
+                    escape the void
+                    <span class="material-symbols-outlined btn-primary-icon">arrow_back</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-primary .btn-hug .btn-icon-left · flex-direction: row-reverse; icon translateX(-0.4rem) on hover</p>
+        </div>
+
+        <!-- Secondary Button -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Secondary Button</p>
+            <div class="max-w-md mb-6">
+                <button type="button" class="btn-secondary">
+                    view case
+                    <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-secondary · hover → bg primary, color dark, border primary · icon: .btn-secondary-icon</p>
+        </div>
+
+        <!-- Tertiary Button -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Tertiary Button</p>
+            <div class="max-w-md mb-6">
+                <button type="button" class="btn-tertiary">
+                    all works
+                    <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-tertiary · hover → bg background-dark, color background-light, border primary · icon: .btn-tertiary-icon</p>
+        </div>
+
+        <!-- Disabled Button -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Disabled Button (with "Coming Soon" tooltip on hover)</p>
+            <div class="max-w-md mb-6 pt-10">
+                <button type="button" class="btn-tertiary btn-disabled" aria-disabled="true" title="Coming Soon">
+                    all works
+                    <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.btn-disabled · opacity: 0.6; cursor: not-allowed · ::after tooltip "Coming Soon" on hover</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     4. LINKS
+     ================================================================ -->
+<section id="links" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">04 / Links</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <div class="space-y-8">
+        <!-- Nav Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Navigation Link</p>
+            <div class="flex gap-4 mb-6">
+                <a href="#" class="link-nav">Default</a>
+                <a href="#" class="link-nav active">Active</a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-nav · hover → color white, bg border, scale(1.05) · .link-nav.active → color primary, bg border, pointer-events: none</p>
+        </div>
+
+        <!-- Logo Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Logo Link</p>
+            <div class="mb-6">
+                <a href="#" class="link-logo inline-flex">
+                    <div class="items-center size-6 text-primary">
+                        <svg width="18" height="18" viewBox="0 0 846 846" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                            <path d="M53 282.5C53 421.4 191.344 534 362 534V31C191.344 31 53 143.6 53 282.5Z" fill="currentColor"/>
+                            <path d="M201 838H807V613H363.572L201 838Z" fill="currentColor"/>
+                            <path d="M413 543H807V0L413 543Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="font-[Syne] text-white font-bold uppercase whitespace-nowrap">YAT<span class="font-extrabold">O</span>NG WANG</span>
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-logo · hover → scale(1.05)</p>
+        </div>
+
+        <!-- CTA Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">CTA Link</p>
+            <div class="mb-6">
+                <a href="#" class="link-cta">
+                    Read on LinkedIn
+                    <span class="material-symbols-outlined text-sm">arrow_outward</span>
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-cta · border-bottom primary · hover → color primary</p>
+        </div>
+
+        <!-- Button-Style Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Button-Style Link</p>
+            <div class="mb-6">
+                <a href="#" class="link-button">GitHub</a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-button · hover → bg white, color dark</p>
+        </div>
+
+        <!-- Email CTA Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Email CTA Link</p>
+            <div class="mb-6">
+                <a href="#" class="link-email-cta">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                    email@example.com
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-email-cta · hover → scale(1.05)</p>
+        </div>
+
+        <!-- Footer Link -->
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-white font-bold mb-4">Footer Link</p>
+            <div class="flex gap-8 mb-6">
+                <a href="#" class="link-footer group">
+                    <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">mail</span>
+                    <span class="link-footer-text">Email</span>
+                </a>
+                <a href="#" class="link-footer group">
+                    <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+                    <span class="link-footer-text">LinkedIn</span>
+                </a>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">.link-footer · hover → color white · .link-footer-text → underline with primary color on hover</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     5. CARDS
+     ================================================================ -->
+<section id="cards" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">05 / Cards</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <!-- Project Card -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Project Card</h3>
+        <div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 mb-6">
+            <div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
+                <div class="absolute inset-0 bg-[#29382f] transform group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-gray-500 text-6xl">image</span>
+                </div>
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute top-6 right-6 z-20">
+                    <div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
+                        2025
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <div class="mb-6">
+                    <span class="text-primary font-bold tracking-widest uppercase mb-3 block">B2B &bull; Research &bull; IA</span>
+                    <h3 class="text-3xl md:text-4xl md:leading-tighter font-bold text-white mb-6">Project Card Title</h3>
+                    <p class="text-gray-400 text-xl md:text-2xl font-light mb-4">
+                        Brief project description goes here explaining the work.
+                    </p>
+                </div>
+                <div class="mt-auto md:mt-0">
+                    <a href="#" class="btn-secondary btn-disabled" aria-disabled="true" title="Coming Soon">
+                        view case
+                        <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#111714] rounded-[2rem] p-6 border border-[#29382f]">
+            <p class="text-xs text-gray-500 font-mono leading-relaxed">
+                Wrapper: group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll<br>
+                Image area: relative w-full md:w-1/2 aspect-[4/3] overflow-hidden · inner div: group-hover:scale-105 transition-transform duration-700<br>
+                Year badge: bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wider<br>
+                Content area: w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center<br>
+                Category: text-primary font-bold tracking-widest uppercase mb-3 block<br>
+                Title: h3 · text-3xl md:text-4xl md:leading-tighter font-bold<br>
+                Description: text-gray-400 text-xl md:text-2xl font-light<br>
+                CTA: .btn-secondary (or .btn-secondary.btn-disabled)
+            </p>
+        </div>
+    </div>
+
+    <!-- Testimonial Card -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Testimonial Card</h3>
+        <div class="max-w-lg mb-6">
+            <div class="testimonial-card flex-shrink-0 bg-[#1c2620] rounded-[2.5rem] p-8 md:p-12 border border-[#29382f] relative overflow-hidden group">
+                <div class="relative z-10 flex flex-col h-full justify-between gap-8">
+                    <p class="text-gray-300 text-lg md:text-xl font-light">
+                        <span class="material-symbols-outlined text-2xl rotate-180">format_quote</span>
+                        <span class="leading-relaxed">She's an <span class="font-medium text-primary">excellent collaborator</span> and has become extremely skilled and consistent at <span class="font-medium text-primary">breaking the silos</span> between design and development.</span>
+                        <span class="material-symbols-outlined text-xl">format_quote</span>
+                        <br><span class="text-sm text-gray-400">(excerpt from performance appraisal)</span>
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div>
+                            <p class="font-bold text-white">John Haines</p>
+                            <p class="text-sm text-gray-400 mt-1">Technical Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+            </div>
+        </div>
+        <div class="bg-[#111714] rounded-[2rem] p-6 border border-[#29382f]">
+            <p class="text-xs text-gray-500 font-mono leading-relaxed">
+                .testimonial-card · min-width: 350px; max-height: 500px<br>
+                Tailwind: flex-shrink-0 bg-[#1c2620] rounded-[2.5rem] p-8 md:p-12 border border-[#29382f] relative overflow-hidden group snap-always snap-center<br>
+                Hover (CSS): transform: translateY(-5px); border-color: var(--color-primary)<br>
+                Quote highlight: font-medium text-primary<br>
+                Glow effect: absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl · hover → bg-primary/10
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     6. SPACING & LAYOUT
+     ================================================================ -->
+<section id="spacing" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">06 / Spacing &amp; Layout</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <!-- Spacing Scale -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Spacing Scale in Use</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f] space-y-4">
+            <div class="flex items-center gap-4">
+                <div class="w-4 h-4 bg-primary rounded-sm flex-shrink-0"></div>
+                <span class="text-white text-sm w-12">1rem</span>
+                <span class="text-gray-500 font-mono text-xs">p-4 · gap-4 · mb-4</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-6 h-6 bg-primary rounded-sm flex-shrink-0"></div>
+                <span class="text-white text-sm w-12">1.5rem</span>
+                <span class="text-gray-500 font-mono text-xs">p-6 · gap-6 · mb-6 · pb-6</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 bg-primary rounded-sm flex-shrink-0"></div>
+                <span class="text-white text-sm w-12">2rem</span>
+                <span class="text-gray-500 font-mono text-xs">p-8 · gap-8</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-primary rounded-sm flex-shrink-0"></div>
+                <span class="text-white text-sm w-12">3rem</span>
+                <span class="text-gray-500 font-mono text-xs">p-12 · gap-12 · mb-12</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="w-20 h-12 bg-primary rounded-sm flex-shrink-0"></div>
+                <span class="text-white text-sm w-12">5rem</span>
+                <span class="text-gray-500 font-mono text-xs">mb-20 · pb-20 · px-20 (md breakpoint)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Common Layout Patterns -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Common Layout Patterns</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f] space-y-4">
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Page container</span>
+                <span class="text-gray-400 text-sm">max-w-[1280px] mx-auto px-4 md:px-20</span>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Section spacing</span>
+                <span class="text-gray-400 text-sm">mb-20 (between major sections) · py-6 (marquee strip)</span>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Section header</span>
+                <span class="text-gray-400 text-sm">flex flex-col md:flex-row justify-between items-end mb-12 border-b border-[#29382f] pb-6</span>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Projects grid</span>
+                <span class="text-gray-400 text-sm">grid grid-cols-1 gap-12</span>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Carousel</span>
+                <span class="text-gray-400 text-sm">flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory</span>
+            </div>
+            <div class="flex items-start gap-4">
+                <span class="text-primary font-mono text-xs w-40 flex-shrink-0 pt-0.5">Card padding</span>
+                <span class="text-gray-400 text-sm">p-8 md:p-12 (testimonial & project content area)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Border Radius Tokens -->
+    <div>
+        <h3 class="text-2xl font-bold text-white mb-6">Border Radius Tokens</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-[#1c2620] p-6 border border-[#29382f] flex flex-col items-center gap-3" style="border-radius: var(--radius-default);">
+                <div class="w-20 h-20 bg-[#29382f]" style="border-radius: var(--radius-default);"></div>
+                <p class="text-white text-sm font-bold">Default</p>
+                <p class="text-gray-500 font-mono text-xs text-center">--radius-default<br>1rem</p>
+            </div>
+            <div class="bg-[#1c2620] p-6 border border-[#29382f] flex flex-col items-center gap-3" style="border-radius: var(--radius-lg);">
+                <div class="w-20 h-20 bg-[#29382f]" style="border-radius: var(--radius-lg);"></div>
+                <p class="text-white text-sm font-bold">Large</p>
+                <p class="text-gray-500 font-mono text-xs text-center">--radius-lg<br>2rem · rounded-[2rem]</p>
+            </div>
+            <div class="bg-[#1c2620] p-6 border border-[#29382f] flex flex-col items-center gap-3" style="border-radius: var(--radius-xl);">
+                <div class="w-20 h-20 bg-[#29382f]" style="border-radius: var(--radius-xl);"></div>
+                <p class="text-white text-sm font-bold">XL</p>
+                <p class="text-gray-500 font-mono text-xs text-center">--radius-xl<br>3rem · rounded-[2.5rem]</p>
+            </div>
+            <div class="bg-[#1c2620] p-6 border border-[#29382f] flex flex-col items-center gap-3" style="border-radius: var(--radius-full);">
+                <div class="w-20 h-20 bg-[#29382f] rounded-full"></div>
+                <p class="text-white text-sm font-bold">Full</p>
+                <p class="text-gray-500 font-mono text-xs text-center">--radius-full<br>9999px · rounded-full</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     7. INTERACTIVE STATES
+     ================================================================ -->
+<section id="interactive" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">07 / Interactive States</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <!-- Button Hover States -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Button Hover States</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-gray-400 text-sm mb-6">Hover over each button to see the transition.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div>
+                    <p class="text-xs text-gray-500 mb-2">Primary → white bg</p>
+                    <button type="button" class="btn-primary btn-hug">
+                        hover me
+                        <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                    </button>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 mb-2">Secondary → primary bg</p>
+                    <button type="button" class="btn-secondary btn-hug">
+                        hover me
+                        <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                    </button>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 mb-2">Tertiary → dark bg + primary border</p>
+                    <button type="button" class="btn-tertiary btn-hug">
+                        hover me
+                        <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">
+                .btn-primary:hover → bg white, color dark, icon translateX(0.4rem)<br>
+                .btn-secondary:hover → bg primary, color dark, border primary<br>
+                .btn-tertiary:hover → bg background-dark, color background-light, border primary
+            </p>
+        </div>
+    </div>
+
+    <!-- Disabled State -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Disabled State + Tooltip</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-gray-400 text-sm mb-6">Hover to see the "Coming Soon" tooltip. No visual hover change on the button itself.</p>
+            <div class="flex flex-wrap gap-6 pt-10 mb-6">
+                <button type="button" class="btn-primary btn-hug btn-disabled" aria-disabled="true" title="Coming Soon">
+                    primary disabled
+                    <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                </button>
+                <button type="button" class="btn-secondary btn-hug btn-disabled" aria-disabled="true" title="Coming Soon">
+                    secondary disabled
+                    <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                </button>
+                <button type="button" class="btn-tertiary btn-hug btn-disabled" aria-disabled="true" title="Coming Soon">
+                    tertiary disabled
+                    <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">
+                .btn-disabled → opacity: 0.6; cursor: not-allowed<br>
+                .btn-disabled::after → "Coming Soon" tooltip, opacity 0→1 on hover<br>
+                .btn-*.btn-disabled:hover → no bg/color/border change
+            </p>
+        </div>
+    </div>
+
+    <!-- Link Hover States -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Link Hover States</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f] space-y-8">
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-nav → color white, bg border, scale(1.05)</p>
+                <div class="flex gap-3">
+                    <a href="#" class="link-nav">Hover me</a>
+                    <a href="#" class="link-nav active">Active (no hover)</a>
+                </div>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-cta → color primary</p>
+                <a href="#" class="link-cta">Hover this CTA <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-button → bg white, color dark</p>
+                <a href="#" class="link-button">Hover me</a>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-footer → color white, .link-footer-text → underline with primary</p>
+                <a href="#" class="link-footer group">
+                    <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+                    <span class="link-footer-text">Hover this footer link</span>
+                </a>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-email-cta → scale(1.05)</p>
+                <a href="#" class="link-email-cta">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                    Hover me
+                </a>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 mb-3">.link-logo → scale(1.05)</p>
+                <a href="#" class="link-logo inline-flex">
+                    <div class="items-center size-6 text-primary">
+                        <svg width="18" height="18" viewBox="0 0 846 846" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+                            <path d="M53 282.5C53 421.4 191.344 534 362 534V31C191.344 31 53 143.6 53 282.5Z" fill="currentColor"/>
+                            <path d="M201 838H807V613H363.572L201 838Z" fill="currentColor"/>
+                            <path d="M413 543H807V0L413 543Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="font-[Syne] text-white font-bold uppercase whitespace-nowrap">YAT<span class="font-extrabold">O</span>NG WANG</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Hover States -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Card Hover States</h3>
+        <div class="space-y-8">
+            <!-- Project card hover -->
+            <div>
+                <p class="text-gray-400 text-sm mb-4">Project card — hover to see border glow and image zoom.</p>
+                <div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 mb-4">
+                    <div class="relative w-full md:w-1/3 aspect-[4/3] md:aspect-auto overflow-hidden">
+                        <div class="absolute inset-0 bg-[#29382f] transform group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-gray-500 text-4xl">image</span>
+                        </div>
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+                    </div>
+                    <div class="p-8 flex flex-col justify-center">
+                        <span class="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">Category</span>
+                        <h3 class="text-2xl font-bold text-white">Hover this project card</h3>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 font-mono">hover:border-primary/50 · image: group-hover:scale-105 transition-transform duration-700 · overlay: bg-black/10 → group-hover:bg-transparent</p>
+            </div>
+
+            <!-- Testimonial card hover -->
+            <div>
+                <p class="text-gray-400 text-sm mb-4">Testimonial card — hover to see lift and border glow.</p>
+                <div class="max-w-sm">
+                    <div class="testimonial-card flex-shrink-0 bg-[#1c2620] rounded-[2.5rem] p-8 border border-[#29382f] relative overflow-hidden group">
+                        <p class="text-gray-300 text-lg font-light mb-4">Hover this testimonial card to see translateY(-5px) and border-color change.</p>
+                        <p class="font-bold text-white">Author Name</p>
+                        <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-500 font-mono mt-4">.testimonial-card:hover → transform: translateY(-5px); border-color: var(--color-primary)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Arrow Hover -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Carousel Arrow Control</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <p class="text-gray-400 text-sm mb-6">Arrow buttons used for the testimonial carousel.</p>
+            <div class="flex gap-4 mb-6">
+                <button type="button" class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#29382f] flex items-center justify-center text-primary bg-[#1c2620] hover:bg-primary hover:text-[#1c2620] hover:border-primary transition-all duration-300" aria-label="Scroll left">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <button type="button" class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#29382f] flex items-center justify-center text-primary bg-[#1c2620] hover:bg-primary hover:text-[#1c2620] hover:border-primary transition-all duration-300" aria-label="Scroll right">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
+            <p class="text-xs text-gray-500 font-mono">
+                w-12 h-12 md:w-16 md:h-16 rounded-full border border-[#29382f] text-primary bg-[#1c2620]<br>
+                hover:bg-primary hover:text-[#1c2620] hover:border-primary transition-all duration-300<br>
+                CSS: .carousel-arrow → box-shadow: 0 4px 12px rgba(0,0,0,0.3); .carousel-arrow:focus → outline primary
+            </p>
+        </div>
+    </div>
+
+    <!-- Scroll-Down CTA -->
+    <div>
+        <h3 class="text-2xl font-bold text-white mb-6">Scroll-Down CTA Button</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+            <div class="flex flex-col items-center mb-6">
+                <a class="w-16 h-16 rounded-full border border-[#29382f] flex items-center justify-center animate-fade-soft text-primary bg-[#1c2620]">
+                    <span class="material-symbols-outlined">arrow_downward</span>
+                </a>
+                <span class="text-xs font-mono text-gray-500 text-right uppercase tracking-widest pt-4 whitespace-nowrap">see my work</span>
+            </div>
+            <p class="text-xs text-gray-500 font-mono text-center">
+                w-16 h-16 rounded-full border border-[#29382f] text-primary bg-[#1c2620]<br>
+                .animate-fade-soft → opacity 0.6↔1 pulse
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================
+     8. IN-PAGE NAVIGATION
+     ================================================================ -->
+<section id="in-page-nav" class="mb-20">
+    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+        <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">08 / In-page Navigation</h2>
+        <div class="h-px bg-white/10 flex-1"></div>
+    </div>
+
+    <p class="text-gray-400 text-lg font-light mb-8 max-w-2xl">Sticky bar of section links. The current section can be highlighted by adding <code class="text-primary">.active</code> to the corresponding <code class="text-primary">.link-nav</code> (e.g. via a scroll-spy script).</p>
+
+    <div class="mb-8">
+        <p class="text-white font-bold mb-4">Live example (this page uses it at the top)</p>
+        <nav class="nav-in-page mb-6">
+            <a class="link-nav">Typography</a>
+            <a class="link-nav">Colors</a>
+            <a class="link-nav">Buttons</a>
+            <a class="link-nav active">In-page nav</a>
+        </nav>
+        <div class="bg-[#111714] rounded-[2rem] p-6 border border-[#29382f]">
+            <p class="text-xs text-gray-500 font-mono leading-relaxed mb-2">
+                <strong class="text-gray-400">Container:</strong> .nav-in-page<br>
+                position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 5rem; border-bottom: 1px solid var(--color-border); padding-bottom: 1.5rem; background-color: var(--color-background-dark);
+            </p>
+            <p class="text-xs text-gray-500 font-mono leading-relaxed mb-2">
+                <strong class="text-gray-400">Links:</strong> .link-nav on each &lt;a href="#section-id"&gt;. Active state: .link-nav.active (primary color, bold; set via JS from scroll position).
+            </p>
+            <p class="text-xs text-gray-500 font-mono leading-relaxed">
+                <strong class="text-gray-400">Script:</strong> <code class="text-primary">js/section-nav.js</code> — runs only when <code class="text-primary">nav.nav-in-page</code> exists; toggles .active by scroll position. Optional <code class="text-primary">data-offset="120"</code> on the nav to override trigger offset (px from top).
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="border-t border-[#29382f] pt-8 pb-4 text-center">
+    <p class="text-gray-500 text-sm">Design System Reference — Internal Use Only</p>
+</footer>
+
+</div>
+<script src="../public/js/section-nav.js"></script>
+</body>
+</html>
