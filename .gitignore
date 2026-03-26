@@ -1,7 +1,5 @@
 .cursor/
-re-enable-buttons.md
-branch-workflow-cheatsheet.md
-git-commands-cheatsheet.md
-.DS_Store
+.cheatsheets/
+wip/
 **/.DS_Store
-.env/
+.env

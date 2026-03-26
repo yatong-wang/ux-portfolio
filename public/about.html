@@ -42,6 +42,19 @@
     .scrolling-wrapper {
         animation: scroll 40s linear infinite;
     }
+    .scrolling-wrapper .interest-card {
+        transition: filter 280ms ease, opacity 280ms ease, transform 280ms ease;
+    }
+    .scrolling-wrapper:hover .interest-card {
+        filter: blur(4px);
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+    .scrolling-wrapper:hover .interest-card:hover {
+        filter: blur(0);
+        opacity: 1;
+        transform: scale(1);
+    }
     @keyframes scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
@@ -51,7 +64,7 @@
 <body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
 <div data-nav-placeholder></div>
-<main class="flex-grow w-full flex flex-col items-center pb-20">
+<main class="flex-grow w-full flex flex-col items-center pb-12">
 
 <!-- Hero Section -->
 <section class="w-full pt-32 pb-8 md:pt-40 md:pb-12">
@@ -63,43 +76,51 @@
 </section>
 
 <!-- Portrait & Bio Section -->
-<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-20">
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-32">
+    <div class="space-y-4 lg:mb-8 mb-4">
+        <p class="text-4xl lg:text-5xl font-bold leading-tighter md:leading-tight" data-about-tagline>
+        </p>
+    </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <!-- Portrait -->
-        <div class="lg:col-span-5 relative group">
-            <div class="absolute inset-0 bg-primary transform translate-x-3 translate-y-3 lg:translate-x-4 lg:translate-y-4 z-0 transition-transform duration-300 group-hover:translate-x-2 group-hover:translate-y-2 rounded-[2rem]"></div>
-            <div class="relative z-10 aspect-[3/4] overflow-hidden bg-[#1c2620] rounded-[2rem] border border-[#29382f]">
-                <img data-about-portrait alt="" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src=""/>
-            </div>
-        </div>
-
         <!-- Bio Content -->
         <div class="lg:col-span-7 flex flex-col justify-center space-y-8 pt-4">
-            <div class="space-y-4">
-                <p class="text-4xl lg:text-5xl font-bold leading-tight" data-about-status>
-                </p>
+            <div class="lg:space-y-6 space-y-4 text-lg md:text-xl font-light text-gray-300 max-w-2xl" data-about-paragraphs>
             </div>
-            <div class="space-y-6 text-lg md:text-xl font-light leading-relaxed text-gray-400 max-w-2xl" data-about-paragraphs>
+        </div>
+        <!-- Portrait -->
+        <div class="lg:col-span-5 max-w-md mx-auto pt-4">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-primary transform translate-x-2 translate-y-2 z-0 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4 rounded-[2rem] pointer-events-none"></div>
+                <div class="about-portrait-flip relative z-10 aspect-[3/4] rounded-[2rem]">
+                    <div class="about-portrait-flip-inner">
+                        <div class="about-portrait-face about-portrait-face-front overflow-hidden bg-[#1c2620] rounded-[2rem] border border-primary">
+                            <img data-about-portrait alt="" class="w-full h-full object-cover" src=""/>
+                        </div>
+                        <div class="about-portrait-face about-portrait-face-back rounded-[2rem] border border-primary">
+                            <p data-about-portrait-alt class="about-portrait-alt-text text-gray-300"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pt-4 flex flex-col md:flex-row gap-4" data-about-links>
+            <div class="mt-4 pt-4 flex flex-col md:flex-row gap-4" data-about-links>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Design Superpowers Section -->
-<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-20">
-    <div class="flex flex-col justify-between mb-12 border-b border-[#29382f] pb-6">
-        <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what i can offer</span>
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-32">
+    <div class="flex flex-col justify-between mb-8 border-b border-[#29382f] pb-4">
+        <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what sets me apart</span>
         <h2 class="text-4xl lg:text-5xl font-bold uppercase">design superpowers</h2>
     </div>
-    <div class="flex overflow-x-auto gap-6 pb-4 no-scrollbar snap-x snap-mandatory" data-services-container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start" data-strengths-container>
     </div>
 </section>
 
 <!-- What Fuels Me Section -->
-<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-20">
-    <div class="flex flex-col justify-between mb-12 border-b border-[#29382f] pb-6">
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-8">
+    <div class="flex flex-col justify-between mb-8 border-b border-[#29382f] pb-6">
         <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what fuels me</span>
         <h2 class="text-4xl lg:text-5xl font-bold uppercase">beyond work</h2>
     </div>
@@ -119,7 +140,7 @@
 <script src="js/content-loader.js"></script>
 <script src="js/scripts.js"></script>
 <script>
-    document.querySelectorAll('h2').forEach(heading => {
+    document.querySelectorAll('h1,h2').forEach(heading => {
       heading.innerHTML = heading.innerHTML.replace(/o/gi, match => `<span class="font-extrabold">${match}</span>`);
     });
 </script>

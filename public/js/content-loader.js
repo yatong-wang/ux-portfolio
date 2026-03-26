@@ -244,12 +244,17 @@
         if (portraitImg && data.portrait && data.portrait.image) {
             portraitImg.src = data.portrait.image.url;
             portraitImg.alt = data.portrait.image.alt;
+
+            const portraitAltEl = document.querySelector('[data-about-portrait-alt]');
+            if (portraitAltEl) {
+                portraitAltEl.textContent = data.portrait.image.alt || '';
+            }
         }
 
-        // Load bio status
-        const statusEl = document.querySelector('[data-about-status]');
-        if (statusEl && data.bio && data.bio.status) {
-            statusEl.innerHTML = data.bio.status;
+        // Load bio tagline
+        const taglineEl = document.querySelector('[data-about-tagline]');
+        if (taglineEl && data.bio && data.bio.tagline) {
+            taglineEl.innerHTML = data.bio.tagline;
         }
 
         // Load bio paragraphs
@@ -270,7 +275,7 @@
             
             if (data.bio.links.resume) {
                 const resumeLink = document.createElement('a');
-                resumeLink.className = 'btn-secondary inline-flex';
+                resumeLink.className = 'btn-tertiary btn-tight inline-flex';
                 resumeLink.href = escapeHTML(data.bio.links.resume.href);
                 if (data.bio.links.resume.target) resumeLink.setAttribute('target', data.bio.links.resume.target);
                 resumeLink.innerHTML = `${escapeHTML(data.bio.links.resume.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
@@ -279,7 +284,7 @@
             
             if (data.bio.links.linkedin) {
                 const linkedinLink = document.createElement('a');
-                linkedinLink.className = 'btn-secondary inline-flex';
+                linkedinLink.className = 'btn-tertiary btn-tight inline-flex';
                 linkedinLink.href = escapeHTML(data.bio.links.linkedin.href);
                 if (data.bio.links.linkedin.target) linkedinLink.setAttribute('target', data.bio.links.linkedin.target);
                 linkedinLink.innerHTML = `${escapeHTML(data.bio.links.linkedin.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
@@ -287,23 +292,83 @@
             }
         }
 
-        // Load services cards
-        const servicesContainer = document.querySelector('[data-services-container]');
-        if (servicesContainer && data.services) {
-            servicesContainer.innerHTML = '';
-            
-            data.services.forEach(service => {
-                const serviceHTML = `
-                    <div class="min-w-[300px] bg-[#1c2620] p-8 rounded-[2rem] border border-[#29382f] snap-center hover:border-primary transition-colors group cursor-pointer">
-                        <div class="w-14 h-14 bg-[#111714] rounded-full flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-[#111714] transition-colors">
-                            <span class="material-symbols-outlined text-2xl">${escapeHTML(service.icon)}</span>
+        // Load strengths cards
+        const strengthsContainer = document.querySelector('[data-strengths-container]');
+        if (strengthsContainer && data.strengths) {
+            strengthsContainer.innerHTML = '';
+
+            data.strengths.forEach((strength, index) => {
+                const panelId = `about-strength-panel-${index}`;
+                const buttonId = `about-strength-toggle-${index}`;
+                const strengthHTML = `
+                    <div class="strength-card w-full bg-[#1c2620] p-8 rounded-[2rem] border border-[#29382f] hover:border-primary transition-colors">
+                        <button type="button" id="${buttonId}" class="strength-card-toggle w-full flex items-center justify-between gap-3 text-left" aria-expanded="false" aria-controls="${panelId}">
+                            <span class="strength-card-title text-xl font-semibold">${escapeHTML(strength.title)}</span>
+                            <span class="material-symbols-outlined strength-card-indicator text-primary text-4xl" aria-hidden="true">keyboard_arrow_down</span>
+                        </button>
+                        <div id="${panelId}" class="strength-card-panel mt-3" role="region" aria-labelledby="${buttonId}" hidden>
+                            <p class="text-sm text-gray-400">${escapeHTML(strength.description)}</p>
                         </div>
-                        <h4 class="text-xl font-bold mb-3">${escapeHTML(service.title)}</h4>
-                        <p class="text-sm text-gray-400">${escapeHTML(service.description)}</p>
                     </div>
                 `;
-                const fragment = createHTML(serviceHTML);
-                servicesContainer.appendChild(fragment);
+
+                const fragment = createHTML(strengthHTML);
+                const cardEl = fragment.firstElementChild;
+                if (cardEl) {
+                    const toggleButton = cardEl.querySelector('.strength-card-toggle');
+                    const panelEl = cardEl.querySelector('.strength-card-panel');
+                    if (toggleButton && panelEl) {
+                        let isAnimating = false;
+                        toggleButton.addEventListener('click', () => {
+                            if (isAnimating) return;
+
+                            const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                            const nextExpanded = !isExpanded;
+
+                            toggleButton.setAttribute('aria-expanded', String(nextExpanded));
+
+                            isAnimating = true;
+                            panelEl.style.willChange = 'height, opacity, transform';
+
+                            if (nextExpanded) {
+                                panelEl.hidden = false;
+                                panelEl.style.height = '0px';
+
+                                requestAnimationFrame(() => {
+                                    const targetHeight = panelEl.scrollHeight;
+                                    panelEl.style.height = `${targetHeight}px`;
+                                    cardEl.classList.add('is-expanded');
+                                });
+                            } else {
+                                const currentHeight = panelEl.scrollHeight;
+                                panelEl.style.height = `${currentHeight}px`;
+
+                                requestAnimationFrame(() => {
+                                    panelEl.style.height = '0px';
+                                    cardEl.classList.remove('is-expanded');
+                                });
+                            }
+
+                            const onTransitionEnd = (event) => {
+                                if (event.propertyName !== 'height') return;
+
+                                if (nextExpanded) {
+                                    panelEl.style.height = 'auto';
+                                } else {
+                                    panelEl.hidden = true;
+                                }
+
+                                panelEl.style.willChange = '';
+                                isAnimating = false;
+                                panelEl.removeEventListener('transitionend', onTransitionEnd);
+                            };
+
+                            panelEl.addEventListener('transitionend', onTransitionEnd);
+                        });
+                    }
+                }
+
+                strengthsContainer.appendChild(fragment);
             });
         }
 
@@ -317,7 +382,7 @@
                 const fragment = document.createDocumentFragment();
                 data.interests.forEach(interest => {
                     const interestHTML = `
-                        <div class="w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] grayscale hover:grayscale-0 transition-all duration-500 border border-[#29382f]">
+                        <div class="interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] transition-all duration-500 border border-[#29382f]">
                             <img alt="${escapeHTML(interest.image.alt)}" class="w-full h-full object-cover" src="${escapeHTML(interest.image.url)}">
                             <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
                                 <span class="text-white font-medium text-lg">${escapeHTML(interest.label)}</span>

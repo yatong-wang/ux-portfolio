@@ -13,7 +13,7 @@
   },
   "navigation": [
     {"text": "Work", "href": "/work", "disabled": true},
-    {"text": "About", "href": "/about", "disabled": true},
+    {"text": "About", "href": "/about"},
     {"text": "Fun", "href": "/fun", "disabled": true},
     {"text": "Resume", "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link", "target": "_blank"}
   ],
