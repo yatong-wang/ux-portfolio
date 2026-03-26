@@ -676,6 +676,23 @@ h4 {
 }
 
 /**
+ * Button Tight Modifier
+ * Combine with any button variant to halve its base padding.
+ */
+.btn-primary.btn-tight,
+.btn-secondary.btn-tight {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.btn-tertiary.btn-tight {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 0.875rem;
+}
+
+/**
  * Button Icon Left Modifier
  * Combine with any button variant to show icon on the left of the text.
  */
@@ -925,6 +942,28 @@ h4 {
 }
 
 /* ==========================================================================
+   In-page Section Navigation
+   ========================================================================== */
+
+/**
+ * In-page Section Navigation
+ * Sticky nav bar for jumping between page sections. Use with .link-nav on
+ * anchor links; add .active to the current section's link via JS (e.g. scroll spy).
+ */
+.nav-in-page {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 5rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  background-color: var(--color-background-dark);
+}
+
+/* ==========================================================================
    Email Copy Tooltip
    ========================================================================== */
 
@@ -1062,6 +1101,100 @@ nav[data-menu-open="true"] {
 .testimonial-card:hover {
   transform: translateY(-5px);
   border-color: var(--color-primary);
+}
+
+/**
+ * About Strengths Cards
+ * Expand/collapse behavior and body-font title styling
+ */
+.strength-card-toggle {
+  cursor: pointer;
+}
+
+.strength-card-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 0.75rem;
+}
+
+.strength-card-title {
+  font-family: var(--font-body);
+}
+
+.strength-card-indicator {
+  transition: transform 0.2s ease;
+}
+
+.strength-card-panel {
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: height 0.3s ease, opacity 0.28s ease, transform 0.3s ease;
+}
+
+.strength-card.is-expanded .strength-card-indicator {
+  transform: rotate(180deg);
+}
+
+.strength-card.is-expanded .strength-card-panel {
+  height: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/**
+ * About portrait flip card
+ * Hover rotates portrait to reveal alt-text back face.
+ */
+.about-portrait-flip {
+  perspective: 1400px;
+}
+
+.about-portrait-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.about-portrait-flip:hover .about-portrait-flip-inner,
+.about-portrait-flip:focus-within .about-portrait-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.about-portrait-face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.about-portrait-face-front {
+  z-index: 2;
+}
+
+.about-portrait-face-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--color-card-bg);
+  color: white;
+  border: 1px solid var(--color-border);
+  transform: rotateY(180deg);
+}
+
+.about-portrait-alt-text {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-medium);
+  max-width: 90%;
 }
 
 /**

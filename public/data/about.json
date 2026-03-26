@@ -1,85 +1,99 @@
 {
   "portrait": {
     "image": {
-      "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDgSfvzKOXnYpPfGBbJy12PF62HY310npAFa5UXgf25a4KkcA65PSR-DVV_4yy0YfwSpN2gwgfmv1WKv13QPhh4aFPL4l1JOZP-rF2PFn_upyiwj8Wg9vZoI4IoPahPU0bfFX1Gk9zMzYRE969Xo5fhUX6yLwGauyJld0XgZvamdJ8933-sbIqhNlKSUiae_7aw6DaRtf6vHq-QD_DWOlKN61rWNTosK1TlyRJUQpBkktxCTg_7DiihMq6zWtt7-aBFOGw5QluVYlc0",
-      "alt": "Portrait of Julian Mack looking thoughtful"
+      "url": "assets/images/yatong-portrait-riso.png",
+      "alt": "Portrait of Yatong holding a big fuwa Miku at Anime Expo 2025"
     }
   },
   "bio": {
-    "status": "Integrity in coverage,<br/><span class=\"text-primary\">flexibility</span> in writing.",
+    "tagline": "Brewing designs with a blend of <span class=\"text-primary\">what, why, & how</span> thru a humanist lens.",
     "paragraphs": [
-      "My love affair with visual storytelling started very early; growing up in the bustling streets of Chicago did that to a person. As a kid, when there was no cable TV, you either played outside or read. I chose the latter, but soon found myself documenting the world around me.",
-      "Starting with a disposable camera and sketchbook, I ended up creating narratives from the mundane to the extraordinary, trying my hand at capturing the soul of a moment for the school paper.",
-      "Currently, I offer creative direction, photography, and brand strategy services to help my clients find their visual voice as seamlessly and painlessly as possible. I value authenticity above everything else, meaning I won't take 'good enough' as an answer."
+      "For most of my school years, I studied East Asian Studies with a focus on Japanese culture. I found myself trying to figure out \"what\" and \"why\", but rarely proposing \"how\".",
+      "I wanted to move beyond analysis and get my hands dirty. To make and create. To answer the \"how\".",
+      "It may sounds cliché, but reading Don Norman's book 『 The Design of Everyday Things 』 gave me an Eureka moment. I was fascinated by how our life experiences are shaped by deliberate choices, which are often invisible to us.",
+      "Human-centered design felt like the missing piece of my intellectual pursuit, as it is a perfect blend of observation, analysis and problem-solving.",
+      "And that, my friend, is how I met UX design."
     ],
     "links": {
       "resume": {
-        "href": "#",
+        "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link",
+        "target": "_blank",
         "text": "Resume"
       },
       "linkedin": {
-        "href": "#",
+        "href": "https://www.linkedin.com/in/yatong-wang/", 
+        "target": "_blank",
         "text": "LinkedIn"
       }
     }
   },
-  "services": [
+  "strengths": [
     {
-      "icon": "brush",
-      "title": "Brand Identity",
-      "description": "Crafting unique visual languages that speak louder than words."
+      "title": "Dealing with Complexity",
+      "description": "I ramp up quickly in complex domains and feel comfortable working within data-heavy systems."
     },
     {
-      "icon": "camera_alt",
-      "title": "Photography",
-      "description": "Capturing moments with raw emotion and precise composition."
+      "title": "System Thinking",
+      "description": "I approach problems by getting a bigger picture and uncovering underlying structural challenges."
     },
     {
-      "icon": "web",
-      "title": "UI/UX Design",
-      "description": "Building intuitive digital experiences that delight users."
+      "title": "Tech + AI Fluency",
+      "description": "I have a working knowledge of front-end development and design systems. And I'm actively experimenting with, and sharing my learnings about various AI tools in my design workflows."
     },
     {
-      "icon": "movie",
-      "title": "Motion Graphics",
-      "description": "Adding life and movement to static concepts."
+      "title": "UX Advocacy",
+      "description": "I'm passionate about evangelizing UX design. I've given a presentation with over 60% audience engagement rate during a lunch and learn session."
     }
   ],
   "interests": [
     {
       "image": {
-        "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAmyxEwifHP17Pz3ArK3ZhdcrFKDWp9qI-cXKwSvnbS5wPOcM40SxiGpUjzUuPYQfYxaKKFU5hdqz6LglQ3Fhfvdq18PGRlrZ7uV40coBeAXAIvsf8YG6_MVGl6TAOT8JufqAsuZ9nDBlbRfm2C3-YnVar5qaaMXaAYpq1aPEfT-bi2ftNZ7Y13Yr0qnaUzrMwf6ajF-E9rBpVdBw5O3xVnCv5tADlZ0nyyqWOHunPYDyIx583aKFLBqqjjeN-IgBHGx1DEtkvzEMxi",
-        "alt": "Travel"
+        "url": "assets/images/interests/bouldering.jpg",
+        "alt": "Yatong bat hanging on a boulder problem at a gym"
       },
-      "label": "Travel"
+      "label": "Bouldering"
     },
     {
       "image": {
-        "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBrCwOd5rn1PTihg4P2AYRFW6YtsLCKqT989NuCltg-XouZE_tIu3vQmiandLLGINywZZxW167f1TYJdmlvhQHPzhJPw4HOMGFyrjSFM-XvF7ENYHpqUVSMLYM6CEimhZguceBbBjTabFRDdGazP25TU1ImyNylebR6mau7zptQs_LrRB5RTGm6y-HvdaNGV-Y3IylWqKMw-fkuB4qatuvlv4y4h-ovtqJ8heBHX81qqo3EEWbXSDGB0ZeTE6LP1vaZKoWncfN4vejA",
-        "alt": "Coffee Culture"
+        "url": "assets/images/interests/bouldering2.png",
+        "alt": "Yatong frogging and stemming on a volume on a bouldering wall at a gym"
       },
-      "label": "Coffee Culture"
+      "label": "...and more bouldering"
     },
     {
       "image": {
-        "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBLcw8SWQyA2hrbomTOKqyAYMx0Wu4GX4gd1Tx8J3n1IeHOMOyJaY6j4va00FO-L6oViQUxXJnDi3neRfOVQQTiAbLHdx9_fFeJuot8n7DSIJAJyEqVjghLvUdYVJc6Jb4MkiBsm6-83neSTKMAxh77kp_BIDzd8s1sWtPxTrilbmyIz465xRMFJRzO5gNvISHQyeqOJH_3EcV_E8Rw3wsdgztrgz-5BTIMFSk2jELAdF3MRfTLrNff_Y8jOaMhWf-oIAgE9CbmRyR5",
-        "alt": "Mountain Hiking"
+        "url": "assets/images/interests/baking.jpg",
+        "alt": "Yatong piping a sablé cookie"
       },
-      "label": "Hiking"
+      "label": "Baking"
     },
     {
       "image": {
-        "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBJ3ID-mKbpIP8kASc12tX8O5obQcWnoj1k9aypdbT96BZMEb-DjqY4FDxIvb_R5fzzwIikdkcGZdZTgRZ3SEKJOAfbPf0l5NdSX10wJEtfOt9m4KwLj9ZHG_cDalhMh7rYst_MXLMxQTGKEXb-2Uda0yfGmuUg2ffuSa2SAquSMhY1Jjc2QocAddsZQanv5I8M4YgadjakjLu0EJhxAHTJ76VbHUGMS1FxxmC8tbL488TBuJUuHkYv_o5GSywz8VDO4JOC2-DTCea-",
-        "alt": "Sneakers"
+        "url": "assets/images/interests/cocktail.jpg",
+        "alt": ""
       },
-      "label": "Fashion"
+      "label": "Mixing cocktails"
     },
     {
       "image": {
-        "url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBZb6AggnDOA9toPA-8wYd1o3kwXpMptLCJzvAjusLH5R3UHq212Jl7iCzuF2ujHRvo2MXrFBOdkTnxGjBDfn20tmhdoWv6EEkyLkV286TzUfB9wpIqfxS042tMf5k8bL_UgRVpROkcWIC9pndSuRg44iE_j1bvZH-A-dZ2FU_SVmKtVBtPg4o5RBm9oDy4fun6ZWLF8JQ8wJuxSlKxo_eyQ7ccnFt-QkAKujuUQd8BUWgcLuWKPpz1tv9nu4l3lZTik8kSSFsARCHk",
-        "alt": "Music"
+        "url": "assets/images/interests/reading.png",
+        "alt": "An open book with a treat and a coffee on a table"
       },
-      "label": "Vinyls"
+      "label": "Reading"
+    },
+    {
+      "image": {
+        "url": "assets/images/interests/mushroom-hunting.jpg",
+        "alt": "Yatong holding a morel she found during mushroom hunting"
+      },
+      "label": "Hunting mushrooms"
+    },
+    {
+      "image": {
+        "url": "assets/images/interests/outdoor-climbing.png",
+        "alt": "Yatong climbing outdoors at Smith Rock"
+      },
+      "label": "Rock climbing"
     }
   ]
 }
