@@ -6,9 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 - Individual case study pages
-- About page
+- Fun page with side projects showcase
 
 ---
+## [0.3.0] - 2026-03-26
+### Added
+- About page and associated assets
+- LICENSE.md
+- Tight variants for button styling
+
+### Changed
+- README.md (and made the repo public)
+
+
 ## [0.2.1] - 2026-02-13
 ### Added
 - Global top banner indicating WIP status
