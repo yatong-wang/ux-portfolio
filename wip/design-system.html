@@ -62,7 +62,7 @@
      1. TYPOGRAPHY
      ================================================================ -->
 <section id="typography" class="mb-20">
-    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+    <div class="sticky top-16 z-20 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
         <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">01 / Typography</h2>
         <div class="h-px bg-white/10 flex-1"></div>
     </div>
@@ -411,6 +411,33 @@
             </div>
             <p class="text-xs text-gray-500 font-mono">.btn-disabled · opacity: 0.6; cursor: not-allowed · ::after tooltip "Coming Soon" on hover</p>
         </div>
+
+        <!-- Tight Variant Sub-section -->
+        <div class="pt-2">
+            <h3 class="text-xl font-bold text-white mb-4">Tight Variant</h3>
+            <div class="bg-[#1c2620] rounded-[2rem] p-8 border border-[#29382f]">
+                <p class="text-white font-bold mb-4">Halved Padding Modifier</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <button type="button" class="btn-primary btn-tight">
+                        primary tight
+                        <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                    </button>
+                    <button type="button" class="btn-secondary btn-tight">
+                        secondary tight
+                        <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                    </button>
+                    <button type="button" class="btn-tertiary btn-tight">
+                        tertiary tight
+                        <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
+                    </button>
+                    <button type="button" class="btn-primary btn-hug btn-tight">
+                        hug + tight
+                        <span class="material-symbols-outlined btn-primary-icon">arrow_forward</span>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-500 font-mono">.btn-tight (modifier) · halves each button variant's base padding · compatible with .btn-hug, .btn-icon-left, .btn-disabled</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -509,7 +536,7 @@
      5. CARDS
      ================================================================ -->
 <section id="cards" class="mb-20">
-    <div class="sticky top-16 z-0 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
+    <div class="sticky top-16 z-20 flex items-center gap-4 mb-12 py-4 -mt-4 bg-background-dark">
         <h2 class="text-primary font-bold text-sm uppercase tracking-widest whitespace-nowrap">05 / Cards</h2>
         <div class="h-px bg-white/10 flex-1"></div>
     </div>
@@ -588,6 +615,71 @@
                 Hover (CSS): transform: translateY(-5px); border-color: var(--color-primary)<br>
                 Quote highlight: font-medium text-primary<br>
                 Glow effect: absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl · hover → bg-primary/10
+            </p>
+        </div>
+    </div>
+
+    <!-- Accordion Strength Card -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Accordion Strength Card</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="strength-card w-full bg-[#1c2620] p-8 rounded-[2rem] border border-[#29382f]">
+                <button type="button" class="strength-card-toggle w-full flex items-center justify-between gap-3 text-left" aria-expanded="false">
+                    <span class="strength-card-title text-xl font-semibold">Systems Thinking</span>
+                    <span class="material-symbols-outlined strength-card-indicator text-primary text-4xl" aria-hidden="true">keyboard_arrow_down</span>
+                </button>
+                <div class="strength-card-panel mt-3" hidden>
+                    <p class="text-sm text-gray-400">I connect research, product context, and implementation constraints to shape practical design direction.</p>
+                </div>
+            </div>
+            <div class="strength-card is-expanded w-full bg-[#1c2620] p-8 rounded-[2rem] border border-[#29382f]">
+                <button type="button" class="strength-card-toggle w-full flex items-center justify-between gap-3 text-left" aria-expanded="true">
+                    <span class="strength-card-title text-xl font-semibold">Cross-functional Collaboration</span>
+                    <span class="material-symbols-outlined strength-card-indicator text-primary text-4xl" aria-hidden="true">keyboard_arrow_down</span>
+                </button>
+                <div class="strength-card-panel mt-3">
+                    <p class="text-sm text-gray-400">I align designers, PMs, and engineers around user needs to reduce ambiguity and accelerate decisions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#111714] rounded-[2rem] p-6 border border-[#29382f]">
+            <p class="text-xs text-gray-500 font-mono leading-relaxed">
+                Wrapper: .strength-card w-full bg-[#1c2620] p-8 rounded-[2rem] border border-[#29382f]<br>
+                Header row: .strength-card-toggle w-full flex items-center justify-between gap-3 text-left<br>
+                Title: .strength-card-title text-xl font-semibold (uses body font via CSS)<br>
+                Indicator: .strength-card-indicator text-primary text-4xl<br>
+                Body panel: .strength-card-panel mt-3 + text-sm text-gray-400<br>
+                Expanded style token: add .is-expanded to .strength-card
+            </p>
+        </div>
+    </div>
+
+    <!-- Interests Image Container Card -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold text-white mb-6">Interests Image Container Card</h3>
+        <div class="bg-[#1c2620] rounded-[2rem] p-6 border border-[#29382f] mb-6">
+            <div class="flex gap-4">
+                <div class="interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] border border-[#29382f]">
+                    <img alt="Yatong bat hanging on a boulder problem at a gym" class="w-full h-full object-cover" src="../public/assets/images/interests/bouldering.jpg"/>
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <span class="text-white font-medium text-lg">Bouldering</span>
+                    </div>
+                </div>
+                <div class="interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] border border-[#29382f] hidden md:block">
+                    <img alt="Yatong piping a sable cookie" class="w-full h-full object-cover" src="../public/assets/images/interests/baking.jpg"/>
+                    <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
+                        <span class="text-white font-medium text-lg">Baking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-[#111714] rounded-[2rem] p-6 border border-[#29382f]">
+            <p class="text-xs text-gray-500 font-mono leading-relaxed">
+                Card: .interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] border border-[#29382f]<br>
+                Image: img.w-full.h-full.object-cover<br>
+                Label overlay: absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full<br>
+                Label text: text-white font-medium text-lg<br>
+                Typical row container: flex gap-4
             </p>
         </div>
     </div>
@@ -731,11 +823,19 @@
                         <span class="material-symbols-outlined btn-tertiary-icon">arrow_forward</span>
                     </button>
                 </div>
+                <div>
+                    <p class="text-xs text-gray-500 mb-2">Primary tight + icon left</p>
+                    <button type="button" class="btn-primary btn-hug btn-tight btn-icon-left">
+                        hover me
+                        <span class="material-symbols-outlined btn-primary-icon">arrow_back</span>
+                    </button>
+                </div>
             </div>
             <p class="text-xs text-gray-500 font-mono">
                 .btn-primary:hover → bg white, color dark, icon translateX(0.4rem)<br>
                 .btn-secondary:hover → bg primary, color dark, border primary<br>
-                .btn-tertiary:hover → bg background-dark, color background-light, border primary
+                .btn-tertiary:hover → bg background-dark, color background-light, border primary<br>
+                .btn-tight → halves variant base padding without changing hover behavior
             </p>
         </div>
     </div>
