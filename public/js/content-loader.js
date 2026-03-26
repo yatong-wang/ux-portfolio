@@ -277,6 +277,12 @@
                 const resumeLink = document.createElement('a');
                 resumeLink.className = 'btn-tertiary btn-tight inline-flex';
                 resumeLink.href = escapeHTML(data.bio.links.resume.href);
+                if (data.bio.links.resume.target) {
+                    resumeLink.target = data.bio.links.resume.target;
+                    if (data.bio.links.resume.target === '_blank') {
+                        resumeLink.rel = 'noopener';
+                    }
+                }
                 resumeLink.innerHTML = `${escapeHTML(data.bio.links.resume.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(resumeLink);
             }
@@ -285,6 +291,12 @@
                 const linkedinLink = document.createElement('a');
                 linkedinLink.className = 'btn-tertiary btn-tight inline-flex';
                 linkedinLink.href = escapeHTML(data.bio.links.linkedin.href);
+                if (data.bio.links.linkedin.target) {
+                    linkedinLink.target = data.bio.links.linkedin.target;
+                    if (data.bio.links.linkedin.target === '_blank') {
+                        linkedinLink.rel = 'noopener';
+                    }
+                }
                 linkedinLink.innerHTML = `${escapeHTML(data.bio.links.linkedin.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(linkedinLink);
             }
@@ -589,9 +601,12 @@
         const data = await fetchJSON('data/site.json');
         if (!data) return;
 
-        // Update site title
+        // Update site title only when page doesn't define a custom title
         const titleEl = document.querySelector('title');
-        if (titleEl && data.site.title && document.documentElement.getAttribute('data-page') !== '404') {
+        const currentTitle = titleEl ? titleEl.textContent.trim() : '';
+        const is404Page = document.documentElement.getAttribute('data-page') === '404';
+        const shouldUseSiteTitle = !currentTitle || currentTitle === data.site.title;
+        if (titleEl && data.site.title && !is404Page && shouldUseSiteTitle) {
             titleEl.textContent = data.site.title;
         }
 
