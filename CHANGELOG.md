@@ -53,7 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Include repo link in global banner
 - Minor copy, spacing and motion tweaks (Claude Code test)
 
-
 ## [0.3.0] - 2026-03-26
 ### Added
 - `about` page and associated assets
