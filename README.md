@@ -29,7 +29,7 @@ The site is *independently* developed by me, so no formal peer code review exist
 - [AI-Powered Design & Coding Flow](#ai-powered-design--coding-flow)
   - [Tools I Use](#tools-i-use)
   - [Workflow](#workflow) 
-- [Roadmap](#roadmap)
+- [To Dos](#to-dos)
 - [License](#license)
 - [AI Usage Disclosure](#ai-usage-disclosure)
 
@@ -88,10 +88,10 @@ All AI-generated output is reviewed and fine tuned before being committed.
 8. (Currently experimenting) Vibe design using Pencil within Cursor.
 
 
-## Roadmap
+## To Dos
 [↑ Back to TOC](#table-of-contents)
 
-- [ ] Add an "About Me" page
+- [x] Add an "About Me" page
 - [ ] Generate templates and components for case studies page
 - [ ] Write content for case studies
 - [ ] Build and publish one case study
@@ -104,7 +104,7 @@ All AI-generated output is reviewed and fine tuned before being committed.
 ## License
 [↑ Back to TOC](#table-of-contents)
 
-See the [LICENSE file](LICENSE.md) for details. In short, the repo is publicly viewable for evaluation only. All rights reserved.
+See the [LICENSE.md](LICENSE.md) for details. In short, the repo is publicly viewable for evaluation only. All rights reserved.
 
 
 ## AI Usage Disclosure
