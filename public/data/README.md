@@ -9,6 +9,7 @@ This directory contains JSON files that store all dynamic content for the portfo
 - **projects.json** - Portfolio projects with images, descriptions, and metadata
 - **testimonials.json** - Testimonial cards with quotes and author information
 - **site.json** - Site-wide content (navigation, footer, site metadata, banner)
+- **about.json** - About page (portrait, bio, timeline, strengths, interests, accessibility labels)
 
 ## How to Update Content
 

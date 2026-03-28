@@ -10,8 +10,8 @@
     "paragraphs": [
       "For most of my school years, I studied East Asian Studies with a focus on Japanese culture. I found myself trying to figure out \"what\" and \"why\", but rarely proposing \"how\".",
       "I wanted to move beyond analysis and get my hands dirty. To make and create. To answer the \"how\".",
-      "It may sounds cliché, but reading Don Norman's book 『 The Design of Everyday Things 』 gave me an Eureka moment. I was fascinated by how our life experiences are shaped by deliberate choices, which are often invisible to us.",
-      "Human-centered design felt like the missing piece of my intellectual pursuit, as it is a perfect blend of observation, analysis and problem-solving.",
+      "It may sounds cliché, but reading Don Norman's book 『 The Design of Everyday Things 』 gave me an Eureka moment. I was fascinated by how our life experiences are shaped by deliberate choices that are often invisible to us (a hallmark of good design!).",
+      "Human-centered design felt like the missing piece of my intellectual pursuit, as it is an interdisciplinary field that combines discovery, analysis and problem-solving.",
       "And that, my friend, is how I met UX design."
     ],
     "links": {
@@ -27,22 +27,54 @@
       }
     }
   },
+  "timeline": {
+    "milestones": [
+      {
+        "period": "2025-now",
+        "title": "UX/UI Designer (pro bono)",
+        "subtitle": "Seattle Asian American Film Festival",
+        "icon": "volunteer_activism",
+        "featured": true
+      },
+      {
+        "period": "2022–2025",
+        "title": "UX Designer",
+        "subtitle": "US Department of Agriculture (contracted via Spatial Front, Inc.)",
+        "icon": "work",
+        "featured": false
+      },
+      {
+        "period": "2022",
+        "title": "UX Researcher (Contract)",
+        "subtitle": "RCSB Protein Data Bank",
+        "icon": "work",
+        "featured": false
+      },
+      {
+        "period": "2020-2022",
+        "title": "M.B.S. in UX Design",
+        "subtitle": "Rutgers University",
+        "icon": "school",
+        "featured": false
+      }
+    ]
+  },
   "strengths": [
     {
-      "title": "Dealing with Complexity",
-      "description": "I ramp up quickly in complex domains and feel comfortable working within data-heavy systems."
+      "title": "Navigating Complexity",
+      "description": "I ramp up quickly in complex domains (eg. B2B enterprise and science) and feel comfortable working within data-rich systems."
     },
     {
       "title": "System Thinking",
-      "description": "I approach problems by getting a bigger picture and uncovering underlying structural challenges."
+      "description": "I connect the dots across systems thru a bigger picture lens, distilling insights from thorough research and structured analysis."
     },
     {
-      "title": "Tech + AI Fluency",
-      "description": "I have a working knowledge of front-end development and design systems. And I'm actively experimenting with, and sharing my learnings about various AI tools in my design workflows."
+      "title": "AI + Code Fluency",
+      "description": "I bridge design and engineering through front-end knowledge and developer workflows, and actively experiment with AI to design and vibe code."
     },
     {
       "title": "UX Advocacy",
-      "description": "I'm passionate about evangelizing UX design. I've given a presentation with over 60% audience engagement rate during a lunch and learn session."
+      "description": "I influence teams to prioritize UX through strategic communication, and driving high engagement and buy-in."
     }
   ],
   "interests": [
@@ -83,6 +115,13 @@
     },
     {
       "image": {
+        "url": "assets/images/interests/cat.jpg",
+        "alt": "My cat, Sheena, on a sofa"
+      },
+      "label": "My cat"
+    },
+    {
+      "image": {
         "url": "assets/images/interests/mushroom-hunting.jpg",
         "alt": "Yatong holding a morel she found during mushroom hunting"
       },
@@ -95,6 +134,11 @@
       },
       "label": "Rock climbing"
     }
-  ]
+  ],
+  "interestsAccessibility": {
+    "regionLabel": "Photos of interests",
+    "pauseLabel": "Pause",
+    "playLabel": "Play"
+  }
 }
 

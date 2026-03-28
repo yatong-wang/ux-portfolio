@@ -1198,6 +1198,162 @@ nav[data-menu-open="true"] {
 }
 
 /**
+ * About page vertical timeline (My UX Journey)
+ * Typography uses design tokens; layout matches former Tailwind grid.
+ */
+.about-timeline-row {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, auto) minmax(1.75rem, auto) 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-timeline-row {
+    column-gap: 1.25rem;
+  }
+}
+
+.about-timeline-period {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: end;
+  line-height: var(--line-height-none);
+  transform: translateY(15px);
+  font-family: var(--font-body);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-black);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+  color: #94a3b8;
+}
+
+.about-timeline-period--accent {
+  color: var(--color-primary);
+}
+
+.about-timeline-rail {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  position: relative;
+  align-self: stretch;
+  justify-self: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+}
+
+.about-timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--color-border);
+}
+
+.about-timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.375rem;
+  z-index: 10;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-timeline-marker--featured {
+  background-color: var(--color-primary);
+  box-shadow: 0 0 15px rgba(54, 226, 123, 0.4);
+}
+
+/* Same pulse as footer status dot (Tailwind animate-ping), without conflicting position utilities */
+.about-timeline-marker-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  opacity: 0.75;
+  animation: about-timeline-marker-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.about-timeline-marker--featured .about-timeline-icon {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes about-timeline-marker-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-timeline-marker-ping {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.about-timeline-marker--muted {
+  background-color: var(--color-card-bg);
+  border: 1px solid rgba(54, 226, 123, 0.3);
+}
+
+.about-timeline-icon {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.about-timeline-icon--filled {
+  font-variation-settings: "FILL" 1;
+  color: var(--color-bg-darker);
+}
+
+.about-timeline-icon--outline {
+  color: var(--color-primary);
+}
+
+.about-timeline-title {
+  grid-column: 3;
+  grid-row: 1;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-tight);
+  color: #f1f5f9;
+  min-width: 0;
+  font-weight: var(--font-weight-medium);
+}
+
+.about-timeline-title--emphasis {
+  font-weight: var(--font-weight-bold);
+}
+
+.about-timeline-spacer {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.about-timeline-subtitle {
+  grid-column: 3;
+  grid-row: 2;
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-tight);
+  color: #94a3b8;
+}
+
+/**
  * Carousel Arrow Buttons
  * Navigation arrows for scrolling the carousel
  */
