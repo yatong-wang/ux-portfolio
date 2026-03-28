@@ -233,6 +233,67 @@
     }
 
     /**
+     * Pause / play control for the about-page interests scrolling strip.
+     * Respects prefers-reduced-motion (default paused; opt-in via .interests-motion-opt-in).
+     */
+    function initInterestsMotionToggle(a11y) {
+        const scroller = document.querySelector('[data-interests-scroller]');
+        const btn = document.querySelector('[data-interests-motion-toggle]');
+        const labelEl = document.querySelector('[data-interests-motion-label]');
+        const iconEl = document.querySelector('[data-interests-motion-icon]');
+        const region = document.querySelector('[data-interests-region]');
+        if (!scroller || !btn || !labelEl) return;
+
+        const pauseLabel = (a11y && a11y.pauseLabel) || 'Pause scrolling gallery';
+        const playLabel = (a11y && a11y.playLabel) || 'Play scrolling gallery';
+        const regionLabel = (a11y && a11y.regionLabel) || 'Photos of interests';
+        if (region) {
+            region.setAttribute('aria-label', regionLabel);
+        }
+
+        const prmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function isMotionActive() {
+            if (prmMq.matches) {
+                return scroller.classList.contains('interests-motion-opt-in');
+            }
+            return !scroller.classList.contains('is-paused');
+        }
+
+        function updateUI() {
+            const active = isMotionActive();
+            btn.setAttribute('aria-pressed', String(active));
+            labelEl.textContent = active ? pauseLabel : playLabel;
+            if (iconEl) {
+                iconEl.textContent = active ? 'pause' : 'play_arrow';
+            }
+        }
+
+        function syncToSystemPreference() {
+            scroller.classList.remove('interests-motion-opt-in');
+            scroller.classList.remove('is-paused');
+            updateUI();
+        }
+
+        btn.addEventListener('click', function interestsMotionClick() {
+            if (prmMq.matches) {
+                scroller.classList.toggle('interests-motion-opt-in');
+            } else {
+                scroller.classList.toggle('is-paused');
+            }
+            updateUI();
+        });
+
+        if (typeof prmMq.addEventListener === 'function') {
+            prmMq.addEventListener('change', syncToSystemPreference);
+        } else if (typeof prmMq.addListener === 'function') {
+            prmMq.addListener(syncToSystemPreference);
+        }
+
+        syncToSystemPreference();
+    }
+
+    /**
      * Loads and renders about page content
      */
     async function loadAbout() {
@@ -299,6 +360,51 @@
                 }
                 linkedinLink.innerHTML = `${escapeHTML(data.bio.links.linkedin.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(linkedinLink);
+            }
+        }
+
+        // Load timeline
+        const timelineContainer = document.querySelector('[data-about-timeline]');
+        if (data.timeline) {
+            if (timelineContainer && Array.isArray(data.timeline.milestones)) {
+                timelineContainer.innerHTML = '';
+                data.timeline.milestones.forEach((milestone) => {
+                    const featured = milestone.featured === true;
+                    const periodClass = featured
+                        ? 'about-timeline-period about-timeline-period--accent'
+                        : 'about-timeline-period';
+                    const markerClass = featured
+                        ? 'about-timeline-marker about-timeline-marker--featured'
+                        : 'about-timeline-marker about-timeline-marker--muted';
+                    const titleClass = featured
+                        ? 'about-timeline-title about-timeline-title--emphasis'
+                        : 'about-timeline-title';
+                    const iconName = milestone.icon && String(milestone.icon).trim()
+                        ? String(milestone.icon).trim()
+                        : 'circle';
+                    const iconClass = featured
+                        ? 'material-symbols-outlined about-timeline-icon about-timeline-icon--filled'
+                        : 'material-symbols-outlined about-timeline-icon about-timeline-icon--outline';
+                    const pingHTML = featured
+                        ? '<span class="about-timeline-marker-ping" aria-hidden="true"></span>'
+                        : '';
+                    const rowHTML = `
+                        <div class="about-timeline-row">
+                            <span class="${periodClass}">${escapeHTML(milestone.period || '')}</span>
+                            <div class="about-timeline-rail">
+                                <div class="about-timeline-line" aria-hidden="true"></div>
+                                <div class="${markerClass}">
+                                    ${pingHTML}
+                                    <span class="${iconClass}" aria-hidden="true">${escapeHTML(iconName)}</span>
+                                </div>
+                            </div>
+                            <p class="${titleClass}">${escapeHTML(milestone.title || '')}</p>
+                            <div class="about-timeline-spacer" aria-hidden="true"></div>
+                            <p class="about-timeline-subtitle">${escapeHTML(milestone.subtitle || '')}</p>
+                        </div>
+                    `;
+                    timelineContainer.appendChild(createHTML(rowHTML));
+                });
             }
         }
 
@@ -392,7 +498,7 @@
                 const fragment = document.createDocumentFragment();
                 data.interests.forEach(interest => {
                     const interestHTML = `
-                        <div class="interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] transition-all duration-500 border border-[#29382f]">
+                        <div class="interest-card w-72 h-96 md:h-96 flex-shrink-0 relative overflow-hidden rounded-3xl transition-all duration-500 border border-[#29382f]">
                             <img alt="${escapeHTML(interest.image.alt)}" class="w-full h-full object-cover" src="${escapeHTML(interest.image.url)}">
                             <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
                                 <span class="text-white font-medium text-lg">${escapeHTML(interest.label)}</span>
@@ -410,6 +516,8 @@
             interestsContainer.appendChild(createInterestImages());
             interestsContainer.appendChild(createInterestImages());
         }
+
+        initInterestsMotionToggle(data.interestsAccessibility);
     }
 
     /**
