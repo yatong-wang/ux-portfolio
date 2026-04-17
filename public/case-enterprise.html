@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>USDA Enterprise App Integration - Case Study</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#36e27b",
+            "background-light": "#f6f8f7",
+            "background-dark": "#112117",
+          },
+          fontFamily: {
+            "display": ["Spline Sans", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
+  <div data-banner-placeholder></div>
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <div data-nav-placeholder></div>
+
+    <main class="flex-grow flex flex-col items-center w-full pt-32 pb-0 px-4 md:px-10">
+      <div class="w-full">
+
+        <!-- Section 01 — Hero (full-bleed) -->
+        <section class="relative flex flex-col justify-end min-h-[85vh] p-4 lg:p-10 w-full" aria-labelledby="case-hero-heading">
+          <div class="absolute inset-0 z-0">
+            <div class="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Hero image — final hi-fi mockup]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-background-dark/95 via-background-dark/60 to-background-dark/20 pointer-events-none"></div>
+              <span class="relative z-10 text-gray-300 font-mono tracking-wide text-sm md:text-base">[Hero image &mdash; final hi-fi mockup]</span>
+            </div>
+          </div>
+          <div class="relative z-10 w-full max-w-4xl mx-auto px-4 lg:px-8 pb-12">
+            <div class="flex flex-col gap-6">
+              <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">Desktop</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">Enterprise</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">Research</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">Information Architecture</span>
+                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">2024&ndash;2025</span>
+              </div>
+              <h1 id="case-hero-heading" class="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white leading-[1.1]">
+                Integrating Legacy<br/>Scientific Tools into<br/>USDA Enterprise Software
+              </h1>
+              <p class="text-lg md:text-xl text-[#9eb7a8] font-light leading-relaxed max-w-2xl">
+                Helping field staff complete assessments faster by embedding and simplifying workflows from legacy scientific tools.
+              </p>
+              <div class="flex flex-col md:flex-row gap-8 mt-4 text-[#9eb7a8]">
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Role</p>
+                  <p class="text-base text-white">Sole UX/UI Designer</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Timeline</p>
+                  <p class="text-base text-white">~10 Months (2024&ndash;2025)</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Team</p>
+                  <p class="text-base text-white">10+ person Agile team</p>
+                </div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Client</p>
+                  <p class="text-base text-white">USDA</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <a href="#tldr" class="inline-flex items-center justify-center h-12 px-6 rounded-full bg-primary hover:bg-primary/90 transition-colors text-background-dark text-base font-bold tracking-wide">
+                  Case Study Overview
+                  <span class="material-symbols-outlined ml-2 text-[20px]">arrow_downward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 02 — TL;DR -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="tldr" aria-label="TL;DR">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">02 / TL;DR</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">report</span>
+                </div>
+                <h3 class="text-white text-lg font-bold">Problem</h3>
+                <p class="text-sm text-[#9eb7a8] leading-relaxed">Internal users avoided required field assessments because the external legacy tools were too complex. Missed assessments had real consequences for the agency's mission.</p>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">route</span>
+                </div>
+                <h3 class="text-white text-lg font-bold">Approach</h3>
+                <p class="text-sm text-[#9eb7a8] leading-relaxed">Multi-phase research with four stakeholder groups. Designed around the &lt;5% of functionality users actually needed. Integrated the result into the enterprise platform.</p>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">trending_up</span>
+                </div>
+                <h3 class="text-white text-lg font-bold">Outcome</h3>
+                <p class="text-sm text-[#9eb7a8] leading-relaxed">Wireframes validated at 93% user satisfaction. Project paused before production rollout &mdash; measurement plan was defined and is documented below.</p>
+                <div class="h-px bg-white/10 mt-auto"></div>
+                <p class="text-xs italic text-[#9eb7a8]">Honest framing &mdash; 93% is a real measured result. Projected targets are labeled separately below.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 03 — Business Context -->
+        <section class="px-4 py-20 lg:px-20 w-full bg-[#161e19] scroll-mt-24" id="context" aria-labelledby="business-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">03 / Business Context</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div class="lg:col-span-1 flex flex-col gap-6">
+                <h3 id="business-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Staff were avoiding the very tools meant to help them</h3>
+                <p class="text-[#9eb7a8] text-lg leading-relaxed">Internal USDA users were required to run field assessments using two external legacy desktop tools. The tools received low satisfaction ratings in business surveys and were routinely skipped. Without proper assessments, the consequences fall on the land and on the agency's mission.</p>
+                <div class="bg-[#1c2620] p-6 rounded-2xl border border-primary/40">
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mb-2">The Goal</p>
+                  <p class="text-gray-200">Integrate the two legacy scientific tools into USDA's enterprise software &mdash; simplify the workflow without compromising scientific integrity.</p>
+                </div>
+              </div>
+              <div class="lg:col-span-2">
+                <figure class="flex flex-col gap-3">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Legacy tool screenshot — visual density only; mask any identifying labels]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Legacy tool screenshot &mdash; visual density only; mask any identifying labels]</span>
+                  </div>
+                  <figcaption class="text-sm text-[#9eb7a8]">The legacy desktop tools staff were required to use.</figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 04 — Framing Question (pull quote) -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="quote" aria-label="Framing question">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">04 / Framing Question</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-10 items-center">
+              <div class="h-px bg-white/10 w-full"></div>
+              <blockquote class="text-3xl lg:text-4xl font-bold text-white max-w-3xl mx-auto text-center leading-tight">
+                &ldquo;How might we maintain scientific integrity while making the workflow usable for users who are not domain experts?&rdquo;
+              </blockquote>
+              <p class="text-[#9eb7a8] text-sm uppercase tracking-widest">Design Guiding Question</p>
+              <div class="h-px bg-white/10 w-full"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 05 — Stakeholder Alignment -->
+        <section class="px-4 py-20 lg:px-20 w-full bg-[#161e19] scroll-mt-24" id="stakeholders" aria-labelledby="stakeholders-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">05 / Stakeholder Alignment</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-3xl">
+              <h3 id="stakeholders-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Aligning goals across multiple stakeholder groups</h3>
+              <p class="text-[#9eb7a8] text-lg leading-relaxed">This project touched many parts of the agency. I interviewed each stakeholder group to understand their concerns before making design decisions. My goal was to ensure the final design addressed all of them.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">science</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Legacy App Domain Experts (Scientists)</h4>
+                <p class="text-sm text-[#9eb7a8]">Preserving scientific accuracy and method fidelity.</p>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;The science should not be reduced.&rdquo;</blockquote>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">hub</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Enterprise Software Team</h4>
+                <p class="text-sm text-[#9eb7a8]">Workflow continuity with the rest of the platform.</p>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;Make sure your entry / exit point fits into the larger workflow.&rdquo;</blockquote>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">palette</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Design System Team (WIP)</h4>
+                <p class="text-sm text-[#9eb7a8]">Visual consistency across a still-evolving system.</p>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;It's important to keep a consistent look with others.&rdquo;</blockquote>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">school</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Legacy App Trainers</h4>
+                <p class="text-sm text-[#9eb7a8]">Scattered, hard-to-find training materials.</p>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;The training materials are hard to find; I need to develop my own.&rdquo;</blockquote>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 06 — Research Insight #1 -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="insight-one" aria-labelledby="insight-one-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">06 / Research Insight #1</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+              <div class="flex-1 flex flex-col gap-6">
+                <h3 id="insight-one-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Enterprise users need less than 5% of the legacy tools' functionality</h3>
+                <p class="text-[#9eb7a8] text-lg leading-relaxed">I ran independent multi-phase discovery research &mdash; user interviews, surveys, and usability tests of the legacy tools. The core finding: the tools were overkill. They were too scientific and too cumbersome for the users expected to run them day-to-day.</p>
+                <ul class="flex flex-col gap-3 mt-2">
+                  <li class="flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-primary">groups</span>
+                    <span>User interviews across stakeholder groups</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-primary">poll</span>
+                    <span>Surveys on tool usage and pain points</span>
+                  </li>
+                  <li class="flex items-center gap-3 text-white">
+                    <span class="material-symbols-outlined text-primary">bug_report</span>
+                    <span>Usability tests of the legacy tools</span>
+                  </li>
+                </ul>
+                <div class="bg-[#1c2620] p-6 rounded-2xl border border-primary/40 mt-2">
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mb-2">The Analogy</p>
+                  <p class="text-gray-200 italic">It's like handing an amateur a professional high-end digital camera when all they need is the camera app on their phone.</p>
+                </div>
+              </div>
+              <div class="flex-1 w-full">
+                <figure>
+                  <div class="relative aspect-square rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Diagram: 5% vs. 95% — what users needed vs. what the tool offered]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Diagram: 5% vs. 95% &mdash; what users needed vs. what the tool offered]</span>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 07 — Research Insight #2 (comparison) -->
+        <section class="px-4 py-20 lg:px-20 w-full bg-[#161e19] scroll-mt-24" id="comparison" aria-labelledby="insight-two-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">07 / Research Insight #2</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-4xl">
+              <h3 id="insight-two-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">On using templates &mdash; expert views vs. actual user reality</h3>
+              <p class="text-[#9eb7a8] text-lg leading-relaxed">One core task involves logging structured data, which can be pre-filled from templates and adjusted afterward. While waiting for access to interview enterprise users, domain experts told me templates were useless. User research invalidated that assumption.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">psychology</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Domain Experts &amp; Trainers</h4>
+                <ul class="flex flex-col gap-3 mt-1">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>More domain knowledge</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>Used legacy tools for complex edge cases &mdash; often to help enterprise users</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>Infrequent usage; low task volume</span>
+                  </li>
+                </ul>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;It's faster to build from scratch.&rdquo;</blockquote>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">groups_2</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Enterprise Users</h4>
+                <ul class="flex flex-col gap-3 mt-1">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>Limited domain knowledge</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>Used legacy tools for common, recurring scenarios</span>
+                  </li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm">
+                    <span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span>
+                    <span>Seasonal, high-volume usage on repetitive tasks</span>
+                  </li>
+                </ul>
+                <blockquote class="border-l-2 border-primary pl-3 italic text-[#9eb7a8] text-sm mt-auto">&ldquo;Having to build from scratch every single time is tedious and unrealistic.&rdquo;</blockquote>
+              </article>
+            </div>
+            <article class="bg-[#1c2620] p-6 rounded-2xl border border-primary/40">
+              <p class="text-primary font-bold tracking-widest text-xs uppercase mb-2">What It Meant for Design</p>
+              <p class="text-gray-200 text-lg leading-relaxed">Saving time was the priority &mdash; enterprise users juggle many responsibilities and process high volumes. Templates became a first-class feature in the new workflow, not an afterthought.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section 08 — Information Architecture (bento grid) -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="design" aria-labelledby="ia-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">08 / Information Architecture</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-3xl">
+              <h3 id="ia-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Mapping overlapping data inputs and actions</h3>
+              <p class="text-[#9eb7a8] text-lg leading-relaxed">Before designing any screens, I mapped the data model of both legacy tools against the enterprise platform. This revealed overlapping inputs, duplicated actions, and the shared spine the new workflow would need.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[220px] md:auto-rows-[260px]">
+              <div class="md:col-span-2 row-span-2 rounded-3xl overflow-hidden relative group border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[IA object map — full image; mask proprietary field names if present]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                <span class="text-gray-400 font-mono tracking-wide text-sm">[IA object map &mdash; full image; mask proprietary field names if present]</span>
+                <div class="absolute bottom-6 left-6 z-20 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full">
+                  <p class="text-white text-sm font-medium">Object Map</p>
+                </div>
+              </div>
+              <div class="rounded-3xl bg-[#1c2620] border border-[#29382f] p-6 flex flex-col gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">database</span>
+                </div>
+                <h4 class="text-white font-bold">Legacy Data Models</h4>
+                <p class="text-sm text-[#9eb7a8]">Full data models of both legacy tools, reconciled against the enterprise platform.</p>
+              </div>
+              <div class="rounded-3xl bg-[#1c2620] border border-[#29382f] p-6 flex flex-col gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">verified</span>
+                </div>
+                <h4 class="text-white font-bold">Expert Input</h4>
+                <p class="text-sm text-[#9eb7a8]">Continuous validation with domain experts to preserve scientific accuracy.</p>
+              </div>
+              <div class="rounded-3xl bg-[#1c2620] border border-[#29382f] p-6 flex flex-col gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">search</span>
+                </div>
+                <h4 class="text-white font-bold">User Research</h4>
+                <p class="text-sm text-[#9eb7a8]">Interviews, usability tests, and task analyses with enterprise users.</p>
+              </div>
+              <div class="rounded-3xl bg-[#1c2620] border border-[#29382f] p-6 flex flex-col gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">bar_chart</span>
+                </div>
+                <h4 class="text-white font-bold">Survey Data</h4>
+                <p class="text-sm text-[#9eb7a8]">Quantitative satisfaction and usage data from internal business surveys.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 09 — Design Solution (Problem / Solution stack) -->
+        <section class="px-4 py-20 lg:px-20 w-full bg-[#161e19] scroll-mt-24" id="problem-solution" aria-labelledby="design-solution-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">09 / Design Solution</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-4xl">
+              <h3 id="design-solution-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">A simpler, more streamlined, and more learnable flow</h3>
+              <p class="text-[#9eb7a8] text-lg leading-relaxed">I collaborated with the enterprise software team and legacy app domain experts on a weekly basis to ensure every design decision was both feasible and scientifically accurate.</p>
+            </div>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-1 flex flex-col gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">list_alt</span>
+                  </div>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 01</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Choice overload</h4>
+                  <p class="text-sm text-[#9eb7a8]">Long option lists with limited interactivity forced slow, error-prone decisions.</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <ul class="flex flex-col gap-2">
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Auto-population from integrated enterprise data</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Searchable, filterable option lists</span></li>
+                  </ul>
+                </div>
+                <div class="lg:col-span-2">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Before/after: dropdown vs. auto-populated table with override]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Before/after: dropdown vs. auto-populated table with override]</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-1 flex flex-col gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">visibility</span>
+                  </div>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 02</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Cluttered, outdated, confusing UI</h4>
+                  <p class="text-sm text-[#9eb7a8]">Too many controls visible at once led to frequent user errors and avoidance.</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <ul class="flex flex-col gap-2">
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Progressive disclosure to reduce noise</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Responsive enabling to prevent invalid states</span></li>
+                  </ul>
+                </div>
+                <div class="lg:col-span-2">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Screenshot: responsive enabling + tabbed navigation with annotation callouts]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Screenshot: responsive enabling + tabbed navigation with annotation callouts]</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-1 flex flex-col gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">stairs</span>
+                  </div>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 03</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Steep learning curve and low retention</h4>
+                  <p class="text-sm text-[#9eb7a8]">Generational turnover made the legacy learning burden unsustainable for newer staff.</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <ul class="flex flex-col gap-2">
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Simplified, stepped data entry via tabbed navigation</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Contextual toggletips and help buttons</span></li>
+                  </ul>
+                </div>
+                <div class="lg:col-span-2">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Screenshot: tabbed guided entry with help pattern visible]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Screenshot: tabbed guided entry with help pattern visible]</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="lg:col-span-1 flex flex-col gap-4">
+                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                    <span class="material-symbols-outlined">save</span>
+                  </div>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 04</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Difficult to save and reuse work</h4>
+                  <p class="text-sm text-[#9eb7a8]">Legacy tools stored data in silos disconnected from the platform, forcing repeat effort.</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <ul class="flex flex-col gap-2">
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Leverage enterprise software's existing data management</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Templates as a first-class pattern</span></li>
+                  </ul>
+                </div>
+                <div class="lg:col-span-2">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-[#3a4b40] bg-[#111714] flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Screenshot: save/reuse and template selection pattern]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Screenshot: save/reuse and template selection pattern]</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section 10 — Trade-offs (Remediation / Result) -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="remediation" aria-labelledby="tradeoffs-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">10 / Trade-offs</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-4xl">
+              <h3 id="tradeoffs-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Designing around a work-in-progress design system</h3>
+              <p class="text-[#9eb7a8] text-lg leading-relaxed">Our team was among the first to adopt the new enterprise design system while it was still being built. Two patterns we needed &mdash; used frequently and central to efficiency &mdash; didn't exist yet.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">build</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Remediation</h4>
+                <ul class="flex flex-col gap-3">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Designed interim patterns with input from other designers</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Documented every design decision for traceability</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Filed backlog requests with the design system team; followed up frequently</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Communicated scope changes to product owners; phased features into post-MVP releases</span></li>
+                </ul>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">check_circle</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Result</h4>
+                <ul class="flex flex-col gap-3">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Maintained visual consistency across the platform</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Surfaced cross-team dependencies early</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Contributed patterns back to the evolving design system</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 11 — Outcome / Results -->
+        <section class="px-4 py-20 lg:px-20 w-full bg-[#161e19] scroll-mt-24" id="results" aria-labelledby="outcome-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">11 / Outcome</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="flex flex-col gap-4 max-w-4xl">
+              <h3 id="outcome-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Validated in wireframes. Paused before rollout.</h3>
+            </div>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div class="md:col-span-2 flex flex-col gap-2">
+                  <span class="text-5xl lg:text-6xl font-bold text-primary tracking-tighter">93%</span>
+                  <span class="text-white font-medium">Self-reported satisfaction</span>
+                  <span class="text-sm text-[#9eb7a8]">Measured &mdash; wireframe usability testing</span>
+                </div>
+                <div class="md:col-span-3 flex flex-col gap-2">
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Measured Result &mdash; Wireframe Usability Testing</p>
+                  <p class="text-[#9eb7a8] leading-relaxed">Wireframe usability testing validated the proposed workflow with target users before development began. Reception was overwhelmingly positive. This is the measured outcome before the project's scope changed.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="bg-[#1c2620] border-l-4 border-primary rounded-2xl border border-[#29382f] p-6 flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                <span class="material-symbols-outlined">info</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="text-primary font-bold tracking-widest text-xs uppercase">Candid Note</p>
+                <p class="text-gray-200 leading-relaxed">The project was terminated before production rollout. The framework below is the measurement plan I designed &mdash; not post-launch results.</p>
+              </div>
+            </article>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">speed</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Usability Metrics &mdash; Benchmarked for Comparison</h4>
+                <p class="text-sm text-[#9eb7a8]">Used during usability testing to evaluate design effectiveness.</p>
+                <ul class="flex flex-col gap-2 mt-1">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Time on task</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Task success rate</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Self-reported satisfaction rating</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Error counts</span></li>
+                </ul>
+              </article>
+              <article class="bg-[#1c2620] p-6 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">insights</span>
+                </div>
+                <h4 class="text-white text-lg font-bold">Long-term Tracking &mdash; Post-Implementation</h4>
+                <p class="text-sm text-[#9eb7a8]">Planned for collection with stakeholders after rollout.</p>
+                <ul class="flex flex-col gap-2 mt-1">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Training time</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Satisfaction rating (business surveys)</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Adoption and usage rate</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Bounce rate</span></li>
+                </ul>
+              </article>
+            </div>
+
+            <article class="bg-[#1c2620] rounded-2xl border border-[#29382f] p-6 md:p-8">
+              <div class="flex flex-col gap-4">
+                <p class="text-primary font-bold tracking-widest text-xs uppercase">Projected Targets (If Launched)</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="flex flex-col gap-2">
+                    <span class="text-5xl lg:text-6xl font-bold text-white tracking-tighter">50%</span>
+                    <span class="text-white font-medium">Faster task completion</span>
+                    <span class="text-sm text-[#9eb7a8]">Projected target</span>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <span class="text-5xl lg:text-6xl font-bold text-white tracking-tighter">80%</span>
+                    <span class="text-white font-medium">Reduced training time</span>
+                    <span class="text-sm text-[#9eb7a8]">Projected target</span>
+                  </div>
+                  <div class="flex flex-col gap-2">
+                    <span class="text-5xl lg:text-6xl font-bold text-white tracking-tighter">75%+</span>
+                    <span class="text-white font-medium">Satisfaction in surveys</span>
+                    <span class="text-sm text-[#9eb7a8]">Projected target</span>
+                  </div>
+                </div>
+                <p class="text-sm italic text-[#9eb7a8] mt-2">These are targets, not measured results.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section 12 — Takeaways / Retrospection -->
+        <section class="px-4 py-20 lg:px-20 w-full scroll-mt-24" id="takeaways" aria-labelledby="takeaways-heading">
+          <div class="max-w-6xl mx-auto flex flex-col gap-12">
+            <div class="flex items-center gap-4">
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">12 / Takeaways &amp; Retrospection</h2>
+              <div class="h-px bg-white/10 flex-1"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <article class="bg-[#1c2620] p-6 md:p-8 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">lightbulb</span>
+                </div>
+                <p class="text-primary font-bold tracking-widest text-xs uppercase">Takeaways</p>
+                <h3 id="takeaways-heading" class="text-2xl lg:text-3xl font-bold text-white leading-tight">Enterprise UX is systems thinking</h3>
+                <ul class="flex flex-col gap-3 mt-2">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span><strong class="text-white">Assumptions from experts &ne; user reality.</strong> Research revealed that what domain experts assumed users wanted was consistently different from what users actually did.</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span><strong class="text-white">Simplification can preserve integrity</strong> &mdash; if done with domain experts, not around them.</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span><strong class="text-white">Stakeholder alignment is as critical as execution.</strong> Without it, even well-validated designs stall.</span></li>
+                </ul>
+              </article>
+              <article class="bg-[#1c2620] p-6 md:p-8 rounded-2xl border border-[#29382f] flex flex-col gap-4">
+                <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined">replay</span>
+                </div>
+                <p class="text-primary font-bold tracking-widest text-xs uppercase">Retrospection</p>
+                <h3 class="text-2xl lg:text-3xl font-bold text-white leading-tight">What I'd do differently</h3>
+                <ul class="flex flex-col gap-3 mt-2">
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span><strong class="text-white">Measure learnability and cognitive load</strong> during testing, not just satisfaction. Satisfaction alone doesn't tell you whether a design is truly learnable.</span></li>
+                  <li class="flex items-start gap-3 text-[#9eb7a8] text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span><strong class="text-white">More stakeholder involvement in UX activities</strong> &mdash; specifically cognitive walkthroughs with domain experts, engineers, and product owners.</span></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Section 13 — Bottom case-study navigation (template strip) -->
+    <section class="px-4 py-16 md:px-10 lg:px-20 w-full border-t border-[#29382f] bg-[#161e19]" aria-label="Case study navigation">
+      <nav class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <a href="#" aria-disabled="true" tabindex="-1" class="flex items-center gap-2 text-[#9eb7a8]/50 uppercase tracking-widest text-sm font-bold pointer-events-none select-none cursor-not-allowed justify-self-start">
+          <span class="material-symbols-outlined">arrow_back</span>
+          <span>Previous case study</span>
+        </a>
+        <a href="index.html#work" class="flex items-center justify-center gap-2 text-primary hover:text-white transition-colors uppercase tracking-widest text-sm font-bold group justify-self-center focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 focus:ring-offset-[#161e19] rounded-full px-3 py-1">
+          <span>All work</span>
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </a>
+        <a href="#" aria-disabled="true" tabindex="-1" class="flex items-center gap-2 text-[#9eb7a8]/50 uppercase tracking-widest text-sm font-bold pointer-events-none select-none cursor-not-allowed justify-self-end">
+          <span>Next case study</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </nav>
+    </section>
+
+    <div data-footer-placeholder></div>
+  </div>
+
+  <script src="js/content-loader.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
