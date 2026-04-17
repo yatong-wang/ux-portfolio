@@ -320,6 +320,20 @@ h4 {
 }
 
 /* ==========================================================================
+   Global top banner (scroll-linked drawer)
+   ========================================================================== */
+
+#banner-spacer.banner-spacer,
+#top-banner-shell.top-banner-shell,
+#top-banner {
+  transition: none;
+}
+
+#top-banner {
+  will-change: transform;
+}
+
+/* ==========================================================================
    Hero Loading Animations
    ========================================================================== */
 
@@ -1402,6 +1416,85 @@ nav[data-menu-open="true"] {
   }
 }
 
+/* ==========================================================================
+   Scroll to top (donut progress)
+   Fixed control; ring is SVG (track + progress). z-index below email tooltip.
+   ========================================================================== */
+
+.scroll-to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 9998;
+  width: 4rem;
+  height: 4rem;
+  padding: 0;
+  border: none;
+  border-radius: 9999px;
+  background-color: #1c2620;
+  color: var(--color-primary);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: visible;
+  transition: opacity 200ms linear, visibility 200ms linear;
+}
+
+.scroll-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.scroll-to-top:focus {
+  outline: none;
+}
+
+.scroll-to-top:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.scroll-to-top__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.scroll-to-top__svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.scroll-to-top__track,
+.scroll-to-top__progress {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 6;
+}
+
+.scroll-to-top__track {
+  stroke: #29382f;
+}
+
+.scroll-to-top__progress {
+  stroke: var(--color-primary);
+}
+
+.scroll-to-top .material-symbols-outlined {
+  position: relative;
+  z-index: 1;
+  font-size: 1.5rem;
+  line-height: 1;
+  pointer-events: none;
+}
 
 /* ==========================================================================
    Responsiveness

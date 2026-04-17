@@ -520,6 +520,79 @@
         initInterestsMotionToggle(data.interestsAccessibility);
     }
 
+    let bannerScrollSyncInitialized = false;
+
+    /**
+     * Syncs fixed banner shell, in-flow spacer, and nav top to scroll position (scroll-linked drawer).
+     */
+    function syncBannerAndNavFromScroll() {
+        const banner = document.getElementById('top-banner');
+        const spacer = document.getElementById('banner-spacer');
+        const shell = document.getElementById('top-banner-shell');
+        const navWrapper = document.querySelector('.nav-container')?.parentElement;
+
+        if (!banner || !spacer || !shell) {
+            if (navWrapper) {
+                navWrapper.style.top = '0';
+            }
+            return;
+        }
+
+        const H = banner.offsetHeight;
+        if (H <= 0) {
+            return;
+        }
+
+        const y = window.scrollY || document.documentElement.scrollTop;
+        const t = Math.min(Math.max(y, 0), H);
+        const visible = H - t;
+
+        spacer.style.height = `${visible}px`;
+        shell.style.height = `${visible}px`;
+        banner.style.transform = `translateY(-${t}px)`;
+        if (navWrapper) {
+            navWrapper.style.top = `${visible}px`;
+        }
+    }
+
+    function updateNavPosition() {
+        syncBannerAndNavFromScroll();
+    }
+
+    /**
+     * Passive scroll + resize; ResizeObserver when banner height changes (wrap, font).
+     */
+    function initBannerScrollSync() {
+        if (bannerScrollSyncInitialized) {
+            return;
+        }
+        const banner = document.getElementById('top-banner');
+        if (!banner) {
+            return;
+        }
+        bannerScrollSyncInitialized = true;
+
+        const onScrollOrResize = () => {
+            syncBannerAndNavFromScroll();
+        };
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+
+        if (typeof ResizeObserver !== 'undefined') {
+            const ro = new ResizeObserver(() => {
+                syncBannerAndNavFromScroll();
+            });
+            ro.observe(banner);
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                syncBannerAndNavFromScroll();
+            });
+        });
+    }
+
     /**
      * Loads and renders the global top banner (non-dismissible)
      */
@@ -539,8 +612,8 @@
             ? `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${cta.target ? ' target="_blank" rel="noopener"' : ''}>${escapeHTML(cta.text || '')}</a>`
             : '';
 
-        const bannerHTML = `
-            <div class="sticky top-0 z-[100] w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a]" id="top-banner">
+        const innerBannerHTML = `
+            <div class="w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a] pointer-events-auto" id="top-banner">
                 <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
                     <p class="text-sm font-medium tracking-tight text-[#111714]">
                         <span class="mr-2">🚧</span>${escapeHTML(data.banner.message)}
@@ -549,8 +622,20 @@
                 </div>
             </div>
         `;
-        const fragment = createHTML(bannerHTML);
-        placeholder.replaceWith(fragment);
+
+        const shellHTML = `
+            <div id="top-banner-shell" class="top-banner-shell fixed top-0 left-0 right-0 z-[100] overflow-hidden pointer-events-none">
+                ${innerBannerHTML}
+            </div>
+        `;
+
+        const shellFragment = createHTML(shellHTML);
+        const shell = shellFragment.firstElementChild;
+        const spacer = document.createElement('div');
+        spacer.id = 'banner-spacer';
+        spacer.setAttribute('aria-hidden', 'true');
+        spacer.className = 'banner-spacer';
+        placeholder.replaceWith(spacer, shell);
     }
 
     /**
@@ -615,20 +700,7 @@
         }
     }
 
-    /**
-     * Updates the fixed nav wrapper's top offset so it sits below the top banner
-     * when present.
-     */
-    function updateNavPosition() {
-        const banner = document.getElementById('top-banner');
-        const navWrapper = document.querySelector('.nav-container')?.parentElement;
-        if (!navWrapper) return;
-
-        const bannerVisible = banner && banner.style.display !== 'none';
-        navWrapper.style.top = bannerVisible ? `${banner.offsetHeight}px` : '0';
-    }
-
-    // Expose for inline dismiss button and resize handling
+    // Expose for resize / external callers (syncs banner drawer + nav)
     window.updateNavPosition = updateNavPosition;
 
     /**
@@ -801,9 +873,8 @@
                 }
             });
 
-            // Position nav below banner when banner is visible
             updateNavPosition();
-            window.addEventListener('resize', updateNavPosition);
+            initBannerScrollSync();
 
             window.dispatchEvent(new CustomEvent('portfolioContentReady'));
         } catch (error) {

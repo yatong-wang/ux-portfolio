@@ -765,3 +765,151 @@
 
     window.addEventListener('portfolioContentReady', applyDisabledToPlaceholderLinks);
 })();
+
+/**
+ * Scroll-to-top button with donut progress (SVG stroke-dashoffset).
+ * Injected only when the document can scroll past one viewport (tall enough);
+ * retries after dynamic content (portfolioContentReady / load) for JSON-driven pages.
+ */
+(function() {
+    'use strict';
+
+    const PATH_D = 'M50,3 a47,47 0 0,1 0,94 a47,47 0 0,1 0,-94';
+    const NS = 'http://www.w3.org/2000/svg';
+
+    let mounted = false;
+
+    function prefersReducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function canScrollPastOneViewport() {
+        return document.documentElement.scrollHeight > window.innerHeight * 2;
+    }
+
+    function initScrollToTop() {
+        if (mounted || !canScrollPastOneViewport()) {
+            return;
+        }
+        mounted = true;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'scroll-to-top';
+        btn.setAttribute('aria-label', 'Back to top');
+        btn.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('tabindex', '-1');
+
+        const inner = document.createElement('span');
+        inner.className = 'scroll-to-top__inner';
+
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('class', 'scroll-to-top__svg');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('viewBox', '0 0 102 102');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+
+        const trackPath = document.createElementNS(NS, 'path');
+        trackPath.setAttribute('d', PATH_D);
+        trackPath.setAttribute('class', 'scroll-to-top__track');
+
+        const progressPath = document.createElementNS(NS, 'path');
+        progressPath.setAttribute('d', PATH_D);
+        progressPath.setAttribute('class', 'scroll-to-top__progress');
+
+        svg.appendChild(trackPath);
+        svg.appendChild(progressPath);
+
+        const icon = document.createElement('span');
+        icon.className = 'material-symbols-outlined';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = 'arrow_upward';
+
+        inner.appendChild(svg);
+        inner.appendChild(icon);
+        btn.appendChild(inner);
+        document.body.appendChild(btn);
+
+        const pathLength = progressPath.getTotalLength();
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+        progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+        progressPath.style.strokeDashoffset = String(pathLength);
+        progressPath.getBoundingClientRect();
+        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+
+        function updateProgress() {
+            const scroll = window.scrollY || document.documentElement.scrollTop;
+            const height =
+                document.documentElement.scrollHeight - window.innerHeight;
+            if (height <= 0) {
+                progressPath.style.strokeDashoffset = String(pathLength);
+                return;
+            }
+            const offset = pathLength - (scroll * pathLength) / height;
+            progressPath.style.strokeDashoffset = String(offset);
+        }
+
+        function updateVisibility() {
+            const scroll = window.scrollY || document.documentElement.scrollTop;
+            const pastFold = scroll > window.innerHeight;
+            if (pastFold) {
+                btn.classList.add('is-visible');
+                btn.removeAttribute('aria-hidden');
+                btn.removeAttribute('tabindex');
+            } else {
+                btn.classList.remove('is-visible');
+                btn.setAttribute('aria-hidden', 'true');
+                btn.setAttribute('tabindex', '-1');
+            }
+        }
+
+        let rafId = null;
+
+        function onScrollOrResize() {
+            if (rafId !== null) {
+                return;
+            }
+            rafId = window.requestAnimationFrame(() => {
+                rafId = null;
+                updateProgress();
+                updateVisibility();
+            });
+        }
+
+        function updateNow() {
+            if (rafId !== null) {
+                window.cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+            updateProgress();
+            updateVisibility();
+        }
+
+        btn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+            });
+        });
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize, { passive: true });
+        window.addEventListener('portfolioContentReady', updateNow);
+
+        updateNow();
+    }
+
+    function tryInitScrollToTop() {
+        initScrollToTop();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', tryInitScrollToTop);
+    } else {
+        tryInitScrollToTop();
+    }
+
+    window.addEventListener('portfolioContentReady', tryInitScrollToTop);
+    window.addEventListener('load', tryInitScrollToTop);
+})();
