@@ -293,6 +293,65 @@
         syncToSystemPreference();
     }
 
+    async function animateTagline(el, finalHTML) {
+        const delay = ms => new Promise(r => setTimeout(r, ms));
+        const phases = ['Thinking', 'Synthesizing','Generating'];
+
+        for (const word of phases) {
+            for (let d = 1; d <= 3; d++) {
+                el.innerHTML = `<span class="font-mono font-medium text-gray-400 text-xl lg:text-2xl">${word}${'·'.repeat(d)}</span>`;
+                await delay(130);
+            }
+            await delay(200);
+        }
+
+        await delay(80);
+        el.innerHTML = '';
+
+        // Insert blinking cursor that will trail the typed text
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        el.appendChild(cursor);
+
+        const template = document.createElement('template');
+        template.innerHTML = finalHTML.trim();
+
+        // insertTarget: when non-null, new top-level nodes are inserted before the cursor;
+        // for nested recursive calls, nodes are appended normally into their parent.
+        async function typeNodes(parent, nodes, insertBefore) {
+            for (const node of nodes) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const span = document.createElement('span');
+                    if (insertBefore) {
+                        parent.insertBefore(span, insertBefore);
+                    } else {
+                        parent.appendChild(span);
+                    }
+                    for (const ch of node.textContent) {
+                        span.textContent += ch;
+                        await delay(22);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const clone = document.createElement(node.tagName.toLowerCase());
+                    for (const attr of node.attributes) {
+                        clone.setAttribute(attr.name, attr.value);
+                    }
+                    if (insertBefore) {
+                        parent.insertBefore(clone, insertBefore);
+                    } else {
+                        parent.appendChild(clone);
+                    }
+                    await typeNodes(clone, node.childNodes, null);
+                }
+            }
+        }
+
+        await typeNodes(el, template.content.childNodes, cursor);
+
+        // Remove cursor once typing is complete
+        cursor.remove();
+    }
+
     /**
      * Loads and renders about page content
      */
@@ -312,11 +371,12 @@
             }
         }
 
-        // Load bio tagline
+        // Load bio tagline with typing animation; reveal sections below only after it completes
         const taglineEl = document.querySelector('[data-about-tagline]');
         if (taglineEl && data.bio && data.bio.tagline) {
-            taglineEl.innerHTML = data.bio.tagline;
+            await animateTagline(taglineEl, data.bio.tagline);
         }
+        document.querySelectorAll('[data-below-bio]').forEach(el => el.classList.remove('opacity-0'));
 
         // Load bio paragraphs
         const paragraphsContainer = document.querySelector('[data-about-paragraphs]');
@@ -485,6 +545,27 @@
                 }
 
                 strengthsContainer.appendChild(fragment);
+            });
+        }
+
+        // Load toolkits
+        const toolkitsContainer = document.querySelector('[data-toolkits-container]');
+        if (toolkitsContainer && Array.isArray(data.toolkits)) {
+            toolkitsContainer.innerHTML = '';
+            data.toolkits.forEach(group => {
+                const toolChips = group.tools.map(tool => `
+                    <div class="flex items-center gap-2 bg-[#1c2620] border border-[#29382f] rounded-full px-4 py-2">
+                        <img src="${escapeHTML(tool.logo)}" alt="${escapeHTML(tool.name)} logo" class="w-5 h-5 object-contain flex-shrink-0">
+                        <span class="text-sm font-medium text-gray-300 whitespace-nowrap">${escapeHTML(tool.name)}</span>
+                    </div>
+                `).join('');
+                const groupHTML = `
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">${escapeHTML(group.category)}</p>
+                        <div class="flex flex-wrap gap-2">${toolChips}</div>
+                    </div>
+                `;
+                toolkitsContainer.appendChild(createHTML(groupHTML));
             });
         }
 
@@ -851,37 +932,38 @@
      */
     async function init() {
         try {
-            // Load all content in parallel
+            // Nav, banner, and hero first so they finish their fade-in before the tagline animation runs
+            await Promise.all([loadBanner(), loadNav(), loadSiteContent(), loadHero()]);
+
+            // Initialize nav/banner interactivity immediately after they're in the DOM
+            if (typeof window.initMobileMenu === 'function') {
+                window.initMobileMenu();
+            }
+            updateNavPosition();
+            initBannerScrollSync();
+
+            // Trigger the hero/nav fade-in animation now so the nav is settled
+            // before the tagline animation starts.
+            await new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    if (typeof window.initHeroAnimations === 'function') {
+                        window.initHeroAnimations();
+                    }
+                    resolve();
+                });
+            });
+
+            // Everything else (loadAbout drives the tagline animation)
             await Promise.all([
-                loadBanner(),
-                loadNav(),
-                loadHero(),
                 loadMarquee(),
                 loadProjects(),
                 loadTestimonials(),
                 loadAbout(),
-                loadSiteContent(),
                 loadFooter()
             ]);
 
             // Apply fallback for browsers that don't support animation-timeline (e.g. Safari)
             applyRevealFallback();
-
-            // Initialize mobile menu after nav is loaded
-            if (typeof window.initMobileMenu === 'function') {
-                window.initMobileMenu();
-            }
-
-            // Trigger hero section loading animations
-            // Small delay to ensure DOM is fully ready
-            requestAnimationFrame(() => {
-                if (typeof window.initHeroAnimations === 'function') {
-                    window.initHeroAnimations();
-                }
-            });
-
-            updateNavPosition();
-            initBannerScrollSync();
 
             window.dispatchEvent(new CustomEvent('portfolioContentReady'));
         } catch (error) {

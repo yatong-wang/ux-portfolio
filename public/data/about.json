@@ -72,8 +72,16 @@
       "description": "I ramp up quickly in complex domains (eg. B2B enterprise and science) and feel comfortable working within data-rich systems."
     },
     {
+      "title": "Curation & Judgment",
+      "description": "I know what's worth keeping. I curate resources with a designer's eye, filtering noise and restructuing messiness into usable systems."
+    },
+    {
       "title": "System Thinking",
       "description": "I connect the dots across systems thru a bigger picture lens, distilling insights from thorough research and structured analysis."
+    },
+    {
+      "title": "Language Clarity",
+      "description": "Vague terms breed miscommunication. I operate at the level of meaning with a sensitivity to words that comes from years of foreign language study."
     },
     {
       "title": "AI + Code Fluency",
@@ -82,10 +90,47 @@
     {
       "title": "UX Advocacy",
       "description": "I influence teams to prioritize UX through strategic communication, and driving high engagement and buy-in."
+    }
+  ],
+  "toolkits": [
+    {
+      "category": "Design",
+      "tools": [
+        { "name": "Figma", "logo": "assets/tool-logos/figma-dark.svg" },
+        { "name": "Stitch with Google", "logo": "assets/tool-logos/stitch-lab.svg" },
+        { "name": "Pencil.dev", "logo": "assets/tool-logos/pencil-dev.svg" },
+        { "name": "Affinity Suite", "logo": "assets/tool-logos/affinity-studio.svg" }
+      ]
     },
     {
-      "title": "Information Curation",
-      "description": "I collect and organize resources and apply UX principles to make them easily usable."
+      "category": "Research",
+      "tools": [
+        { "name": "Dovetail", "logo": "assets/tool-logos/dovetail.png" },
+        { "name": "Optimal Workshop", "logo": "assets/tool-logos/optimal-workshop.svg" },
+        { "name": "Claude", "logo": "assets/tool-logos/claude.svg" },
+        { "name": "Perplexity", "logo": "assets/tool-logos/perplexity.svg" },
+        { "name": "NotebookLM", "logo": "assets/tool-logos/notebooklm.svg" },
+        { "name": "Gemini", "logo": "assets/tool-logos/gemini.svg" }
+      ]
+    },
+    {
+      "category": "Dev",
+      "tools": [
+        { "name": "Cursor", "logo": "assets/tool-logos/cursor.svg" },
+        { "name": "Claude Code", "logo": "assets/tool-logos/claude-code.svg" },
+        { "name": "GitHub", "logo": "assets/tool-logos/github-dark.svg" }
+      ]
+    },
+    {
+      "category": "Productivity",
+      "tools": [
+        { "name": "Obsidian", "logo": "assets/tool-logos/obsidian-dark.svg" },
+        { "name": "Notion", "logo": "assets/tool-logos/notion-dark.svg" },
+        { "name": "FigJam", "logo": "assets/tool-logos/figma-dark.svg" },
+        { "name": "Jira", "logo": "assets/tool-logos/atlassian-jira.svg" },
+        { "name": "Trello", "logo": "assets/tool-logos/trello.svg" },
+        { "name": "Discord", "logo": "assets/tool-logos/discord.svg" }
+      ]
     }
   ],
   "interests": [

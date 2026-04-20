@@ -134,7 +134,7 @@
 </section>
 
 <!-- Vertical Timeline Section (content from data/about.json via content-loader) -->
-<section class="about-timeline w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-28" aria-labelledby="about-timeline-heading">
+<section class="about-timeline w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-28 opacity-0 transition-opacity duration-700" aria-labelledby="about-timeline-heading" data-below-bio>
     <div class="flex flex-col justify-between mb-8 border-b border-[#29382f] pb-2">
         <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what shaped me</span>
         <h2 id="about-timeline-heading" class="text-4xl lg:text-5xl font-bold uppercase">my ux journey</h2>
@@ -144,18 +144,27 @@
     </div>
 </section>
 
-<!-- Design Superpowers Section -->
-<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-28">
+<!-- My Design Superpowers Section -->
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-28 opacity-0 transition-opacity duration-700" data-below-bio>
     <div class="flex flex-col justify-between mb-8 border-b border-[#29382f] pb-2">
         <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what sets me apart</span>
-        <h2 class="text-4xl lg:text-5xl font-bold uppercase">design superpowers</h2>
+        <h2 class="text-4xl lg:text-5xl font-bold uppercase">my design superpowers</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start" data-strengths-container>
     </div>
 </section>
 
+<!-- My Toolkits Section -->
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-28 opacity-0 transition-opacity duration-700" data-below-bio>
+    <div class="flex flex-col justify-between mb-8 border-b border-[#29382f] pb-2">
+        <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what I use the most</span>
+        <h2 class="text-4xl lg:text-5xl font-bold uppercase">my toolkits</h2>
+    </div>
+    <div class="flex flex-col gap-8" data-toolkits-container></div>
+</section>
+
 <!-- What Fuels Me Section -->
-<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-8">
+<section class="w-full max-w-[1280px] mx-auto px-4 md:px-20 mb-8 opacity-0 transition-opacity duration-700" data-below-bio>
     <div class="mb-8 border-b border-[#29382f] pb-6">
         <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what fuels me</span>
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
