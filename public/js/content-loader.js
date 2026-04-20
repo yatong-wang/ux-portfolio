@@ -233,6 +233,126 @@
     }
 
     /**
+     * Pause / play control for the about-page interests scrolling strip.
+     * Respects prefers-reduced-motion (default paused; opt-in via .interests-motion-opt-in).
+     */
+    function initInterestsMotionToggle(a11y) {
+        const scroller = document.querySelector('[data-interests-scroller]');
+        const btn = document.querySelector('[data-interests-motion-toggle]');
+        const labelEl = document.querySelector('[data-interests-motion-label]');
+        const iconEl = document.querySelector('[data-interests-motion-icon]');
+        const region = document.querySelector('[data-interests-region]');
+        if (!scroller || !btn || !labelEl) return;
+
+        const pauseLabel = (a11y && a11y.pauseLabel) || 'Pause scrolling gallery';
+        const playLabel = (a11y && a11y.playLabel) || 'Play scrolling gallery';
+        const regionLabel = (a11y && a11y.regionLabel) || 'Photos of interests';
+        if (region) {
+            region.setAttribute('aria-label', regionLabel);
+        }
+
+        const prmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function isMotionActive() {
+            if (prmMq.matches) {
+                return scroller.classList.contains('interests-motion-opt-in');
+            }
+            return !scroller.classList.contains('is-paused');
+        }
+
+        function updateUI() {
+            const active = isMotionActive();
+            btn.setAttribute('aria-pressed', String(active));
+            labelEl.textContent = active ? pauseLabel : playLabel;
+            if (iconEl) {
+                iconEl.textContent = active ? 'pause' : 'play_arrow';
+            }
+        }
+
+        function syncToSystemPreference() {
+            scroller.classList.remove('interests-motion-opt-in');
+            scroller.classList.remove('is-paused');
+            updateUI();
+        }
+
+        btn.addEventListener('click', function interestsMotionClick() {
+            if (prmMq.matches) {
+                scroller.classList.toggle('interests-motion-opt-in');
+            } else {
+                scroller.classList.toggle('is-paused');
+            }
+            updateUI();
+        });
+
+        if (typeof prmMq.addEventListener === 'function') {
+            prmMq.addEventListener('change', syncToSystemPreference);
+        } else if (typeof prmMq.addListener === 'function') {
+            prmMq.addListener(syncToSystemPreference);
+        }
+
+        syncToSystemPreference();
+    }
+
+    async function animateTagline(el, finalHTML) {
+        const delay = ms => new Promise(r => setTimeout(r, ms));
+        const phases = ['Thinking', 'Synthesizing','Generating'];
+
+        for (const word of phases) {
+            for (let d = 1; d <= 3; d++) {
+                el.innerHTML = `<span class="font-mono font-medium text-gray-400 text-xl lg:text-2xl">${word}${'·'.repeat(d)}</span>`;
+                await delay(130);
+            }
+            await delay(200);
+        }
+
+        await delay(80);
+        el.innerHTML = '';
+
+        // Insert blinking cursor that will trail the typed text
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        el.appendChild(cursor);
+
+        const template = document.createElement('template');
+        template.innerHTML = finalHTML.trim();
+
+        // insertTarget: when non-null, new top-level nodes are inserted before the cursor;
+        // for nested recursive calls, nodes are appended normally into their parent.
+        async function typeNodes(parent, nodes, insertBefore) {
+            for (const node of nodes) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const span = document.createElement('span');
+                    if (insertBefore) {
+                        parent.insertBefore(span, insertBefore);
+                    } else {
+                        parent.appendChild(span);
+                    }
+                    for (const ch of node.textContent) {
+                        span.textContent += ch;
+                        await delay(22);
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const clone = document.createElement(node.tagName.toLowerCase());
+                    for (const attr of node.attributes) {
+                        clone.setAttribute(attr.name, attr.value);
+                    }
+                    if (insertBefore) {
+                        parent.insertBefore(clone, insertBefore);
+                    } else {
+                        parent.appendChild(clone);
+                    }
+                    await typeNodes(clone, node.childNodes, null);
+                }
+            }
+        }
+
+        await typeNodes(el, template.content.childNodes, cursor);
+
+        // Remove cursor once typing is complete
+        cursor.remove();
+    }
+
+    /**
      * Loads and renders about page content
      */
     async function loadAbout() {
@@ -251,11 +371,12 @@
             }
         }
 
-        // Load bio tagline
+        // Load bio tagline with typing animation; reveal sections below only after it completes
         const taglineEl = document.querySelector('[data-about-tagline]');
         if (taglineEl && data.bio && data.bio.tagline) {
-            taglineEl.innerHTML = data.bio.tagline;
+            await animateTagline(taglineEl, data.bio.tagline);
         }
+        document.querySelectorAll('[data-below-bio]').forEach(el => el.classList.remove('opacity-0'));
 
         // Load bio paragraphs
         const paragraphsContainer = document.querySelector('[data-about-paragraphs]');
@@ -277,6 +398,12 @@
                 const resumeLink = document.createElement('a');
                 resumeLink.className = 'btn-tertiary btn-tight inline-flex';
                 resumeLink.href = escapeHTML(data.bio.links.resume.href);
+                if (data.bio.links.resume.target) {
+                    resumeLink.target = data.bio.links.resume.target;
+                    if (data.bio.links.resume.target === '_blank') {
+                        resumeLink.rel = 'noopener';
+                    }
+                }
                 resumeLink.innerHTML = `${escapeHTML(data.bio.links.resume.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(resumeLink);
             }
@@ -285,8 +412,59 @@
                 const linkedinLink = document.createElement('a');
                 linkedinLink.className = 'btn-tertiary btn-tight inline-flex';
                 linkedinLink.href = escapeHTML(data.bio.links.linkedin.href);
+                if (data.bio.links.linkedin.target) {
+                    linkedinLink.target = data.bio.links.linkedin.target;
+                    if (data.bio.links.linkedin.target === '_blank') {
+                        linkedinLink.rel = 'noopener';
+                    }
+                }
                 linkedinLink.innerHTML = `${escapeHTML(data.bio.links.linkedin.text)}<span class="material-symbols-outlined btn-secondary-icon">arrow_outward</span>`;
                 linksContainer.appendChild(linkedinLink);
+            }
+        }
+
+        // Load timeline
+        const timelineContainer = document.querySelector('[data-about-timeline]');
+        if (data.timeline) {
+            if (timelineContainer && Array.isArray(data.timeline.milestones)) {
+                timelineContainer.innerHTML = '';
+                data.timeline.milestones.forEach((milestone) => {
+                    const featured = milestone.featured === true;
+                    const periodClass = featured
+                        ? 'about-timeline-period about-timeline-period--accent'
+                        : 'about-timeline-period';
+                    const markerClass = featured
+                        ? 'about-timeline-marker about-timeline-marker--featured'
+                        : 'about-timeline-marker about-timeline-marker--muted';
+                    const titleClass = featured
+                        ? 'about-timeline-title about-timeline-title--emphasis'
+                        : 'about-timeline-title';
+                    const iconName = milestone.icon && String(milestone.icon).trim()
+                        ? String(milestone.icon).trim()
+                        : 'circle';
+                    const iconClass = featured
+                        ? 'material-symbols-outlined about-timeline-icon about-timeline-icon--filled'
+                        : 'material-symbols-outlined about-timeline-icon about-timeline-icon--outline';
+                    const pingHTML = featured
+                        ? '<span class="about-timeline-marker-ping" aria-hidden="true"></span>'
+                        : '';
+                    const rowHTML = `
+                        <div class="about-timeline-row">
+                            <span class="${periodClass}">${escapeHTML(milestone.period || '')}</span>
+                            <div class="about-timeline-rail">
+                                <div class="about-timeline-line" aria-hidden="true"></div>
+                                <div class="${markerClass}">
+                                    ${pingHTML}
+                                    <span class="${iconClass}" aria-hidden="true">${escapeHTML(iconName)}</span>
+                                </div>
+                            </div>
+                            <p class="${titleClass}">${escapeHTML(milestone.title || '')}</p>
+                            <div class="about-timeline-spacer" aria-hidden="true"></div>
+                            <p class="about-timeline-subtitle">${escapeHTML(milestone.subtitle || '')}</p>
+                        </div>
+                    `;
+                    timelineContainer.appendChild(createHTML(rowHTML));
+                });
             }
         }
 
@@ -370,6 +548,27 @@
             });
         }
 
+        // Load toolkits
+        const toolkitsContainer = document.querySelector('[data-toolkits-container]');
+        if (toolkitsContainer && Array.isArray(data.toolkits)) {
+            toolkitsContainer.innerHTML = '';
+            data.toolkits.forEach(group => {
+                const toolChips = group.tools.map(tool => `
+                    <div class="flex items-center gap-2 bg-[#1c2620] border border-[#29382f] rounded-full px-4 py-2">
+                        <img src="${escapeHTML(tool.logo)}" alt="${escapeHTML(tool.name)} logo" class="w-5 h-5 object-contain flex-shrink-0">
+                        <span class="text-sm font-medium text-gray-300 whitespace-nowrap">${escapeHTML(tool.name)}</span>
+                    </div>
+                `).join('');
+                const groupHTML = `
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">${escapeHTML(group.category)}</p>
+                        <div class="flex flex-wrap gap-2">${toolChips}</div>
+                    </div>
+                `;
+                toolkitsContainer.appendChild(createHTML(groupHTML));
+            });
+        }
+
         // Load scrolling interest images
         const interestsContainer = document.querySelector('[data-interests-container]');
         if (interestsContainer && data.interests) {
@@ -380,7 +579,7 @@
                 const fragment = document.createDocumentFragment();
                 data.interests.forEach(interest => {
                     const interestHTML = `
-                        <div class="interest-card w-64 h-64 md:h-80 flex-shrink-0 relative overflow-hidden rounded-[1.5rem] transition-all duration-500 border border-[#29382f]">
+                        <div class="interest-card w-72 h-96 md:h-96 flex-shrink-0 relative overflow-hidden rounded-3xl transition-all duration-500 border border-[#29382f]">
                             <img alt="${escapeHTML(interest.image.alt)}" class="w-full h-full object-cover" src="${escapeHTML(interest.image.url)}">
                             <div class="absolute bottom-0 left-0 p-4 bg-gradient-to-t from-black/80 to-transparent w-full">
                                 <span class="text-white font-medium text-lg">${escapeHTML(interest.label)}</span>
@@ -398,6 +597,81 @@
             interestsContainer.appendChild(createInterestImages());
             interestsContainer.appendChild(createInterestImages());
         }
+
+        initInterestsMotionToggle(data.interestsAccessibility);
+    }
+
+    let bannerScrollSyncInitialized = false;
+
+    /**
+     * Syncs fixed banner shell, in-flow spacer, and nav top to scroll position (scroll-linked drawer).
+     */
+    function syncBannerAndNavFromScroll() {
+        const banner = document.getElementById('top-banner');
+        const spacer = document.getElementById('banner-spacer');
+        const shell = document.getElementById('top-banner-shell');
+        const navWrapper = document.querySelector('.nav-container')?.parentElement;
+
+        if (!banner || !spacer || !shell) {
+            if (navWrapper) {
+                navWrapper.style.top = '0';
+            }
+            return;
+        }
+
+        const H = banner.offsetHeight;
+        if (H <= 0) {
+            return;
+        }
+
+        const y = window.scrollY || document.documentElement.scrollTop;
+        const t = Math.min(Math.max(y, 0), H);
+        const visible = H - t;
+
+        spacer.style.height = `${visible}px`;
+        shell.style.height = `${visible}px`;
+        banner.style.transform = `translateY(-${t}px)`;
+        if (navWrapper) {
+            navWrapper.style.top = `${visible}px`;
+        }
+    }
+
+    function updateNavPosition() {
+        syncBannerAndNavFromScroll();
+    }
+
+    /**
+     * Passive scroll + resize; ResizeObserver when banner height changes (wrap, font).
+     */
+    function initBannerScrollSync() {
+        if (bannerScrollSyncInitialized) {
+            return;
+        }
+        const banner = document.getElementById('top-banner');
+        if (!banner) {
+            return;
+        }
+        bannerScrollSyncInitialized = true;
+
+        const onScrollOrResize = () => {
+            syncBannerAndNavFromScroll();
+        };
+
+        window.addEventListener('scroll', onScrollOrResize, { passive: true });
+        window.addEventListener('resize', onScrollOrResize);
+
+        if (typeof ResizeObserver !== 'undefined') {
+            const ro = new ResizeObserver(() => {
+                syncBannerAndNavFromScroll();
+            });
+            ro.observe(banner);
+        }
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                syncBannerAndNavFromScroll();
+            });
+        });
     }
 
     /**
@@ -414,13 +688,20 @@
             return;
         }
 
-        const cta = data.banner.cta;
-        const ctaHTML = cta && cta.href
-            ? `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${cta.target ? ' target="_blank" rel="noopener"' : ''}>${escapeHTML(cta.text || '')}</a>`
+        const bannerCtaLink = (cta) => {
+            if (!cta || !cta.href) return '';
+            const targetAttr = cta.target ? ' target="_blank" rel="noopener"' : '';
+            return `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${targetAttr}>${escapeHTML(cta.text || '')}</a>`;
+        };
+        const ctaParts = [data.banner.cta, data.banner.secondaryCta]
+            .map(bannerCtaLink)
+            .filter(Boolean);
+        const ctaHTML = ctaParts.length
+            ? `<div class="flex flex-wrap items-center justify-center gap-2">${ctaParts.join('')}</div>`
             : '';
 
-        const bannerHTML = `
-            <div class="sticky top-0 z-[100] w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a]" id="top-banner">
+        const innerBannerHTML = `
+            <div class="w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a] pointer-events-auto" id="top-banner">
                 <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
                     <p class="text-sm font-medium tracking-tight text-[#111714]">
                         <span class="mr-2">🚧</span>${escapeHTML(data.banner.message)}
@@ -429,8 +710,20 @@
                 </div>
             </div>
         `;
-        const fragment = createHTML(bannerHTML);
-        placeholder.replaceWith(fragment);
+
+        const shellHTML = `
+            <div id="top-banner-shell" class="top-banner-shell fixed top-0 left-0 right-0 z-[100] overflow-hidden pointer-events-none">
+                ${innerBannerHTML}
+            </div>
+        `;
+
+        const shellFragment = createHTML(shellHTML);
+        const shell = shellFragment.firstElementChild;
+        const spacer = document.createElement('div');
+        spacer.id = 'banner-spacer';
+        spacer.setAttribute('aria-hidden', 'true');
+        spacer.className = 'banner-spacer';
+        placeholder.replaceWith(spacer, shell);
     }
 
     /**
@@ -495,20 +788,7 @@
         }
     }
 
-    /**
-     * Updates the fixed nav wrapper's top offset so it sits below the top banner
-     * when present.
-     */
-    function updateNavPosition() {
-        const banner = document.getElementById('top-banner');
-        const navWrapper = document.querySelector('.nav-container')?.parentElement;
-        if (!navWrapper) return;
-
-        const bannerVisible = banner && banner.style.display !== 'none';
-        navWrapper.style.top = bannerVisible ? `${banner.offsetHeight}px` : '0';
-    }
-
-    // Expose for inline dismiss button and resize handling
+    // Expose for resize / external callers (syncs banner drawer + nav)
     window.updateNavPosition = updateNavPosition;
 
     /**
@@ -589,9 +869,12 @@
         const data = await fetchJSON('data/site.json');
         if (!data) return;
 
-        // Update site title
+        // Update site title only when page doesn't define a custom title
         const titleEl = document.querySelector('title');
-        if (titleEl && data.site.title && document.documentElement.getAttribute('data-page') !== '404') {
+        const currentTitle = titleEl ? titleEl.textContent.trim() : '';
+        const is404Page = document.documentElement.getAttribute('data-page') === '404';
+        const shouldUseSiteTitle = !currentTitle || currentTitle === data.site.title;
+        if (titleEl && data.site.title && !is404Page && shouldUseSiteTitle) {
             titleEl.textContent = data.site.title;
         }
 
@@ -649,38 +932,38 @@
      */
     async function init() {
         try {
-            // Load all content in parallel
+            // Nav, banner, and hero first so they finish their fade-in before the tagline animation runs
+            await Promise.all([loadBanner(), loadNav(), loadSiteContent(), loadHero()]);
+
+            // Initialize nav/banner interactivity immediately after they're in the DOM
+            if (typeof window.initMobileMenu === 'function') {
+                window.initMobileMenu();
+            }
+            updateNavPosition();
+            initBannerScrollSync();
+
+            // Trigger the hero/nav fade-in animation now so the nav is settled
+            // before the tagline animation starts.
+            await new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    if (typeof window.initHeroAnimations === 'function') {
+                        window.initHeroAnimations();
+                    }
+                    resolve();
+                });
+            });
+
+            // Everything else (loadAbout drives the tagline animation)
             await Promise.all([
-                loadBanner(),
-                loadNav(),
-                loadHero(),
                 loadMarquee(),
                 loadProjects(),
                 loadTestimonials(),
                 loadAbout(),
-                loadSiteContent(),
                 loadFooter()
             ]);
 
             // Apply fallback for browsers that don't support animation-timeline (e.g. Safari)
             applyRevealFallback();
-
-            // Initialize mobile menu after nav is loaded
-            if (typeof window.initMobileMenu === 'function') {
-                window.initMobileMenu();
-            }
-
-            // Trigger hero section loading animations
-            // Small delay to ensure DOM is fully ready
-            requestAnimationFrame(() => {
-                if (typeof window.initHeroAnimations === 'function') {
-                    window.initHeroAnimations();
-                }
-            });
-
-            // Position nav below banner when banner is visible
-            updateNavPosition();
-            window.addEventListener('resize', updateNavPosition);
 
             window.dispatchEvent(new CustomEvent('portfolioContentReady'));
         } catch (error) {
