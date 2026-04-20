@@ -1159,7 +1159,8 @@ nav[data-menu-open="true"] {
 
 /**
  * About portrait flip card
- * Hover rotates portrait to reveal alt-text back face.
+ * focus-within flips to reveal alt-text (keyboard accessibility).
+ * Hover triggers glitch instead of flip.
  */
 .about-portrait-flip {
   perspective: 1400px;
@@ -1175,9 +1176,96 @@ nav[data-menu-open="true"] {
   will-change: transform;
 }
 
-.about-portrait-flip:hover .about-portrait-flip-inner,
 .about-portrait-flip:focus-within .about-portrait-flip-inner {
   transform: rotateY(180deg);
+}
+
+/* === Portrait: border-trace load animation + RGB glitch hover === */
+
+@property --portrait-trace {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+/* Animated green border that draws itself on page load */
+.portrait-border-animate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2rem;
+  padding: 1px;
+  background: conic-gradient(
+    from -90deg,
+    var(--color-primary) var(--portrait-trace),
+    transparent var(--portrait-trace)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: portrait-border-trace 2.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Image fades in after the border finishes drawing */
+.portrait-border-animate img {
+  animation: portrait-image-reveal 0.5s ease both;
+  animation-delay: 0.25s;
+}
+
+@keyframes portrait-border-trace {
+  from { --portrait-trace: 0%; }
+  to   { --portrait-trace: 100%; }
+}
+
+@keyframes portrait-image-reveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* After load animation ends, freeze opacity and disable the load animation */
+.portrait-border-animate img.portrait-reveal-done {
+  animation: none;
+  opacity: 1;
+}
+
+/* RGB glitch pulse fires once on hover entry */
+.about-portrait-flip:hover .portrait-border-animate img {
+  opacity: 1;
+  animation: portrait-glitch 0.42s step-start 1 forwards;
+}
+
+@keyframes portrait-glitch {
+  0%   { filter: none;                                            transform: translate(0,    0   ); }
+  12%  { filter: saturate(3)   hue-rotate(80deg)  contrast(1.3); transform: translate(-4px,  1px); }
+  25%  { filter: saturate(2.5) hue-rotate(-60deg) contrast(1.2); transform: translate( 4px, -2px); }
+  37%  { filter: saturate(4)   hue-rotate(160deg) contrast(1.4); transform: translate(-3px,  2px); }
+  50%  { filter: saturate(3)   hue-rotate(-30deg) contrast(1.2); transform: translate( 3px, -1px); }
+  62%  { filter: saturate(2)   hue-rotate(40deg);                transform: translate(-2px,  1px); }
+  75%  { filter: saturate(1.5) hue-rotate(-20deg);               transform: translate( 1px,  0   ); }
+  87%  { filter: saturate(1.2);                                   transform: translate(-1px,  0   ); }
+  100% { filter: none;                                            transform: translate(0,    0   ); }
+}
+
+/* Reduced motion: skip animations, show final state immediately */
+@media (prefers-reduced-motion: reduce) {
+  .portrait-border-animate::before {
+    animation: none;
+    --portrait-trace: 100%;
+  }
+  .portrait-border-animate img {
+    animation: none;
+    opacity: 1;
+  }
+  .about-portrait-flip:hover .portrait-border-animate img {
+    animation: none;
+  }
 }
 
 .about-portrait-face {

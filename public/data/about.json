@@ -30,8 +30,15 @@
   "timeline": {
     "milestones": [
       {
+        "period": "2026-now",
+        "title": "UX/UI Designer II",
+        "subtitle": "DMW&H",
+        "icon": "work",
+        "featured": true
+      },
+      {
         "period": "2025-now",
-        "title": "UX/UI Designer (pro bono)",
+        "title": "UX/Web Designer (pro bono)",
         "subtitle": "Seattle Asian American Film Festival",
         "icon": "volunteer_activism",
         "featured": true
@@ -70,11 +77,15 @@
     },
     {
       "title": "AI + Code Fluency",
-      "description": "I bridge design and engineering through front-end knowledge and developer workflows, and actively experiment with AI to design and vibe code."
+      "description": "I bridge design and engineering through frontend development knowledge, and I actively experiment with AI to design and vibe code."
     },
     {
       "title": "UX Advocacy",
       "description": "I influence teams to prioritize UX through strategic communication, and driving high engagement and buy-in."
+    },
+    {
+      "title": "Information Curation",
+      "description": "I collect and organize resources and apply UX principles to make them easily usable."
     }
   ],
   "interests": [

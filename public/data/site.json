@@ -4,10 +4,15 @@
   },
   "banner": {
     "enabled": true,
-    "message": "Portfolio live rebuild in progress. Powered by AI tools.",
+    "message": "This is a live rebuild in progress. Powered by AI tools.",
     "cta": {
       "text": "See where it started →",
       "href": "https://yatongwang.com",
+      "target": "_blank"
+    },
+    "secondaryCta": {
+      "text": "View repo →",
+      "href": "https://github.com/yatong-wang/ux-portfolio",
       "target": "_blank"
     }
   },

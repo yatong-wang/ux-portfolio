@@ -607,9 +607,16 @@
             return;
         }
 
-        const cta = data.banner.cta;
-        const ctaHTML = cta && cta.href
-            ? `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${cta.target ? ' target="_blank" rel="noopener"' : ''}>${escapeHTML(cta.text || '')}</a>`
+        const bannerCtaLink = (cta) => {
+            if (!cta || !cta.href) return '';
+            const targetAttr = cta.target ? ' target="_blank" rel="noopener"' : '';
+            return `<a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="${escapeHTML(cta.href)}"${targetAttr}>${escapeHTML(cta.text || '')}</a>`;
+        };
+        const ctaParts = [data.banner.cta, data.banner.secondaryCta]
+            .map(bannerCtaLink)
+            .filter(Boolean);
+        const ctaHTML = ctaParts.length
+            ? `<div class="flex flex-wrap items-center justify-center gap-2">${ctaParts.join('')}</div>`
             : '';
 
         const innerBannerHTML = `
