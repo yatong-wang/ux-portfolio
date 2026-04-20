@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fun page with side projects showcase
 
 ---
+## [0.3.1] - 2026-04-??
+### Added
+- Timeline and more content on About page
+
+### Changed
+- Include repo link in global banner
+- Animation tweaks (Claude Code test)
+
 ## [0.3.0] - 2026-03-26
 ### Added
 - About page and associated assets

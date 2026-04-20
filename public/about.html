@@ -118,7 +118,7 @@
                 <div class="absolute inset-0 bg-primary transform translate-x-2 translate-y-2 z-0 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4 rounded-[2rem] pointer-events-none"></div>
                 <div class="about-portrait-flip relative z-10 aspect-[3/4] rounded-[2rem]">
                     <div class="about-portrait-flip-inner">
-                        <div class="about-portrait-face about-portrait-face-front overflow-hidden bg-[#1c2620] rounded-[2rem] border border-primary">
+                        <div class="about-portrait-face about-portrait-face-front portrait-border-animate overflow-hidden bg-[#1c2620] rounded-[2rem]">
                             <img data-about-portrait alt="" class="w-full h-full object-cover" src=""/>
                         </div>
                         <div class="about-portrait-face about-portrait-face-back rounded-[2rem] border border-primary">
@@ -186,6 +186,14 @@
 <script>
     document.querySelectorAll('h1,h2').forEach(heading => {
       heading.innerHTML = heading.innerHTML.replace(/o/gi, match => `<span class="font-extrabold">${match}</span>`);
+    });
+
+    // Once the portrait reveal animation finishes, lock opacity at 1 so
+    // mousing out never re-triggers the load animation from opacity: 0.
+    document.addEventListener('animationend', function(e) {
+      if (e.animationName === 'portrait-image-reveal') {
+        e.target.classList.add('portrait-reveal-done');
+      }
     });
 </script>
 </body>
