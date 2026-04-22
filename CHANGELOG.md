@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fun page with side projects showcase
 
 ---
-## [0.3.1] - 2026-04-??
+## [0.3.1] - 2026-04-22
 ### Added
 - Timeline and toolkit section on About page
 - Loading animation for bio section on About page
