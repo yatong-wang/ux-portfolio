@@ -23,6 +23,9 @@
   --color-card-bg: #1c2620;
   --color-border: #29382f;
   --color-bg-darker: #111714;
+  --color-section-alt: #161e19;
+  --color-text-muted: #9eb7a8;
+  --color-border-placeholder: #3a4b40;
   
   /* Typography - Font Stacks */
   --font-body: "Spline Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -1583,6 +1586,37 @@ nav[data-menu-open="true"] {
   line-height: 1;
   pointer-events: none;
 }
+
+/* ==========================================================================
+   Check List
+   ========================================================================== */
+
+.check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.check-list > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.check-list > li > .material-symbols-outlined {
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.check-list--white > li { color: white; }
+
+.check-list--lg > li { font-size: var(--font-size-lg); }
+.check-list--lg > li > .material-symbols-outlined { margin-top: 0.375rem; }
 
 /* ==========================================================================
    Responsiveness

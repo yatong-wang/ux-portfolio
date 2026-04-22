@@ -38,6 +38,7 @@ The site is *independently* developed by me, so no formal peer code review exist
 [↑ Back to TOC](#table-of-contents)
 
 ### Tech Stack
+[![Tech Stack](https://skillicons.dev/icons?i=html,css,tailwind,js)](https://skillicons.dev)
 - **HTML** (semantic structure)
 - **Tailwind CSS** + custom `styles.css`
 - **Vanilla JavaScript**
