@@ -1,11 +1,11 @@
 {
   "projects": [
     {
-      "id": "usda-enterprise-app-integration",
-      "year": "2025",
-      "category": "B2B • research • ia",
-      "title": "USDA Enterprise App Intergration",
-      "description": "Help field staff complete assessments faster by embedding and simplifying workflows from complex scientific tools",
+      "id": "enterprise-app-integration",
+      "year": "2024-2025",
+      "category": "b2b gov • research • ia",
+      "title": "Enterprise App Intergration",
+      "description": "Help government workers complete assessments 50% faster by embedding and simplifying workflows from complex scientific tools",
       "image": {
         "url": "assets/projects/enterprise/thumbnail-case-enterprise.webp",
         "alt": "Geospatial web application with tabbed form inputs over a map interface"
@@ -15,7 +15,7 @@
     {
       "id": "conservation-practice-effects-tool",
       "year": "2023",
-      "category": "Web App • UI/UX",
+      "category": "civic • web app • UI/UX",
       "title": "Conservation Practice Effects Tool",
       "description": "Empower producers with land challenges to explore conservation practices, by transforming spreadsheet data into interactive screening tools",
       "image": {
@@ -27,7 +27,7 @@
     {
       "id": "accessible-chart-component",
       "year": "2024",
-      "category": "Design System • Accessibility",
+      "category": "design system • ui • a11y",
       "title": "Accessible Chart Component for Data Visualization",
       "description": "Design a data visualization dashboard and create developer-ready specs for a chart component",
       "image": {
