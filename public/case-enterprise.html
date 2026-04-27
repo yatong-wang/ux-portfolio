@@ -161,17 +161,7 @@
               <div class="h-px bg-white/10 flex-1"></div>
             </div>
             <h3 id="business-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight max-w-3xl">Using the tools was required. <br />But the gov staff avoided them.</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-6 mb-6">
-              <div class="flex flex-col gap-4">
-                <p class="text-muted text-lg">Issues include:</p>
-                <ul class="flex list-disc flex-col gap-3 text-muted text-lg">
-                  <li class="ml-4">Skipped assessments</li>
-                  <li class="ml-4">Poor satisfaction ratings (from business surveys)</li>
-                  <li class="ml-4">Data silos between the tools and enterprise software</li>
-                  <li class="ml-4">Repeated data entry effort (no combined tool)</li>
-                </ul>
-              </div>
-              <div>
+            <div class="flex flex-col mt-6 mb-6 max-w-2xl items-center mx-auto">
                 <figure class="flex flex-col gap-3 items-center">
                   <div class="relative aspect-video rounded-2xl overflow-hidden">
                     <img src="assets/projects/enterprise/legacy-tool-screenshot.png" alt="Legacy desktop tool screenshot showing complex UI" class="w-full h-full object-cover"/>
@@ -179,8 +169,6 @@
                   <figcaption class="text-sm text-muted italic">The legacy desktop tools (separate windows). De-identified.</figcaption>
                 </figure>
               </div>
-            </div>
-
             <div class="flex flex-col gap-1">
             <h3 id="ask-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight max-w-2xl">The Ask:<br />Combining 2 tools → 1 UI within enterprise platform</h3>
 
@@ -259,6 +247,7 @@
               </svg>
               <figcaption class="text-sm text-muted italic text-center">The goal is to consolidate two separate tools into a unified UI within the enterprise platform.</figcaption>
             </figure>
+          </div>
           </div>
           </div>
         </section>
@@ -525,42 +514,56 @@
               <h3 id="ia-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Mapping overlapping data inputs and actions</h3>
               <p class="text-muted text-lg leading-relaxed">To combine the two tools, I used OOUX methods to create an object map. It gives me the "bones" of the interface and interactions for simplifying the workflows.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[220px] md:auto-rows-[260px]">
-              <div class="md:col-span-2 row-span-2 rounded-3xl overflow-hidden relative group bg-darker">
-                <img src="assets/projects/enterprise/object-map.png" alt="IA object map" class="absolute inset-0 h-full w-full object-cover"/>
-                <div class="absolute bottom-6 left-6 z-20 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full">
-                  <p class="text-white text-sm font-medium">Object Map</p>
-                </div>
-              </div>   
-            </div>
+            <figure class="flex flex-col gap-3 items-center mx-auto w-full max-w-4xl">
+              <div class="relative rounded-3xl overflow-hidden w-full">
+                <img src="assets/projects/enterprise/object-map.png" alt="IA object map" class="w-full h-auto block"/>
+              </div>
+              <figcaption class="text-sm text-muted italic">Object Map: Key objects, Core content, Metadata, and CTAs.</figcaption>
+            </figure>
           </div>
         </section>
 
-        <!-- Section 08 — Design Solution (Problem / Solution stack) -->
+        <!-- Section 07 —  Solution (Pain Point / Solution stack) -->
         <section class="px-4 py-20 md:px-12 lg:px-20 w-full bg-section-alt scroll-mt-24" id="problem-solution" aria-labelledby="design-solution-heading">
           <div class="max-w-6xl mx-auto flex flex-col gap-6">
             <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">08 / Design Solution</h2>
+              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">07 / Solution</h2>
               <div class="h-px bg-white/10 flex-1"></div>
             </div>
             <div class="flex flex-col gap-4 max-w-3xl">
-              <h3 id="design-solution-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">A simpler, more streamlined, and more learnable flow</h3>
-              <p class="text-muted text-lg leading-relaxed">I collaborated with the enterprise software team and legacy app domain experts on a weekly basis to ensure every design decision was both feasible and scientifically accurate.</p>
+              <h3 id="design-solution-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Reinventing the flow</h3>
+              <p class="text-muted text-lg leading-relaxed">Every week I worked alongside the enterprise software team and the legacy app scientists to pressure-test my decisions.</p>
             </div>
+
+                <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
+                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div class="lg:col-span-1 flex flex-col gap-4">
+                      <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #1</p>
+                      <h4 class="text-white text-2xl font-bold leading-tight">Responsive Enabling for Selective Workflow</h4>
+                      <p class="text-sm text-muted">New design allows the users to get the work done in one place, while having the freedom to choose which tool(s) to use.</p>
+                      <ul class="flex flex-col gap-2">
+                        <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Selection modal to toggle between two tools</span></li>
+                        <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Tab content conditionally loaded based on selection</span></li>
+                      </ul>
+                    </div>
+                    <div class="lg:col-span-2">
+                  <div class="relative aspect-video rounded-2xl border border-dashed border-placeholder bg-darker flex items-center justify-center p-8 text-center overflow-hidden">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Screenshot: responsive enabling + tabbed navigation with annotation callouts]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
+                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Screenshot: responsive enabling + tabbed navigation with annotation callouts]</span>
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <div class="lg:col-span-1 flex flex-col gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">list_alt</span>
-                  </div>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 01</p>
-                  <h4 class="text-white text-2xl font-bold leading-tight">Choice overload</h4>
-                  <p class="text-sm text-muted">Long option lists with limited interactivity forced slow, error-prone decisions.</p>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #2</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Contextual Auto-Population and Defaulting</h4>
+                  <p class="text-sm text-muted">New design provides robust input controls so users won't waste a lot of time scrolling through dropdowns.</p>
                   <ul class="flex flex-col gap-2">
-                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Auto-population from integrated enterprise data</span></li>
-                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Searchable, filterable option lists</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Auto-population from integrated enterprise database and API</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Default based on desired logic</span></li>
                   </ul>
                 </div>
                 <div class="lg:col-span-2">
@@ -575,40 +578,12 @@
             <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <div class="lg:col-span-1 flex flex-col gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">visibility</span>
-                  </div>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 02</p>
-                  <h4 class="text-white text-2xl font-bold leading-tight">Cluttered, outdated, confusing UI</h4>
-                  <p class="text-sm text-muted">Too many controls visible at once led to frequent user errors and avoidance.</p>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
-                  <ul class="flex flex-col gap-2">
-                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Progressive disclosure to reduce noise</span></li>
-                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Responsive enabling to prevent invalid states</span></li>
-                  </ul>
-                </div>
-                <div class="lg:col-span-2">
-                  <div class="relative aspect-video rounded-2xl border border-dashed border-placeholder bg-darker flex items-center justify-center p-8 text-center overflow-hidden">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="[Screenshot: responsive enabling + tabbed navigation with annotation callouts]" class="absolute inset-0 h-full w-full object-cover opacity-0"/>
-                    <span class="text-gray-400 font-mono tracking-wide text-sm">[Screenshot: responsive enabling + tabbed navigation with annotation callouts]</span>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="lg:col-span-1 flex flex-col gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">stairs</span>
-                  </div>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 03</p>
-                  <h4 class="text-white text-2xl font-bold leading-tight">Steep learning curve and low retention</h4>
-                  <p class="text-sm text-muted">Generational turnover made the legacy learning burden unsustainable for newer staff.</p>
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase mt-2">Solution</p>
+                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #3</p>
+                  <h4 class="text-white text-2xl font-bold leading-tight">Stepped and Guided Data Entry</h4>
+                  <p class="text-sm text-muted">The workflow is condensed with improved learnability. Wireframe usability study proved this is the right direction.</p>
                   <ul class="flex flex-col gap-2">
                     <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Simplified, stepped data entry via tabbed navigation</span></li>
-                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Contextual toggletips and help buttons</span></li>
+                    <li class="flex items-start gap-3 text-white text-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Progressive disclosure to keep user focused and less overwhelmed</span></li>
                   </ul>
                 </div>
                 <div class="lg:col-span-2">
@@ -623,9 +598,6 @@
             <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
               <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <div class="lg:col-span-1 flex flex-col gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <span class="material-symbols-outlined">save</span>
-                  </div>
                   <p class="text-primary font-bold tracking-widest text-xs uppercase">Problem 04</p>
                   <h4 class="text-white text-2xl font-bold leading-tight">Difficult to save and reuse work</h4>
                   <p class="text-sm text-muted">Legacy tools stored data in silos disconnected from the platform, forcing repeat effort.</p>
