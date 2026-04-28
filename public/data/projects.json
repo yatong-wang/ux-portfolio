@@ -7,7 +7,7 @@
       "title": "Enterprise App Intergration",
       "description": "Help government workers complete assessments 50% faster by embedding and simplifying workflows from complex scientific tools",
       "image": {
-        "url": "assets/projects/enterprise/thumbnail-case-enterprise.webp",
+        "url": "assets/projects/enterprise/thumbnail-case-enterprise.png",
         "alt": "Geospatial web application with tabbed form inputs over a map interface"
       },
       "link": "case-enterprise.html"
