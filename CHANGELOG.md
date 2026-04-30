@@ -10,12 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 ---
-## [0.4.0] - 2026-04-28
+## [0.4.0] - 2026-04-30
 ### Added
 - Enterprise App Integration case study page
 
 ### Changed
-- Thumbnail for case studies on homepage
+- Thumbnail images for case studies on homepage
 
 
 ## [0.3.1] - 2026-04-22
