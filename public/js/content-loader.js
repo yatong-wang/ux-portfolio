@@ -145,13 +145,24 @@
             const linkAttrs = isPlaceholder
                 ? 'href="#" aria-disabled="true" title="Coming Soon"'
                 : `href="${escapeHTML(project.link)}"`;
+            const cardClass = isPlaceholder
+                ? 'flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] transition-all duration-300 reveal-on-scroll'
+                : 'group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll';
+            const imageClass = isPlaceholder
+                ? 'absolute inset-0 bg-cover bg-center'
+                : 'absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700';
+            const overlayClass = isPlaceholder
+                ? 'absolute inset-0 bg-black/10'
+                : 'absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all';
+            const buttonLabel = isPlaceholder ? 'coming soon' : 'view case';
+            const buttonIcon = isPlaceholder ? 'emoji_food_beverage' : 'arrow_forward';
             const projectHTML = `
-                <div class="group flex flex-col md:flex-row bg-[#1c2620] rounded-[2rem] overflow-hidden border border-[#29382f] hover:border-primary/50 transition-all duration-300 reveal-on-scroll">
+                <div class="${cardClass}">
                     <div class="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
-                        <div class="absolute inset-0 bg-cover bg-center transform group-hover:scale-105 transition-transform duration-700" 
-                             data-alt="${escapeHTML(project.image.alt)}" 
+                        <div class="${imageClass}"
+                             data-alt="${escapeHTML(project.image.alt)}"
                              style="background-image: url('${escapeHTML(project.image.url)}');"></div>
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+                        <div class="${overlayClass}"></div>
                         <div class="absolute top-6 right-6 z-20">
                             <div class="bg-black/30 backdrop-blur-md border border-white/10 rounded-full px-4 py-1 text-xs font-bold text-white uppercase tracking-wider">
                                 ${escapeHTML(project.year)}
@@ -168,8 +179,8 @@
                         </div>
                         <div class="mt-auto md:mt-0">
                             <a ${linkAttrs} class="${linkClass}">
-                                view case
-                                <span class="material-symbols-outlined btn-secondary-icon">arrow_forward</span>
+                                ${buttonLabel}
+                                <span class="material-symbols-outlined btn-secondary-icon">${buttonIcon}</span>
                             </a>
                         </div>
                     </div>
