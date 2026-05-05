@@ -32,7 +32,7 @@
       "description": "Design a dashboard with accessible chart components and create developer-ready specs",
       "image": {
         "url": "assets/projects/dashboard/thumbnail-dashboard.gif",
-        "alt": "Dashboard visualizing estimated water quality outcomes on cropland, including nitrogen, phosphorus, sediment, and wind erosion"
+        "alt": "Dashboard visualizing estimated water quality outcomes on cropland, including nitrogen, phosphorus, sediment, and wind erosion trends"
       },
       "link": "#"
     }
