@@ -31,7 +31,7 @@
       "title": "Accessible Chart Component for Data Visualization",
       "description": "Design a data visualization dashboard and create developer-ready specs for a chart component",
       "image": {
-        "url": "assets/projects/dashboard/thumbnail-case-dashboard.webp",
+        "url": "assets/projects/dashboard/thumbnail-dashboard.gif",
         "alt": "Dashboard visualizing estimated water quality outcomes on cropland, including nitrogen, phosphorus, sediment, and wind erosion trends"
       },
       "link": "#"
