@@ -9,13 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fun page with side projects showcase
 
 ---
----
-## [0.4.0] - 2026-04-30
+## [0.4.0] - 2026-05-04
 ### Added
 - Enterprise App Integration case study page
 
 ### Changed
-- Thumbnail images for case studies on homepage
+- Updated thumbnails for all 3 case studies on homepage
+- Reduced max-width of content to make it easy to scan and read
 
 
 ## [0.3.1] - 2026-04-22
