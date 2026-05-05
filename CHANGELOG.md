@@ -5,17 +5,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- Individual case study pages
+- 2 additional case study pages
 - Fun page with side projects showcase
+- Curated resource page
 
 ---
-## [0.4.0] - 2026-05-04
+## [0.4.1] -
 ### Added
-- Enterprise App Integration case study page
+- NN/G UXC badge on `about.html` page
 
 ### Changed
-- Updated thumbnails for all 3 case studies on homepage
-- Reduced max-width of content to make it easy to scan and read
+- Interests image carousel pausing behavior on `about.html` page: allow scrolling
+- Minor padding and card style tweaks on `case-enterprise.html` page
+
+
+## [0.4.0] - 2026-05-04
+### Added
+- Enterprise App Integration case study page: `case-enterprise.html`
+
+### Changed
+- Updated thumbnails for all 3 case studies on `index.html`
+- Reduced max-width of content across the site to make it easy to scan and read
 
 
 ## [0.3.1] - 2026-04-22
@@ -30,12 +40,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.0] - 2026-03-26
 ### Added
-- About page and associated assets
-- LICENSE.md
+- `about` page and associated assets
+- `LICENSE.md`
 - Tight variants for button styling
 
 ### Changed
-- README.md (and made the repo public)
+- `README.md` (and made the repo public)
 
 
 ## [0.2.1] - 2026-02-13
@@ -44,12 +54,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Minor sizing and spacing refinements
-- 404 page layout and mobile responsiveness
+- `404.html` page layout and mobile responsiveness
 
 
 ## [0.2.0] - 2026-02-09
 ### Added
-- Custom 404 page
+- Custom `404.html` page
 - Redirect handling for broken navigation links
 
 

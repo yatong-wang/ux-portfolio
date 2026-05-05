@@ -118,7 +118,8 @@
       "tools": [
         { "name": "Cursor", "logo": "assets/tool-logos/cursor.svg" },
         { "name": "Claude Code", "logo": "assets/tool-logos/claude-code.svg" },
-        { "name": "GitHub", "logo": "assets/tool-logos/github-dark.svg" }
+        { "name": "GitHub", "logo": "assets/tool-logos/github-dark.svg" },
+        { "name": "VS Code", "logo": "assets/tool-logos/vscode-dark.svg" }
       ]
     },
     {

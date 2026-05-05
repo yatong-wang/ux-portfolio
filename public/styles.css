@@ -1459,6 +1459,93 @@ nav[data-menu-open="true"] {
 }
 
 /**
+ * About page timeline — NNg badge gutter (Option C)
+ * Desktop: badge floats in the unused space to the right of the max-w-2xl list.
+ * Mobile: reflowed below the list via flex-direction column.
+ */
+.about-timeline-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.about-timeline-badge-col {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.25rem;
+}
+
+/* Keep badge visible while scrolling through milestones */
+.about-timeline-badge {
+  position: sticky;
+  top: 6rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.about-timeline-badge-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-timeline-badge:hover .about-timeline-badge-img,
+.about-timeline-badge:focus-visible .about-timeline-badge-img {
+  transform: rotate(6deg) scale(1.1);
+}
+
+.about-timeline-badge-callout {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.4rem 0.7rem;
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Small triangle pointer */
+.about-timeline-badge-callout::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-border);
+}
+
+.about-timeline-badge:hover .about-timeline-badge-callout,
+.about-timeline-badge:focus-visible .about-timeline-badge-callout {
+  opacity: 1;
+}
+
+/* Mobile: reflow badge below the timeline list, right-aligned */
+@media (max-width: 767px) {
+  .about-timeline-wrapper {
+    flex-direction: column;
+  }
+
+  .about-timeline-badge-col {
+    justify-content: flex-center;
+    width: 100%;
+  }
+
+  .about-timeline-badge {
+    position: static;
+  }
+}
+
+/**
  * Carousel Arrow Buttons
  * Navigation arrows for scrolling the carousel
  */

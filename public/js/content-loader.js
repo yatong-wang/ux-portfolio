@@ -255,6 +255,16 @@
         const region = document.querySelector('[data-interests-region]');
         if (!scroller || !btn || !labelEl) return;
 
+        const strip = scroller.parentElement;
+        const ANIM_DURATION = 40;
+        let inScrollMode = false;
+        let isHoverFrozen = false;
+        const loopCopy = () => scroller.querySelector('[data-interests-loop-copy]');
+        // Edge fade overlays (siblings of the scroller). They are absolutely positioned
+        // and would scroll with content into the visible middle once the strip becomes
+        // horizontally scrollable, so they're hidden while in scroll mode.
+        const edgeOverlays = () => Array.from(strip.children).filter(el => el !== scroller);
+
         const pauseLabel = (a11y && a11y.pauseLabel) || 'Pause scrolling gallery';
         const playLabel = (a11y && a11y.playLabel) || 'Play scrolling gallery';
         const regionLabel = (a11y && a11y.regionLabel) || 'Photos of interests';
@@ -280,20 +290,116 @@
             }
         }
 
+        // Reads the live computed translateX whether the animation is running or frozen.
+        function readTranslateX() {
+            const matrix = window.getComputedStyle(scroller).transform;
+            if (!matrix || matrix === 'none') return 0;
+            try { return new DOMMatrix(matrix).m41; } catch (_) { return 0; }
+        }
+
+        // Restarts the CSS animation so it begins at `offsetX` pixels into the loop.
+        // Batches all style changes before the reflow so there is no intermediate paint.
+        function resumeAnimationFrom(offsetX) {
+            const halfWidth = scroller.scrollWidth / 2;
+            const normalized = halfWidth > 0 ? (Math.abs(offsetX) % halfWidth) : 0;
+            const delay = halfWidth > 0 ? -(normalized / halfWidth) * ANIM_DURATION : 0;
+            scroller.style.animation = '';
+            scroller.style.animationDelay = `${delay}s`;
+            scroller.style.transform = '';
+            void scroller.offsetWidth; // flush batched changes so browser sees a clean start
+        }
+
+        // Hover freeze: snapshot the live translateX as a static inline transform.
+        // This avoids the animation-play-state glitch where the strip jumps on hover.
+        function freezeForHover() {
+            if (inScrollMode || isHoverFrozen) return;
+            const offsetX = readTranslateX();
+            scroller.style.animation = 'none';
+            scroller.style.transform = `translateX(${offsetX}px)`;
+            isHoverFrozen = true;
+        }
+
+        function unfreezeForHover() {
+            if (!isHoverFrozen) return;
+            const offsetX = readTranslateX(); // reads from the inline transform set above
+            resumeAnimationFrom(offsetX);
+            isHoverFrozen = false;
+        }
+
+        // Convert the CSS animation's current translateX into a scrollLeft position
+        // so the user can pick up exactly where the marquee stopped.
+        function enterScrollMode() {
+            isHoverFrozen = false; // scroll mode takes over from any hover-freeze
+            const offsetX = Math.abs(readTranslateX());
+            scroller.style.animation = 'none';
+            scroller.style.position = 'relative';
+            scroller.style.transform = 'none';
+            scroller.classList.add('interests-scroll-mode');
+            // Hide the duplicate copy so images appear only once while scrolling
+            const copy = loopCopy();
+            if (copy) copy.hidden = true;
+            // Hide edge fade overlays so they don't scroll into the middle of the viewport
+            edgeOverlays().forEach(el => { el.style.display = 'none'; });
+            strip.style.overflowX = 'auto';
+            strip.style.overflowY = 'hidden';
+            strip.style.cursor = 'grab';
+            strip.scrollLeft = Math.min(offsetX, scroller.scrollWidth);
+            inScrollMode = true;
+        }
+
+        // Convert scrollLeft back to a negative animation-delay so the marquee
+        // resumes from the same visual position the user scrolled to.
+        function exitScrollMode() {
+            const scrollLeft = strip.scrollLeft;
+            // Restore the loop copy before measuring scrollWidth (needed for delay calc)
+            const copy = loopCopy();
+            if (copy) copy.hidden = false;
+            // Restore edge fade overlays
+            edgeOverlays().forEach(el => { el.style.display = ''; });
+
+            strip.style.overflowX = '';
+            strip.style.overflowY = '';
+            strip.style.cursor = '';
+            strip.scrollLeft = 0;
+
+            scroller.style.position = '';
+            scroller.classList.remove('interests-scroll-mode');
+            resumeAnimationFrom(scrollLeft);
+            inScrollMode = false;
+        }
+
         function syncToSystemPreference() {
+            if (inScrollMode) exitScrollMode();
+            isHoverFrozen = false;
             scroller.classList.remove('interests-motion-opt-in');
             scroller.classList.remove('is-paused');
             updateUI();
         }
 
         btn.addEventListener('click', function interestsMotionClick() {
+            let willBePaused;
             if (prmMq.matches) {
                 scroller.classList.toggle('interests-motion-opt-in');
+                willBePaused = !scroller.classList.contains('interests-motion-opt-in');
             } else {
                 scroller.classList.toggle('is-paused');
+                willBePaused = scroller.classList.contains('is-paused');
+            }
+            if (willBePaused) {
+                enterScrollMode();
+            } else {
+                exitScrollMode();
             }
             updateUI();
         });
+
+        strip.addEventListener('mouseenter', freezeForHover);
+        strip.addEventListener('mouseleave', () => {
+            if (inScrollMode) strip.style.cursor = 'grab';
+            unfreezeForHover();
+        });
+        strip.addEventListener('mousedown', () => { if (inScrollMode) strip.style.cursor = 'grabbing'; });
+        strip.addEventListener('mouseup',   () => { if (inScrollMode) strip.style.cursor = 'grab'; });
 
         if (typeof prmMq.addEventListener === 'function') {
             prmMq.addEventListener('change', syncToSystemPreference);
@@ -585,9 +691,12 @@
         if (interestsContainer && data.interests) {
             interestsContainer.innerHTML = '';
             
-            // Helper function to create interest images
-            function createInterestImages() {
-                const fragment = document.createDocumentFragment();
+            // Helper: builds one set of interest cards wrapped in a div so the
+            // loop copy can be hidden during pause-to-scroll mode.
+            function createInterestImages(isLoop) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'interests-copy flex gap-4 flex-shrink-0';
+                if (isLoop) wrapper.setAttribute('data-interests-loop-copy', '');
                 data.interests.forEach(interest => {
                     const interestHTML = `
                         <div class="interest-card w-72 h-96 md:h-96 flex-shrink-0 relative overflow-hidden rounded-3xl transition-all duration-500 border border-[#29382f]">
@@ -597,16 +706,15 @@
                             </div>
                         </div>
                     `;
-                    const fragmentItem = createHTML(interestHTML);
-                    fragment.appendChild(fragmentItem);
+                    wrapper.appendChild(createHTML(interestHTML));
                 });
-                return fragment;
+                return wrapper;
             }
 
             // Create two identical sets for seamless infinite scrolling
             // The animation moves -50%, so duplicating ensures smooth loop
-            interestsContainer.appendChild(createInterestImages());
-            interestsContainer.appendChild(createInterestImages());
+            interestsContainer.appendChild(createInterestImages(false));
+            interestsContainer.appendChild(createInterestImages(true));
         }
 
         initInterestsMotionToggle(data.interestsAccessibility);
@@ -762,7 +870,7 @@
         // Create nav HTML
         const navHTML = `
             <div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-2">
-                <nav class="relative nav-container bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-2 shadow-lg max-w-[960px] w-full mx-auto" data-menu-open="false">  
+                <nav class="relative nav-container bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-2 shadow-lg max-w-[1024px] w-full mx-auto" data-menu-open="false">  
                 <a class="flex link-logo items-center" href="index.html" aria-label="Yatong Wang - Home">
                         <div class="items-center size-6 text-primary">
                             <svg width="18" height="18" viewBox="0 0 846 846" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
@@ -833,7 +941,7 @@
         // Create footer HTML with responsive classes matching case2.html
         const footerHTML = `
             <footer class="border-t border-[#29382f] w-full pt-6 pb-6 px-4 md:px-8 lg:px-20 lg:pb-4">
-                <div class="max-w-4xl mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-2 mb-2">
+                <div class="mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-2 mb-2">
                     <div class="flex flex-col items-center md:items-start gap-2">
                         <p class="inline-flex items-center gap-2 text-white font-mono uppercase">
                             <span class="relative flex h-2 w-2">

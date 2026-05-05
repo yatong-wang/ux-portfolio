@@ -75,9 +75,12 @@
             transform: none;
         }
     }
-    /* Pause marquee while hovering anywhere over the strip (including gaps between cards) */
-    .scrolling-wrapper:hover {
-        animation-play-state: paused;
+    /* Scroll mode: suppress hover-blur so it doesn't fight the grab cursor */
+    .scrolling-wrapper.interests-scroll-mode:hover .interest-card,
+    .scrolling-wrapper.interests-scroll-mode:hover .interest-card:hover {
+        filter: none;
+        opacity: 1;
+        transform: none;
     }
     @keyframes scroll {
         0% { transform: translateX(0); }
@@ -139,8 +142,20 @@
         <span class="text-primary font-bold tracking-widest text-xs uppercase block mb-4">what shaped me</span>
         <h2 id="about-timeline-heading" class="text-4xl lg:text-5xl font-bold uppercase">my ux journey</h2>
     </div>
-    <div class="max-w-2xl min-w-0 w-full">
-        <div class="about-timeline-list space-y-8" data-about-timeline></div>
+    <div class="about-timeline-wrapper">
+        <div class="max-w-2xl min-w-0 w-full">
+            <div class="about-timeline-list space-y-8" data-about-timeline></div>
+        </div>
+        <div class="about-timeline-badge-col">
+            <div class="about-timeline-badge" tabindex="0" role="img" aria-label="Nielsen Norman Group UX Certified badge — Obtained in 2024, company-sponsored">
+                <img src="assets/images/nng-uxc-badge.png"
+                     alt="Nielsen Norman Group UX Certified badge"
+                     class="about-timeline-badge-img" />
+                <div class="about-timeline-badge-callout" aria-hidden="true">
+                    Obtained in 2024. Company-sponsored.
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
