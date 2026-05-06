@@ -886,7 +886,10 @@
                     </div>
                     <div class="md:hidden flex items-center justify-center ml-auto px-1 py-1">
                         <button id="mobile-menu-button" class="items-center text-gray-400 hover:text-primary transition-colors px-5" aria-label="Toggle menu" aria-expanded="false">
-                            <span class="material-symbols-outlined text-2xl">menu</span>
+                            <span class="mobile-menu-button__icons">
+                                <span class="mobile-menu-button__icon mobile-menu-button__icon--menu material-symbols-outlined text-2xl" aria-hidden="true">menu</span>
+                                <span class="mobile-menu-button__icon mobile-menu-button__icon--close material-symbols-outlined text-2xl" aria-hidden="true">close</span>
+                            </span>
                         </button>
                     </div>
                     <div id="mobile-menu-items" class="md:hidden absolute left-0 right-0 top-full
@@ -958,7 +961,7 @@
                     </div>
                      <div class="flex flex-col md:flex-col-reverse md:items-end items-center md:gap-2 gap-3">
                         <p class="text-gray-500 tracking-tight" data-footer-copyright>${escapeHTML(data.footer.copyright || '')}</p>
-                         <img src="assets/images/built-with-cursor.svg" alt="Built with Cursor" class="w-30 h-8">
+                         <img src="assets/images/vibe-coded-in-cursor-with-claude-code.svg" alt="A badge for Vibe Coded in Cursor with Claude Code" class="w-30 h-8">
                     </div>
                 </div>
             </footer>

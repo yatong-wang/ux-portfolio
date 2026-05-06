@@ -13,10 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.1] -
 ### Added
 - NN/G UXC badge on `about.html` page
+- In-page section rail (dot rail / mobile FAB) on `case-enterprise.html` page
 
 ### Changed
-- Interests image carousel pausing behavior on `about.html` page: allow scrolling
-- Minor padding and card style tweaks on `case-enterprise.html` page
+- Enabled horizontal scrolling for Interests image carousel on `about.html` when on pause
+- Micro-animation for scroll-to-top icon transitions and global nav menus
+- Footer badge swapped from `built-with-cursor` to `vibe-coded-in-cursor-with-claude-code`
+- Minor padding and card style tweaks across pages
 
 
 ## [0.4.0] - 2026-05-04
