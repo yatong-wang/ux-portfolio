@@ -1,0 +1,115 @@
+/**
+ * Home page styles — loaded on index.html only.
+ * Marquee animation, testimonial carousel.
+ */
+
+/**
+ * Marquee Animation
+ * Creates a continuous horizontal scrolling effect
+ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/**
+ * Marquee Animation Class
+ * Applies the marquee animation with infinite loop
+ */
+.animate-marquee {
+  animation: marquee var(--animation-marquee-duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Testimonial Carousel
+   ========================================================================== */
+
+/**
+ * Testimonial Carousel Container
+ * Horizontal scrolling container for testimonial cards
+ */
+.testimonial-carousel {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  justify-content: space-between;
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/**
+ * Testimonial Card
+ * Individual card styling within the carousel
+ */
+.testimonial-card {
+  min-width: 350px;
+  max-height: 500px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-primary);
+}
+
+/**
+ * Carousel Arrow Buttons
+ * Navigation arrows for scrolling the carousel
+ */
+.carousel-arrow {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-arrow:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.carousel-arrow.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/**
+ * Carousel Arrow Positioning
+ * Position arrows on sides of carousel with offset
+ */
+.carousel-arrow-left {
+  left: -0.5rem;
+}
+
+.carousel-arrow-right {
+  right: -1rem;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  /* Responsive arrow positioning for smaller screens */
+  .carousel-arrow-left {
+    left: -0.5rem;
+  }
+  .carousel-arrow-right {
+    right: -0.5rem;
+  }
+
+  /* Ensure section has padding for arrows on larger screens */
+  #testimonials {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

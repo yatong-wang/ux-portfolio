@@ -1,34 +1,9 @@
 {
-  "site": {
-    "title": "Yatong Wang - UX and Product Designer"
-  },
+  "_note": "Source of truth for the few site-wide strings that appear in static markup. Nothing fetches this at runtime — when these change, edit the corresponding inline copy in index.html, about.html, case-enterprise.html, and 404.html (banner message + footer status).",
   "banner": {
-    "enabled": true,
-    "message": "This is a live rebuild in progress. Powered by AI tools.",
-    "cta": {
-      "text": "See where it started →",
-      "href": "https://yatongwang.com",
-      "target": "_blank"
-    },
-    "secondaryCta": {
-      "text": "View repo →",
-      "href": "https://github.com/yatong-wang/ux-portfolio",
-      "target": "_blank"
-    }
+    "message": "This is a live rebuild in progress. Powered by AI tools."
   },
-  "navigation": [
-    {"text": "Work", "href": "/work", "disabled": true},
-    {"text": "About", "href": "/about"},
-    {"text": "Fun", "href": "/fun", "disabled": true},
-    {"text": "Resume", "href": "https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link", "target": "_blank"}
-  ],
   "footer": {
-    "status": "Open to work",
-    "copyright": "© 2025-2026 Yatong Wang. All rights reserved.",
-    "links": [
-      {"text": "Email", "href": "mailto:yatong4wang@gmail.com", "icon": "mail"},
-      {"text": "LinkedIn", "href": "https://www.linkedin.com/in/yatong-wang/", "icon": "arrow_outward", "target": "_blank"},
-      {"text": "GitHub", "href": "https://github.com/yatong-wang", "icon": "arrow_outward", "target": "_blank"}
-    ]
+    "status": "Open to work"
   }
 }

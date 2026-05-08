@@ -9,7 +9,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="styles.css"/>
+<link rel="stylesheet" href="styles/base.css"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
         tailwind.config = {
@@ -36,9 +36,53 @@
     </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
-<div data-banner-placeholder></div>
+<div id="banner-spacer" aria-hidden="true" class="banner-spacer"></div>
+<div id="top-banner-shell" class="top-banner-shell fixed top-0 left-0 right-0 z-[100] overflow-hidden pointer-events-none">
+  <div class="w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a] pointer-events-auto" id="top-banner">
+    <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+      <p class="text-sm font-medium tracking-tight text-[#111714]"><span class="mr-2">🚧</span>This is a live rebuild in progress. Powered by AI tools.</p>
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        <a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="https://yatongwang.com" target="_blank" rel="noopener">See where it started →</a>
+        <a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="https://github.com/yatong-wang/ux-portfolio" target="_blank" rel="noopener">View repo →</a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-<div data-nav-placeholder></div>
+<div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-2">
+  <nav class="relative nav-container bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-2 shadow-lg max-w-[1024px] w-full mx-auto" data-menu-open="false">
+    <a class="flex link-logo items-center" href="index.html" aria-label="Yatong Wang - Home">
+      <div class="items-center size-6 text-primary">
+        <svg width="18" height="18" viewBox="0 0 846 846" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+          <path d="M53 282.5C53 421.4 191.344 534 362 534V31C191.344 31 53 143.6 53 282.5Z" fill="currentColor"/>
+          <path d="M201 838H807V613H363.572L201 838Z" fill="currentColor"/>
+          <path d="M413 543H807V0L413 543Z" fill="currentColor"/>
+        </svg>
+      </div>
+      <span class="items-center font-[Syne] text-white font-bold uppercase whitespace-nowrap" data-logo-text>YAT<span class="font-extrabold">O</span>NG WANG</span>
+    </a>
+    <div class="hidden md:flex items-center gap-1 px-1 py-1">
+      <a class="link-nav" href="/work">Work</a>
+      <a class="link-nav" href="/about">About</a>
+      <a class="link-nav" href="/fun">Fun</a>
+      <a class="link-nav" href="https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link" target="_blank">Resume</a>
+    </div>
+    <div class="md:hidden flex items-center justify-center ml-auto px-1 py-1">
+      <button id="mobile-menu-button" class="items-center text-gray-400 hover:text-primary transition-colors px-5" aria-label="Toggle menu" aria-expanded="false">
+        <span class="mobile-menu-button__icons">
+          <span class="mobile-menu-button__icon mobile-menu-button__icon--menu material-symbols-outlined text-2xl" aria-hidden="true">menu</span>
+          <span class="mobile-menu-button__icon mobile-menu-button__icon--close material-symbols-outlined text-2xl" aria-hidden="true">close</span>
+        </span>
+      </button>
+    </div>
+    <div id="mobile-menu-items" class="md:hidden absolute left-0 right-0 top-full flex flex-col items-end justify-end gap-2 w-full px-4 pb-2 pt-2" data-menu-visible="false">
+      <a class="link-nav link-nav-mobile" href="/work">Work</a>
+      <a class="link-nav link-nav-mobile" href="/about">About</a>
+      <a class="link-nav link-nav-mobile" href="/fun">Fun</a>
+      <a class="link-nav link-nav-mobile" href="https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link" target="_blank">Resume</a>
+    </div>
+  </nav>
+</div>
 <main class="flex-grow w-full flex flex-col items-center">
 <section class="flex-1 w-full flex flex-col items-center justify-center relative px-4 min-h-0" data-section="hero">
 <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60 mix-blend-overlay pointer-events-none" data-hero-bg>
@@ -66,9 +110,41 @@
 </div>
 </section>
 </main>
-<div data-footer-placeholder></div>
+<footer class="border-t border-[#29382f] w-full pt-6 pb-6 px-4 md:px-8 lg:px-20 lg:pb-4">
+  <div class="mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-2 mb-2">
+    <div class="flex flex-col items-center md:items-start gap-2">
+      <p class="inline-flex items-center gap-2 text-white font-mono uppercase">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        <span class="tracking-tight" data-footer-status>Open to work</span>
+      </p>
+      <div class="flex flex-col md:flex-row items-center gap-2">
+        <div class="inline-flex justify-center md:justify-end md:items-end md:gap-4 gap-8 text-gray-400">
+          <a class="link-footer group" href="mailto:yatong4wang@gmail.com">
+            <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">mail</span>
+            <span class="link-footer-text">Email</span>
+          </a>
+          <a class="link-footer group" href="https://www.linkedin.com/in/yatong-wang/" target="_blank">
+            <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+            <span class="link-footer-text">LinkedIn</span>
+          </a>
+          <a class="link-footer group" href="https://github.com/yatong-wang" target="_blank">
+            <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+            <span class="link-footer-text">GitHub</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-col-reverse md:items-end items-center md:gap-2 gap-3">
+      <p class="text-gray-500 tracking-tight" data-footer-copyright>© 2025-2026 Yatong Wang. All rights reserved.</p>
+      <img src="assets/images/vibe-coded-in-cursor-with-claude-code.svg" alt="A badge for Vibe Coded in Cursor with Claude Code" class="w-30 h-8">
+    </div>
+  </div>
+</footer>
 </div>
-<script src="js/content-loader.js"></script>
+<script type="module" src="js/main.js"></script>
 <script src="js/scripts.js"></script>
 <script>
     document.querySelectorAll('h2').forEach(heading => {

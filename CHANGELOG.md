@@ -10,7 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Curated resource page
 
 ---
-## [0.4.1] -
+## [0.6.0] - 2026-05-07
+### Changed — internal architecture (no user-visible changes)
+- Split monolithic `js/content-loader.js` into `lib/`, `pages/`, and `behavior/` modules; entry point is now `js/main.js` (ES module), dispatched per-page via `<html data-page>`.
+- Split `styles.css` (1,783 lines) into `styles/base.css`, `styles/home.css`, `styles/about.css`, and moved `case-study.css` into `styles/`. Each page loads only what it needs.
+- Hand-inlined nav, banner, and footer into every HTML page. They now render at parse time, work without JS, and no longer cause the load-time reflow. `data/site.json` is no longer fetched at runtime.
+- Promoted the repeated dark-card pattern to a `.surface-card` class.
+- Extended `prefers-reduced-motion` to disable wave, nudge, pulse-soft, float-soft, fade-soft, and marquee animations.
+
+### Removed
+- `js/content-loader.js`, `js/site/banner.js`, `js/site/nav.js`, `js/site/footer.js` (functionality replaced by static HTML or moved to `js/behavior/`).
+- `public/styles.css` (split into per-page sheets).
+
+
+## [0.5.0] - 2026-05-06
 ### Added
 - NN/G UXC badge on `about.html` page
 - In-page section rail (dot rail / mobile FAB) on `case-enterprise.html` page

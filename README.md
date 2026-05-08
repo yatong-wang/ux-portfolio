@@ -10,10 +10,9 @@ I've chosen to build with a simple frontend stack rather than popular frameworks
 ### Live Site
 
 🔗 URL: https://lab.yatongwang.com 
->(redirects to https://yatong-wang.netlify.app)
 
 >  Landing Page Preview
-[![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://yatong-wang.netlify.app)
+[![thumbnail-yatong-wang-ux-portfolio](https://github.com/user-attachments/assets/2e16f9d6-2e5f-44aa-b128-c95dd39cd718)](https://lab.yatongwang.com)
 
 
 ### Disclaimer
@@ -39,17 +38,22 @@ The site is *independently* developed by me, so no formal peer code review exist
 
 ### Tech Stack
 [![Tech Stack](https://skillicons.dev/icons?i=html,css,tailwind,js)](https://skillicons.dev)
-- **HTML** (semantic structure)
-- **Tailwind CSS** + custom `styles.css`
-- **Vanilla JavaScript**
+- **HTML** (semantic structure, static nav/banner/footer inlined per page)
+- **Tailwind CSS** + modular custom stylesheets under `public/styles/`
+- **Vanilla JavaScript** (ES modules, render → behave separation)
 - **JSON** for dynamic content management
 
 
 ### Repository Structure
-- `public/` → 
+- `public/`
   - `assets/` → Images, cursors, and visual assets
   - `data/` → Content and copy stored as JSON
-  - `js/` → Content loaders and interaction scripts
+  - `styles/` → Modular CSS: `base.css` + per-page sheets (`home`, `about`, `case-study`)
+  - `js/` → ES-module entry (`main.js`) + classic `scripts.js`, with:
+    - `pages/` → page-specific content loaders (render only)
+    - `behavior/` → self-contained interaction modules (banner scroll, tagline, strengths, interests)
+    - `lib/content.js` → shared helpers (`fetchJSON`, `escapeHTML`, `createHTML`)
+  - See [public/js/README.md](public/js/README.md) for the full JS architecture and boot phases.
 
 ### Branch
 - `main` → production (auto-deployed via Netlify)
@@ -71,6 +75,7 @@ The site is *independently* developed by me, so no formal peer code review exist
 ### Tools I Use
 - **Design:** Stitch with Google, Figma, Pencil
 - **Primary IDE:** Cursor
+- **Coding Agent**: Cursor, Claude Code
 - **Coding & Engineering Guidance:** Claude, ChatGPT  
   - (for minor coding problem assistance, Git/GitHub best practices, repo architecture, version control workflows, etc.)
 
@@ -80,7 +85,7 @@ All AI-generated output is reviewed and fine tuned before being committed.
 1. Prompt in Stitch with Google for page designs. Draw inspirations from my older portfolio and online examples. Iterate each page until satisfied.
 2. Export desired variations from Stitch by Google as HTML files.
 3. Create a repo in GitHub. Clone the repo in Cursor to work locally and commit changes when ready.
-4. In Cursor, refractor the raw HTML files by setting up the repo structure (external CSS stylesheets.
+4. In Cursor, refactor the raw HTML files by setting up the repo structure (external CSS stylesheets, modular JS).
 5. Ask, plan and build in Cursor, and learn by tinkering.
 6. Make small code tweaks by asking Claude / ChatGPT, or modify them manually...***so that your AI tokens won't be gone in a heartbeat***.
 
@@ -92,14 +97,16 @@ All AI-generated output is reviewed and fine tuned before being committed.
 ## Roadmap
 [↑ Back to TOC](#table-of-contents)
 
-- [ ] Add an "About Me" page
-- [ ] Generate templates and components for case studies page
-- [ ] Write content for case studies
-- [ ] Build and publish one case study
+- [x] Add an "About Me" page
+- [x] Generate templates and components for case studies page
+- [x] Write content for case studies
+- [x] Build and publish one case study
 - [ ] Build remaining case studies
 - [ ] Evaluate and implement analytics tools
-- [ ] Design and implement dark mode
+- [ ] Design and implement light mode
 - [ ] Add a "Fun / Experiments" page
+- [ ] Install Tailwind CSS as a build step (replace the `cdn.tailwindcss.com` script)
+- [ ] Evaluate adopting a static site generator (Eleventy / Astro) for shared layouts and partials
 
 
 ## License

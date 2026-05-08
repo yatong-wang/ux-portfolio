@@ -3,3 +3,4 @@
 wip/
 **/.DS_Store
 .env
+.claude/

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="en" data-page="case-enterprise">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -9,7 +9,8 @@
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Spline+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/case-study.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script id="tailwind-config">
     tailwind.config = {
@@ -42,672 +43,586 @@
   </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white selection:bg-primary selection:text-background-dark">
-  <div data-banner-placeholder></div>
+  <div id="banner-spacer" aria-hidden="true" class="banner-spacer"></div>
+  <div id="top-banner-shell" class="top-banner-shell fixed top-0 left-0 right-0 z-[100] overflow-hidden pointer-events-none">
+    <div class="w-full border-b py-1.5 px-4 md:px-10 flex items-center justify-center gap-4 bg-[#2ebd67] border-[#25a55a] pointer-events-auto" id="top-banner">
+      <div class="flex-1 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3">
+        <p class="text-sm font-medium tracking-tight text-[#111714]"><span class="mr-2">🚧</span>This is a live rebuild in progress. Powered by AI tools.</p>
+        <div class="flex flex-wrap items-center justify-center gap-2">
+          <a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="https://yatongwang.com" target="_blank" rel="noopener">See where it started →</a>
+          <a class="bg-primary text-[#111714] px-4 py-[0.4rem] rounded-full text-xs font-bold hover:bg-white transition-all" href="https://github.com/yatong-wang/ux-portfolio" target="_blank" rel="noopener">View repo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-    <div data-nav-placeholder></div>
+    <div class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-2">
+    <nav class="relative nav-container bg-[#1c2620]/80 backdrop-blur-md border border-[#29382f] rounded-full px-2 py-2 flex items-center justify-between gap-2 shadow-lg max-w-[1024px] w-full mx-auto" data-menu-open="false">
+      <a class="flex link-logo items-center" href="index.html" aria-label="Yatong Wang - Home">
+        <div class="items-center size-6 text-primary">
+          <svg width="18" height="18" viewBox="0 0 846 846" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5">
+            <path d="M53 282.5C53 421.4 191.344 534 362 534V31C191.344 31 53 143.6 53 282.5Z" fill="currentColor"/>
+            <path d="M201 838H807V613H363.572L201 838Z" fill="currentColor"/>
+            <path d="M413 543H807V0L413 543Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="items-center font-[Syne] text-white font-bold uppercase whitespace-nowrap" data-logo-text>YAT<span class="font-extrabold">O</span>NG WANG</span>
+      </a>
+      <div class="hidden md:flex items-center gap-1 px-1 py-1">
+        <a class="link-nav" href="/work">Work</a>
+        <a class="link-nav" href="/about">About</a>
+        <a class="link-nav" href="/fun">Fun</a>
+        <a class="link-nav" href="https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link" target="_blank">Resume</a>
+      </div>
+      <div class="md:hidden flex items-center justify-center ml-auto px-1 py-1">
+        <button id="mobile-menu-button" class="items-center text-gray-400 hover:text-primary transition-colors px-5" aria-label="Toggle menu" aria-expanded="false">
+          <span class="mobile-menu-button__icons">
+            <span class="mobile-menu-button__icon mobile-menu-button__icon--menu material-symbols-outlined text-2xl" aria-hidden="true">menu</span>
+            <span class="mobile-menu-button__icon mobile-menu-button__icon--close material-symbols-outlined text-2xl" aria-hidden="true">close</span>
+          </span>
+        </button>
+      </div>
+      <div id="mobile-menu-items" class="md:hidden absolute left-0 right-0 top-full flex flex-col items-end justify-end gap-2 w-full px-4 pb-2 pt-2" data-menu-visible="false">
+        <a class="link-nav link-nav-mobile" href="/work">Work</a>
+        <a class="link-nav link-nav-mobile" href="/about">About</a>
+        <a class="link-nav link-nav-mobile" href="/fun">Fun</a>
+        <a class="link-nav link-nav-mobile" href="https://drive.google.com/file/d/11TJC4ulcohFD6ovmQ_ombT_fDAYu-jKv/view?usp=share_link" target="_blank">Resume</a>
+      </div>
+    </nav>
+  </div>
 
     <main class="flex-grow flex flex-col items-center w-full pt-32 pb-0">
       <div class="w-full">
 
         <!-- Section 00 — Hero (full-bleed) -->
-        <section class="relative flex flex-col justify-end min-h-screen p-4 md:px-12 lg:p-12 w-full" aria-labelledby="case-hero-heading">
-          <div class="absolute inset-0 z-0">
-            <div class="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden">
-              <img src="assets/projects/enterprise/hero-enterprise.png" alt="Enterprise app integration — final hi-fi mockup" class="absolute inset-0 h-full w-full object-cover"/>
-              <div class="absolute inset-0 bg-gradient-to-t from-background-dark/95 via-background-dark/50 to-transparent pointer-events-none"></div>
+        <section class="case-hero" aria-labelledby="case-hero-heading">
+          <div class="case-hero__bg">
+            <div class="case-hero__bg-frame">
+              <img src="assets/projects/enterprise/hero-enterprise.png" alt="Enterprise app integration — final hi-fi mockup"/>
             </div>
           </div>
-          <div class="relative z-10 w-full max-w-4xl mx-auto px-4 lg:px-8 pb-8">
-            <div class="flex flex-col gap-3">
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">B2B Gov</span>
-                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">Research</span>
-                <span class="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs font-medium text-white">IA</span>
+          <div class="case-hero__content">
+            <div class="case-hero__tags">
+              <span class="case-chip">B2B Gov</span>
+              <span class="case-chip">Research</span>
+              <span class="case-chip">IA</span>
+            </div>
+            <h1 id="case-hero-heading" class="case-hero__title">
+              Integrating Legacy Tools into Enterprise Software
+            </h1>
+            <p class="case-hero__dek">
+              Help government workers complete assessments 50% faster by embedding simplified workflows from legacy tools.
+            </p>
+            <div class="case-hero__meta">
+              <div>
+                <p class="case-hero__meta-label">Role</p>
+                <p class="case-hero__meta-value">Sole UX/UI Designer</p>
               </div>
-              <h1 id="case-hero-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
-                Integrating Legacy Tools into Enterprise Software
-              </h1>
-              <p class="text-lg md:text-xl text-gray-300 font-light leading-relaxed max-w-2xl">
-                Help government workers complete assessments 50% faster by embedding simplified workflows from legacy tools.
-              </p>
-              <div class="flex flex-col max-w-3xl md:flex-row md:gap-6 gap-4 mt-2 text-muted">
-                <div>
-                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Role</p>
-                  <p class="text-base text-muted">Sole UX/UI Designer</p>
-                </div>
-                <div>
-                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Timeline</p>
-                  <p class="text-base text-muted">~10 Months (2024&ndash;2025)</p>
-                </div>
-                <div>
-                  <p class="text-xs uppercase tracking-wider font-semibold mb-1 text-primary">Team</p>
-                  <p class="text-base text-muted">10+ person Agile team (product owners, business analyst, developers, QA engineers)</p>
-                </div>
+              <div>
+                <p class="case-hero__meta-label">Timeline</p>
+                <p class="case-hero__meta-value">~10 Months (2024&ndash;2025)</p>
+              </div>
+              <div>
+                <p class="case-hero__meta-label">Team</p>
+                <p class="case-hero__meta-value">10+ person Agile team (product owners, business analyst, developers, QA engineers)</p>
               </div>
             </div>
           </div>
         </section>
 
         <!-- NDA Notice -->
-        <div class="px-4 py-8 md:px-12 lg:px-20 w-full">
-          <div class="max-w-4xl mx-auto">
-            <div class="flex gap-4 items-start bg-primary/5 border border-primary/20 rounded-2xl px-6 py-5">
-              <span class="material-symbols-outlined text-primary mt-0.5 shrink-0">lock</span>
-              <div class="flex flex-col gap-1">
-                <p class="text-primary font-semibold text-sm uppercase tracking-widest">Confidential Work</p>
-                <p class="text-muted text-sm leading-relaxed">Client details, user data, and business metrics are anonymized or generalized. The focus is on my process: research, design decisions, and how I worked with teams.</p>
-              </div>
+        <div class="case-nda">
+          <div class="case-nda__inner">
+            <span class="material-symbols-outlined case-nda__icon">lock</span>
+            <div class="case-nda__body">
+              <p class="case-nda__eyebrow">Confidential Work</p>
+              <p class="case-nda__text">Client details, user data, and business metrics are anonymized or generalized. The focus is on my process: research, design decisions, and how I worked with teams.</p>
             </div>
           </div>
         </div>
 
         <!-- Section 01 — TL;DR -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full scroll-mt-4" id="tldr" aria-label="TL;DR">
-          <div class="max-w-4xl mx-auto flex flex-col gap-8">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">01 / TL;DR</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-10">
-              <article class="flex flex-col gap-4 md:gap-8 px-6 md:px-0">
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined">report</span>
-                  </div>
-                  <h3 class="text-3xl lg:text-4xl font-bold text-white leading-tight">Problem</h3>
+        <section class="case-section" id="tldr" aria-label="TL;DR">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">01 / TL;DR</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="case-tldr">
+              <article class="case-tldr__item">
+                <div class="case-tldr__head">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">report</span></div>
+                  <h3 class="case-tldr__title">Problem</h3>
                 </div>
-                <p class="md:text-md text-gray-300">Government workers <span class="text-primary font-medium">skipped</span> conducting <span class="text-primary font-medium">required</span> assessments because the legacy tools were too <span class="text-primary font-medium">complex</span>. <br/><br/>The organization wanted to <span class="text-primary font-medium">integrate</span> the two tools into their existing enterprise platform with <span class="text-primary font-medium">unified UI</span>.</p>
+                <p class="case-tldr__body">Government workers <span class="case-hl">skipped</span> conducting <span class="case-hl">required</span> assessments because the legacy tools were too <span class="case-hl">complex</span>. <br/><br/>The organization wanted to <span class="case-hl">integrate</span> the two tools into their existing enterprise platform with <span class="case-hl">unified UI</span>.</p>
               </article>
-              <article class="flex flex-col gap-4 md:gap-8 px-6 md:px-0">
-                <div class="flex  items-center gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined">route</span>
-                  </div>
-                  <h3 class="text-3xl lg:text-4xl font-bold text-white leading-tight">Method</h3>
+              <article class="case-tldr__item">
+                <div class="case-tldr__head">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">route</span></div>
+                  <h3 class="case-tldr__title">Method</h3>
                 </div>
-                <ul class="flex list-disc flex-col gap-3 text-gray-300 md:text-md">
-                  <li class="ml-4">Conducted <span class="text-primary font-medium">multi-phase research</span> with four stakeholder groups</li>
-                  <li class="ml-4">Closely collaborated with <span class="text-primary font-medium">subject matter experts</span></li>
-                  <li class="ml-4">Designed around the <span class="text-primary font-medium">less than 5% of the functionality</span> users actually needed</li>
+                <ul class="case-tldr__list">
+                  <li>Conducted <span class="case-hl">multi-phase research</span> with four stakeholder groups</li>
+                  <li>Closely collaborated with <span class="case-hl">subject matter experts</span></li>
+                  <li>Designed around the <span class="case-hl">less than 5% of the functionality</span> users actually needed</li>
                 </ul>
               </article>
-              <article class="flex flex-col gap-4 md:gap-8 px-6 md:px-0">
-                <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined">trending_up</span>
-                  </div>
-                  <h3 class="text-3xl lg:text-4xl font-bold text-white leading-tight">Outcome</h3>
+              <article class="case-tldr__item">
+                <div class="case-tldr__head">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">trending_up</span></div>
+                  <h3 class="case-tldr__title">Outcome</h3>
                 </div>
-                <ul class="flex list-disc flex-col gap-3 text-gray-300 md:text-md">
-                  <li class="ml-4"><span class="text-primary font-medium">93%</span> user satisfaction (wireframe usability testing)</li>
-                  <li class="ml-4"><span class="text-primary font-medium">50%</span> faster task completion (projected)*</li>
-                  <li class="ml-4"><span class="text-primary font-medium">80%</span> reduced training time (projected)*</li>
+                <ul class="case-tldr__list">
+                  <li><span class="case-hl">93%</span> user satisfaction (wireframe usability testing)</li>
+                  <li><span class="case-hl">50%</span> faster task completion (projected)*</li>
+                  <li><span class="case-hl">80%</span> reduced training time (projected)*</li>
                 </ul>
-                <p class="text-xs italic text-muted">*Estimation. The project got cancelled before production rollout.</p>
-
+                <p class="case-tldr__footnote">*Estimation. The project got cancelled before production rollout.</p>
               </article>
             </div>
           </div>
         </section>
 
         <!-- Section 02 — Business Context -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full bg-section-alt scroll-mt-4" id="context" aria-labelledby="business-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">02 / Business Context</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
+        <section class="case-section case-section--alt" id="context" aria-labelledby="business-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">02 / Business Context</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+
+            <div class="case-split">
+              <div class="case-split__heading">
+                <h3 id="business-heading" class="case-h3">Using the tools was required. <br/>But the gov staff avoided them.</h3>
+              </div>
+              <figure class="case-figure">
+                <div class="case-figure__media case-figure__media--video">
+                  <img src="assets/projects/enterprise/legacy-tool-screenshot.png" alt="Legacy desktop tool screenshot showing complex UI"/>
+                </div>
+                <figcaption class="case-figure__caption">The legacy desktop tools (separate windows). De-identified.</figcaption>
+              </figure>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start mb-10 px-6 md:px-0">
-              <div class="lg:col-span-1 flex flex-col gap-4">
-                <h3 id="business-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Using the tools was required. <br />But the gov staff avoided them.</h3>
+
+            <div class="case-split">
+              <div class="case-split__heading">
+                <h3 id="ask-heading" class="case-h3">The Ask:<br/>Combining 2 tools → 1 UI within enterprise platform</h3>
               </div>
-              <div class="lg:col-span-2">
-                <figure class="flex flex-col gap-3">
-                  <div class="relative aspect-video rounded-2xl overflow-hidden">
-                    <img src="assets/projects/enterprise/legacy-tool-screenshot.png" alt="Legacy desktop tool screenshot showing complex UI" class="w-full h-full object-cover"/>
-                  </div>
-                  <figcaption class="text-sm text-muted italic text-center">The legacy desktop tools (separate windows). De-identified.</figcaption>
-                </figure>
-              </div>
+              <figure class="case-figure">
+                <svg width="100%" viewBox="0 0 680 360" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-body); max-width: 720px;">
+                  <title id="diagram-title">Tool consolidation and enterprise integration</title>
+                  <desc id="diagram-desc">Before: Tool A and Tool B with separate UIs and backends. After: a unified UI nested inside the enterprise platform connects to the two independent backends.</desc>
+                  <defs>
+                    <marker id="tc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M2 1L8 5L2 9" fill="none" stroke="#9eb7a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </marker>
+                  </defs>
+                  <rect x="20" y="40" width="256" height="230" rx="12" fill="none" stroke="#29382f" stroke-width="1" stroke-dasharray="6 4"/>
+                  <text x="148" y="62" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="14" font-weight="600">Before</text>
+                  <rect x="40" y="84" width="100" height="52" rx="8" fill="#1c2620" stroke="#36e27b" stroke-width="0.75"/>
+                  <text x="90" y="104" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Tool A</text>
+                  <text x="90" y="120" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">UI</text>
+                  <line x1="90" y1="138" x2="90" y2="176" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+                  <rect x="40" y="176" width="100" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
+                  <text x="90" y="196" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool A</text>
+                  <text x="90" y="216" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
+                  <rect x="156" y="84" width="100" height="52" rx="8" fill="#1c2620" stroke="#36e27b" stroke-width="0.75"/>
+                  <text x="206" y="104" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Tool B</text>
+                  <text x="206" y="120" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">UI</text>
+                  <line x1="206" y1="138" x2="206" y2="176" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+                  <rect x="156" y="176" width="100" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
+                  <text x="206" y="196" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool B</text>
+                  <text x="206" y="216" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
+                  <line x1="282" y1="148" x2="336" y2="148" stroke="#9eb7a8" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+                  <rect x="344" y="40" width="316" height="300" rx="12" fill="none" stroke="#29382f" stroke-width="1" stroke-dasharray="6 4"/>
+                  <text x="502" y="62" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="14" font-weight="600">After</text>
+                  <rect x="360" y="82" width="284" height="130" rx="12" fill="#1c2620" stroke="#29382f" stroke-width="0.75"/>
+                  <text x="502" y="102" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="12" font-weight="500">Enterprise platform</text>
+                  <rect x="409" y="124" width="186" height="56" rx="8" fill="#112117" stroke="#36e27b" stroke-width="0.75"/>
+                  <text x="502" y="144" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Unified UI</text>
+                  <text x="502" y="164" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Tool A + Tool B</text>
+                  <line x1="432" y1="212" x2="432" y2="252" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+                  <line x1="572" y1="212" x2="572" y2="252" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
+                  <rect x="362" y="252" width="130" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
+                  <text x="427" y="272" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool A</text>
+                  <text x="427" y="292" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
+                  <rect x="510" y="252" width="130" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
+                  <text x="575" y="272" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool B</text>
+                  <text x="575" y="292" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
+                </svg>
+                <figcaption class="case-figure__caption">The goal is to consolidate two separate tools into a unified UI within the enterprise platform.</figcaption>
+              </figure>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start px-6 md:px-0">
-              <div class="lg:col-span-1 flex flex-col gap-4">
-                <h3 id="ask-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">The Ask:<br />Combining 2 tools → 1 UI within enterprise platform</h3>
-              </div>
-              <div class="lg:col-span-2">
-            <!-- Tool consolidation diagram -->
-            <figure class="flex flex-col gap-3">
-              <svg width="100%" viewBox="0 0 680 360" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg" style="font-family: var(--font-body); max-width: 720px;">
-                <title id="diagram-title">Tool consolidation and enterprise integration</title>
-                <desc id="diagram-desc">Before: Tool A and Tool B with separate UIs and backends. After: a unified UI nested inside the enterprise platform connects to the two independent backends.</desc>
-                <defs>
-                  <marker id="tc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M2 1L8 5L2 9" fill="none" stroke="#9eb7a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </marker>
-                </defs>
-
-                <!-- Before container -->
-                <rect x="20" y="40" width="256" height="230" rx="12" fill="none" stroke="#29382f" stroke-width="1" stroke-dasharray="6 4"/>
-                <text x="148" y="62" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="14" font-weight="600">Before</text>
-
-                <!-- Tool A UI -->
-                <rect x="40" y="84" width="100" height="52" rx="8" fill="#1c2620" stroke="#36e27b" stroke-width="0.75"/>
-                <text x="90" y="104" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Tool A</text>
-                <text x="90" y="120" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">UI</text>
-
-                <!-- Tool A arrow -->
-                <line x1="90" y1="138" x2="90" y2="176" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
-
-                <!-- Tool A Backend -->
-                <rect x="40" y="176" width="100" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
-                <text x="90" y="196" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool A</text>
-                <text x="90" y="216" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
-
-                <!-- Tool B UI -->
-                <rect x="156" y="84" width="100" height="52" rx="8" fill="#1c2620" stroke="#36e27b" stroke-width="0.75"/>
-                <text x="206" y="104" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Tool B</text>
-                <text x="206" y="120" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">UI</text>
-
-                <!-- Tool B arrow -->
-                <line x1="206" y1="138" x2="206" y2="176" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
-
-                <!-- Tool B Backend -->
-                <rect x="156" y="176" width="100" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
-                <text x="206" y="196" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool B</text>
-                <text x="206" y="216" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
-
-                <!-- Transition arrow -->
-                <line x1="282" y1="148" x2="336" y2="148" stroke="#9eb7a8" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
-
-                <!-- After container -->
-                <rect x="344" y="40" width="316" height="300" rx="12" fill="none" stroke="#29382f" stroke-width="1" stroke-dasharray="6 4"/>
-                <text x="502" y="62" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="14" font-weight="600">After</text>
-
-                <!-- Enterprise platform shell -->
-                <rect x="360" y="82" width="284" height="130" rx="12" fill="#1c2620" stroke="#29382f" stroke-width="0.75"/>
-                <text x="502" y="102" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="12" font-weight="500">Enterprise platform</text>
-
-                <!-- Unified UI -->
-                <rect x="409" y="124" width="186" height="56" rx="8" fill="#112117" stroke="#36e27b" stroke-width="0.75"/>
-                <text x="502" y="144" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="13" font-weight="600">Unified UI</text>
-                <text x="502" y="164" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Tool A + Tool B</text>
-
-                <!-- Arrow: unified UI → Tool A backend -->
-                <line x1="432" y1="212" x2="432" y2="252" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
-
-                <!-- Arrow: unified UI → Tool B backend -->
-                <line x1="572" y1="212" x2="572" y2="252" stroke="#29382f" stroke-width="1.5" marker-end="url(#tc-arrow)"/>
-
-                <!-- Tool A Backend (after) -->
-                <rect x="362" y="252" width="130" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
-                <text x="427" y="272" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool A</text>
-                <text x="427" y="292" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
-
-                <!-- Tool B Backend (after) -->
-                <rect x="510" y="252" width="130" height="56" rx="8" fill="#111714" stroke="#29382f" stroke-width="0.75"/>
-                <text x="575" y="272" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="13" font-weight="500">Tool B</text>
-                <text x="575" y="292" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="11">Backend</text>
-              </svg>
-              <figcaption class="text-sm text-muted italic text-center">The goal is to consolidate two separate tools into a unified UI within the enterprise platform.</figcaption>
-            </figure>
-              </div>
-            </div>
-          </div>
           </div>
         </section>
 
         <!-- Section 03 — Stakeholder Alignment -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full scroll-mt-4" id="stakeholders" aria-labelledby="stakeholders-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">03 / Stakeholder Alignment</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
+        <section class="case-section" id="stakeholders" aria-labelledby="stakeholders-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">03 / Stakeholder Alignment</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="px-6 md:px-0">
+              <h3 id="stakeholders-heading" class="case-h3">Listening to all stakeholders' voices</h3>
             </div>
-            <div class="flex flex-col max-w-3xl pb-4 px-6 md:px-0">
-              <h3 id="stakeholders-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Listening to all stakeholders' voices</h3>
-            </div>
-            <div class="overflow-x-auto px-6 md:px-0">
-              <div class="grid min-w-[720px] gap-x-2" style="grid-template-columns: 80px repeat(4, 1fr);">
-
+            <div class="case-table-wrap">
+              <div class="case-table case-table--stakeholders">
                 <!-- Row 1: Stakeholder Group -->
-                <div class="flex items-center pt-5 pr-3">
-                  <span class="text-xs uppercase tracking-widest text-primary font-bold leading-tight">Who</span>
+                <div class="case-table__row-label"><span class="case-table__row-label-text">Who</span></div>
+                <div class="case-table__cell case-table__cell--head">
+                  <div class="case-icon-circle case-icon-circle--sm"><span class="material-symbols-outlined">science</span></div>
+                  <p class="case-table__col-title">Legacy App Domain Experts (Scientists)</p>
                 </div>
-                <div class="bg-primary/5 border-t border-l border-r border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                  <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined text-[20px]">science</span>
-                  </div>
-                  <p class="text-white font-bold leading-snug">Legacy App Domain Experts (Scientists)</p>
+                <div class="case-table__cell case-table__cell--head">
+                  <div class="case-icon-circle case-icon-circle--sm"><span class="material-symbols-outlined">hub</span></div>
+                  <p class="case-table__col-title">Enterprise Software Team</p>
                 </div>
-                <div class="bg-primary/5 border-t border-l border-r border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                  <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined text-[20px]">hub</span>
-                  </div>
-                  <p class="text-white font-bold leading-snug">Enterprise Software Team</p>
+                <div class="case-table__cell case-table__cell--head">
+                  <div class="case-icon-circle case-icon-circle--sm"><span class="material-symbols-outlined">palette</span></div>
+                  <p class="case-table__col-title">New Design System Team</p>
                 </div>
-                <div class="bg-primary/5 border-t border-l border-r border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                  <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined text-[20px]">palette</span>
-                  </div>
-                  <p class="text-white font-bold leading-snug">New Design System Team</p>
-                </div>
-                <div class="bg-primary/5 border-t border-l border-r border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                  <div class="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined text-[20px]">school</span>
-                  </div>
-                  <p class="text-white font-bold leading-snug">Legacy App Trainers (Veteran Staff)</p>
+                <div class="case-table__cell case-table__cell--head">
+                  <div class="case-icon-circle case-icon-circle--sm"><span class="material-symbols-outlined">school</span></div>
+                  <p class="case-table__col-title">Legacy App Trainers (Veteran Staff)</p>
                 </div>
 
-                <!-- Row 2: What they care about -->
-                <div class="flex items-start pt-4 pr-3">
-                  <span class="text-xs uppercase tracking-widest text-primary font-bold leading-tight">They care about</span>
-                </div>
-                <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                  <p class="text-sm text-gray-300">Preserving scientific accuracy and method fidelity.</p>
-                </div>
-                <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                  <p class="text-sm text-gray-300">Workflow continuity with the rest of the platform.</p>
-                </div>
-                <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                  <p class="text-sm text-gray-300">Visual consistency across a still-evolving system.</p>
-                </div>
-                <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                  <p class="text-sm text-gray-300">Easy-to-find training materials and documentation.</p>
-                </div>
+                <!-- Row 2: They care about -->
+                <div class="case-table__row-label case-table__row-label--mid"><span class="case-table__row-label-text">They care about</span></div>
+                <div class="case-table__cell case-table__cell--mid"><p class="case-table__cell-text">Preserving scientific accuracy and method fidelity.</p></div>
+                <div class="case-table__cell case-table__cell--mid"><p class="case-table__cell-text">Workflow continuity with the rest of the platform.</p></div>
+                <div class="case-table__cell case-table__cell--mid"><p class="case-table__cell-text">Visual consistency across a still-evolving system.</p></div>
+                <div class="case-table__cell case-table__cell--mid"><p class="case-table__cell-text">Easy-to-find training materials and documentation.</p></div>
 
-                <!-- Row 3: What I was told -->
-                <div class="flex items-start pt-4 pr-3">
-                  <span class="text-xs uppercase tracking-widest text-primary font-bold leading-tight">I was told</span>
-                </div>
-                <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                  <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;The science should not be reduced.&rdquo;</blockquote>
-                </div>
-                <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                  <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;Make sure your design fits into the larger workflow.&rdquo;</blockquote>
-                </div>
-                <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                  <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;It's important to keep a unified look across all apps.&rdquo;</blockquote>
-                </div>
-                <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                  <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;It's hard to find good training docs; I need to develop my own.&rdquo;</blockquote>
-                </div>
-
+                <!-- Row 3: I was told -->
+                <div class="case-table__row-label case-table__row-label--mid"><span class="case-table__row-label-text">I was told</span></div>
+                <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;The science should not be reduced.&rdquo;</blockquote></div>
+                <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;Make sure your design fits into the larger workflow.&rdquo;</blockquote></div>
+                <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;It's important to keep a unified look across all apps.&rdquo;</blockquote></div>
+                <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;It's hard to find good training docs; I need to develop my own.&rdquo;</blockquote></div>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Section 04 — Problem Framing -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full bg-section-alt scroll-mt-4" id="framing" aria-label="Problem framing">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">04 / Problem Framing</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-            <div class="flex flex-col gap-10 items-center pt-6">
-              <blockquote class="text-3xl lg:text-4xl font-medium text-gray-200 max-w-3xl mx-auto text-center leading-snug">
-                <span class="material-symbols-outlined text-4xl rotate-180 font-light">format_quote</span>
-                How might we maintain <span class="text-primary font-semibold">scientific integrity</span> while <span class="text-primary font-semibold">simplifying</span> the workflow for users who are <span class="text-primary font-semibold italic">not</span> domain experts?
-                <span class="material-symbols-outlined text-3xl font-light">format_quote</span>
-              </blockquote>
-            </div>
+        <section class="case-section case-section--alt" id="framing" aria-label="Problem framing">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">04 / Problem Framing</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <blockquote class="case-framing-quote">
+              <span class="material-symbols-outlined case-framing-quote__open">format_quote</span>
+              How might we maintain <span class="case-hl">scientific integrity</span> while <span class="case-hl">simplifying</span> the workflow for users who are <em class="case-hl">not</em> domain experts?
+              <span class="material-symbols-outlined">format_quote</span>
+            </blockquote>
           </div>
         </section>
 
-
         <!-- Section 05 — User Research -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full scroll-mt-4" id="insight-one" aria-labelledby="insight-one-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">05 / User Research</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
+        <section class="case-section" id="insight-one" aria-labelledby="insight-one-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">05 / User Research</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="px-6 md:px-0">
+              <h3 class="case-h3">Multi-Phase User Research</h3>
             </div>
-            <div class="flex flex-col max-w-3xl pb-4 px-6 md:px-0">
-              <h3 id="stakeholders-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Multi-Phase User Research</h3>
-            </div>
-            <ul class="flex flex-col gap-3 pb-6 px-6 md:px-0">
-              <li class="flex items-center gap-3 text-white">
-                <span class="material-symbols-outlined text-primary">conversation</span>
-                <span>User interviews (gov staff & expert users)</span>
-              </li>
-              <li class="flex items-center gap-3 text-white">
-                <span class="material-symbols-outlined text-primary">poll</span>
-                <span>Surveys on tool usage and preferences</span>
-              </li>
-              <li class="flex items-center gap-3 text-white">
-                <span class="material-symbols-outlined text-primary">laptop_windows</span>
-                <span>Usability tests of the legacy tools to establish a baseline</span>
-              </li>
+            <ul class="case-method-list">
+              <li><span class="material-symbols-outlined">conversation</span><span>User interviews (gov staff &amp; expert users)</span></li>
+              <li><span class="material-symbols-outlined">poll</span><span>Surveys on tool usage and preferences</span></li>
+              <li><span class="material-symbols-outlined">laptop_windows</span><span>Usability tests of the legacy tools to establish a baseline</span></li>
             </ul>
-            <div class="flex flex-col gap-8 w-full">
-              <article class="p-8 md:p-12 px-6 md:px-0">
-                <div class="flex flex-col gap-4 md:gap-8">
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Key Insight #1</p>
-                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    <div class="flex flex-col gap-4">
-                      <h4 id="insight-one-heading" class="text-white text-2xl md:text-3xl font-bold leading-tight">Legacy tools were overkill</h4>
-                      <p class="text-muted">It's like handing an amateur a professional <span class="text-primary font-medium">high-end digital camera</span>, when all they need is the camera <span class="text-primary font-medium">app on their phone</span>.</p>
-                    </div>
-                    <div class="lg:col-span-2">
-                      <figure>
-                        <div class="overflow-hidden">
-                          <svg width="100%" viewBox="0 0 680 360" aria-label="5% vs 95% diagram — what users needed vs. what the tool offered" role="img">
-                            <title>5% vs 95% — what users needed vs. what the tool offered</title>
-                            <defs>
-                              <marker id="arr-5vs95" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M2 1L8 5L2 9" fill="none" stroke="#36e27b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              </marker>
-                            </defs>
-                            <rect x="0" y="0" width="680" height="360" fill="#111714" stroke="#29382f" stroke-width="0.5"/>
-                            <text x="340" y="158" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="42" font-weight="600" font-family="Spline Sans, sans-serif">95%</text>
-                            <text x="340" y="210" text-anchor="middle" fill="#9eb7a8" font-size="28" font-family="Spline Sans, sans-serif" opacity="0.65">never used by most users</text>
-                            <rect x="0" y="260" width="97" height="97" rx="4" fill="rgba(54,226,123,0.1)" stroke="#36e27b" stroke-width="2.5"/>
-                            <text x="49" y="312" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="32" font-weight="600" font-family="Spline Sans, sans-serif">5%</text>
-                            <line x1="98" y1="312" x2="136" y2="312" stroke="#36e27b" stroke-width="0.5" stroke-dasharray="3 3" marker-end="url(#arr-5vs95)"/>
-                            <text x="143" y="303" fill="#ffffff" font-size="20" font-family="Spline Sans, sans-serif">What users</text>
-                            <text x="143" y="327" fill="#ffffff" font-size="20" font-family="Spline Sans, sans-serif">actually needed</text>
-                          </svg>
-                        </div>
-                      </figure>
-                    </div>
+
+            <article class="case-insight">
+              <div class="case-insight__inner">
+                <p class="case-insight__eyebrow">Key Insight #1</p>
+                <div class="case-split">
+                  <div class="case-split__heading">
+                    <h4 id="insight-one-heading" class="case-insight__title">Legacy tools were overkill</h4>
+                    <p class="case-insight__body">It's like handing an amateur a professional <span class="case-hl">high-end digital camera</span>, when all they need is the camera <span class="case-hl">app on their phone</span>.</p>
                   </div>
-                    <article class="bg-primary/5 border-l-4 border-primary rounded-2xl border border-divider p-6 flex items-start gap-4 mt-4">
-                      <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                        <span class="material-symbols-outlined">cognition_2</span>
-                      </div>
-                      <div class="flex flex-col gap-2">
-                        <p class="text-primary font-bold tracking-widest text-xs uppercase">it means:</p>
-                        <p class="text-gray-200 leading-relaxed">Design around the <span class="text-primary font-medium">5% core functionalities</span> that actually matters. Make gov staff feel <span class="text-primary font-medium">less overwhelmed</span>, by presenting only the necessary information they need to complete their assessment.</p>
-                      </div>
-                    </article>
+                  <figure class="case-figure">
+                    <svg width="100%" viewBox="0 0 680 360" aria-label="5% vs 95% diagram — what users needed vs. what the tool offered" role="img">
+                      <title>5% vs 95% — what users needed vs. what the tool offered</title>
+                      <defs>
+                        <marker id="arr-5vs95" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                          <path d="M2 1L8 5L2 9" fill="none" stroke="#36e27b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </marker>
+                      </defs>
+                      <rect x="0" y="0" width="680" height="360" fill="#111714" stroke="#29382f" stroke-width="0.5"/>
+                      <text x="340" y="158" text-anchor="middle" dominant-baseline="central" fill="#9eb7a8" font-size="42" font-weight="600" font-family="Spline Sans, sans-serif">95%</text>
+                      <text x="340" y="210" text-anchor="middle" fill="#9eb7a8" font-size="28" font-family="Spline Sans, sans-serif" opacity="0.65">never used by most users</text>
+                      <rect x="0" y="260" width="97" height="97" rx="4" fill="rgba(54,226,123,0.1)" stroke="#36e27b" stroke-width="2.5"/>
+                      <text x="49" y="312" text-anchor="middle" dominant-baseline="central" fill="#36e27b" font-size="32" font-weight="600" font-family="Spline Sans, sans-serif">5%</text>
+                      <line x1="98" y1="312" x2="136" y2="312" stroke="#36e27b" stroke-width="0.5" stroke-dasharray="3 3" marker-end="url(#arr-5vs95)"/>
+                      <text x="143" y="303" fill="#ffffff" font-size="20" font-family="Spline Sans, sans-serif">What users</text>
+                      <text x="143" y="327" fill="#ffffff" font-size="20" font-family="Spline Sans, sans-serif">actually needed</text>
+                    </svg>
+                  </figure>
+                </div>
+                <aside class="case-insight-callout">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">cognition_2</span></div>
+                  <div class="case-insight-callout__body">
+                    <p class="case-insight-callout__eyebrow">It means:</p>
+                    <p class="case-insight-callout__text">Design around the <span class="case-hl">5% core functionalities</span> that actually matters. Make gov staff feel <span class="case-hl">less overwhelmed</span>, by presenting only the necessary information they need to complete their assessment.</p>
                   </div>
-              </article>
+                </aside>
+              </div>
+            </article>
 
-              <article class="p-8 md:p-12 px-6 md:px-0">
-                <div class="flex flex-col gap-4 md:gap-8">
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Key Insight #2</p>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                  <div class="lg:col-span-1 flex flex-col gap-4">
-                    <h4 id="insight-two-heading" class="text-white text-2xl md:text-3xl font-bold leading-tight">Gov staff relying on templates, contrary to what experts told me</h4>
+            <article class="case-insight">
+              <div class="case-insight__inner">
+                <p class="case-insight__eyebrow">Key Insight #2</p>
+                <div class="case-split">
+                  <div class="case-split__heading">
+                    <h4 id="insight-two-heading" class="case-insight__title">Gov staff relying on templates, contrary to what experts told me</h4>
                   </div>
-                  <div class="lg:col-span-2">
-                    <div class="overflow-x-auto">
-                      <div class="grid min-w-[480px] gap-x-2" style="grid-template-columns: repeat(2, 1fr);">
+                  <div class="case-table-wrap">
+                    <div class="case-table case-table--2col">
+                      <div class="case-table__cell case-table__cell--head"><p class="case-table__col-title">Domain Experts &amp; Trainers</p></div>
+                      <div class="case-table__cell case-table__cell--head"><p class="case-table__col-title">Gov Staff (majority of users)</p></div>
 
-                        <!-- Row 1: Who -->
-                        <div class="bg-primary/5 border-t border-l border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                          <p class="text-white font-bold leading-snug">Domain Experts &amp; Trainers</p>
-                        </div>
-                        <div class="bg-primary/5 border-t border-l border-r border-b border-divider rounded-t-2xl px-4 pt-5 pb-4 flex flex-col gap-3">
-                          <p class="text-white font-bold leading-snug">Gov Staff (majority of users)</p>
-                        </div>
-
-                        <!-- Row 2: Characteristics -->
-                        <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                          <ul class="flex flex-col gap-2">
-                            <li class="text-sm text-gray-300">Sufficient domain knowledge</li>
-                            <li class="text-sm text-gray-300">Used for <span class="text-primary font-medium">complex edge case</span> & <span class="text-primary font-medium">difficult</span> problems</li>
-                            <li class="text-sm text-gray-300"><span class="text-primary font-medium">Infrequent</span>, <span class="text-primary font-medium">low-volume</span> usage</li>
-                          </ul>
-                        </div>
-                        <div class="bg-card/60 border-l border-r border-divider px-4 py-4">
-                          <ul class="flex flex-col gap-2">
-                            <li class="text-sm text-gray-300">Limited domain knowledge</li>
-                            <li class="text-sm text-gray-300">Used for <span class="text-primary font-medium">common, repetitive</span> scenarios</li>
-                            <li class="text-sm text-gray-300">Seasonal, <span class="text-primary font-medium">high-volume</span> usage on similar tasks</li>
-                          </ul>
-                        </div>
-
-                        <!-- Row 3: Quote -->
-                        <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                          <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;Templates are useless. It's faster to build from scratch.&rdquo;</blockquote>
-                        </div>
-                        <div class="bg-card/60 border-l border-r border-b border-divider rounded-b-2xl px-4 pt-4 pb-5">
-                          <blockquote class="border-l-2 border-primary pl-3 italic text-muted text-sm">&ldquo;Having to build from scratch every single time is tedious and unrealistic.&rdquo;</blockquote>
-                        </div>
-
+                      <div class="case-table__cell case-table__cell--mid">
+                        <ul class="case-table__cell-list">
+                          <li>Sufficient domain knowledge</li>
+                          <li>Used for <span class="case-hl">complex edge case</span> &amp; <span class="case-hl">difficult</span> problems</li>
+                          <li><span class="case-hl">Infrequent</span>, <span class="case-hl">low-volume</span> usage</li>
+                        </ul>
                       </div>
+                      <div class="case-table__cell case-table__cell--mid">
+                        <ul class="case-table__cell-list">
+                          <li>Limited domain knowledge</li>
+                          <li>Used for <span class="case-hl">common, repetitive</span> scenarios</li>
+                          <li>Seasonal, <span class="case-hl">high-volume</span> usage on similar tasks</li>
+                        </ul>
+                      </div>
+
+                      <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;Templates are useless. It's faster to build from scratch.&rdquo;</blockquote></div>
+                      <div class="case-table__cell case-table__cell--foot"><blockquote class="case-quote--inline">&ldquo;Having to build from scratch every single time is tedious and unrealistic.&rdquo;</blockquote></div>
                     </div>
                   </div>
                 </div>
-                  <article class="bg-primary/5 border-l-4 border-primary rounded-2xl border border-divider p-6 flex items-start gap-4 mt-4">
-                    <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                      <span class="material-symbols-outlined">clock_loader_20</span>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                      <p class="text-primary font-bold tracking-widest text-xs uppercase">it means:</p>
-                      <p class="text-gray-200 leading-relaxed"><span class="text-primary font-medium">Saving time</span> is a big deal. Gov staff <span class="text-primary font-medium">juggles a lot</span>; allowing <span class="text-primary font-medium">reuse of templates</span> will make their life easier.</p>
-                    </div>
-                  </article>
-                </div>
-              </article>
-
-              <article class="p-8 md:p-12 px-6 md:px-0">
-                <div class="flex flex-col gap-4 md:gap-8">
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Key Insight #3</p>
-                  <div class="grid grid-cols-1 gap-8 items-start">
-                    <div class="lg:col-span-1 flex flex-col gap-4  max-w-2xl">
-                    <h4 class="text-white text-2xl md:text-3xl font-bold leading-tight">New hires were left to figure it out on their own</h4>
-                    <p class="text-muted">A generation of veteran staff <span class="text-primary font-medium">retired</span> and took their knowledge with them. New hires, most <span class="text-primary font-medium">without a technical background</span>, had no good way to pick up tools that were already hard to learn.</p>
+                <aside class="case-insight-callout">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">clock_loader_20</span></div>
+                  <div class="case-insight-callout__body">
+                    <p class="case-insight-callout__eyebrow">It means:</p>
+                    <p class="case-insight-callout__text"><span class="case-hl">Saving time</span> is a big deal. Gov staff <span class="case-hl">juggles a lot</span>; allowing <span class="case-hl">reuse of templates</span> will make their life easier.</p>
                   </div>
-                    <article class="bg-primary/5 border-l-4 border-primary rounded-2xl border border-divider p-6 flex items-start gap-4">
-                      <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                        <span class="material-symbols-outlined">menu_book</span>
-                      </div>
-                      <div class="flex flex-col gap-2">
-                        <p class="text-primary font-bold tracking-widest text-xs uppercase">It means:</p>
-                        <p class="text-gray-200 leading-relaxed">Design primarily for the <span class="text-primary font-medium">non-expert users</span>. Focus on <span class="text-primary font-medium">learnability</span> of the system, but need to <a href="https://www.nngroup.com/videos/learnability-efficiency-ui-design/" class="font-medium text-primary" target="_blank">balance with efficiency</a>.</p>
-                      </div>
-                    </article>
-                </div>
-                </div>
-              </article>
-            </div>
+                </aside>
+              </div>
+            </article>
 
+            <article class="case-insight">
+              <div class="case-insight__inner">
+                <p class="case-insight__eyebrow">Key Insight #3</p>
+                <div class="case-split__heading max-w-2xl">
+                  <h4 class="case-insight__title">New hires were left to figure it out on their own</h4>
+                  <p class="case-insight__body">A generation of veteran staff <span class="case-hl">retired</span> and took their knowledge with them. New hires, most <span class="case-hl">without a technical background</span>, had no good way to pick up tools that were already hard to learn.</p>
+                </div>
+                <aside class="case-insight-callout">
+                  <div class="case-icon-circle"><span class="material-symbols-outlined">menu_book</span></div>
+                  <div class="case-insight-callout__body">
+                    <p class="case-insight-callout__eyebrow">It means:</p>
+                    <p class="case-insight-callout__text">Design primarily for the <span class="case-hl">non-expert users</span>. Focus on <span class="case-hl">learnability</span> of the system, but need to <a href="https://www.nngroup.com/videos/learnability-efficiency-ui-design/" class="case-hl" target="_blank">balance with efficiency</a>.</p>
+                  </div>
+                </aside>
+              </div>
+            </article>
           </div>
         </section>
 
         <!-- Section 06 — Information Architecture -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full bg-section-alt scroll-mt-4" id="design" aria-labelledby="ia-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">06 / Information Architecture</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start px-6 md:px-0">
-              <div class="lg:col-span-1 flex flex-col gap-4">
-                <h3 id="ia-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Mapping overlapping data inputs and actions</h3>
-                <p class="text-muted text-lg leading-relaxed">To combine the two tools, I used OOUX methods to create an object map. It gives me the "bones" of the interface and interactions for simplifying the workflows.</p>
+        <section class="case-section case-section--alt" id="design" aria-labelledby="ia-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">06 / Information Architecture</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="case-split">
+              <div class="case-split__heading">
+                <h3 id="ia-heading" class="case-h3">Mapping overlapping data inputs and actions</h3>
+                <p class="case-lede">To combine the two tools, I used OOUX methods to create an object map. It gives me the "bones" of the interface and interactions for simplifying the workflows.</p>
               </div>
-              <div class="lg:col-span-2">
-                <figure class="flex flex-col gap-3">
-                  <div class="relative overflow-hidden rounded-3xl w-full">
-                    <img src="assets/projects/enterprise/object-map.png" alt="IA object map" class="w-full h-auto block"/>
-                  </div>
-                  <figcaption class="text-sm text-muted italic text-center">Object Map: Key objects, Core content, Metadata, and CTAs.</figcaption>
-                </figure>
-              </div>
+              <figure class="case-figure">
+                <div class="case-figure__media case-figure__media--rounded-lg">
+                  <img src="assets/projects/enterprise/object-map.png" alt="IA object map"/>
+                </div>
+                <figcaption class="case-figure__caption">Object Map: Key objects, Core content, Metadata, and CTAs.</figcaption>
+              </figure>
             </div>
           </div>
         </section>
 
-        <!-- Section 07 —  Solution (Pain Point / Solution stack) -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full scroll-mt-4" id="problem-solution" aria-labelledby="design-solution-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">07 / Solution</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-            <div class="flex flex-col gap-4 px-6 md:px-0">
-              <h3 id="design-solution-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Reinventing the flow</h3>
-              <p class="text-muted text-lg leading-relaxed">Every week I worked alongside the enterprise software team and the legacy app scientists to pressure-test my decisions.</p>
+        <!-- Section 07 — Solution -->
+        <section class="case-section" id="problem-solution" aria-labelledby="design-solution-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">07 / Solution</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="px-6 md:px-0 flex flex-col gap-4">
+              <h3 id="design-solution-heading" class="case-h3">Reinventing the flow</h3>
+              <p class="case-lede">Every week I worked alongside the enterprise software team and the legacy app scientists to pressure-test my decisions.</p>
             </div>
 
-                <article class="bg-card rounded-2xl border border-divider p-8 md:p-12">
-                  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    <div class="lg:col-span-1 flex flex-col gap-4">
-                      <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #1</p>
-                      <h4 class="text-white text-2xl lg:text-3xl font-bold leading-tight">Tool Selection and Conditional Loading</h4>
-                      <p class="text-md text-muted">Makes the UI less overwhelming and more straightforward.</p>
-                      <ul class="flex flex-col gap-2">
-                        <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Checkbox to select the tool(s) to use</span></li>
-                        <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Tab content conditionally loaded based on selection</span></li>
-                      </ul>
-                    </div>
-                    <div class="lg:col-span-2">
-                  <div class="relative aspect-video overflow-hidden">
-                    <img src="assets/projects/enterprise/tool-selection.png" alt="Screen showing a tool selection module with tabbed navigation and content" class="absolute inset-0 h-full w-full object-cover"/>
-                  </div>
+            <article class="case-card case-card--lg">
+              <div class="case-split">
+                <div class="case-split__heading">
+                  <p class="case-insight__eyebrow">Design Decision #1</p>
+                  <h4 class="case-h4">Tool Selection and Conditional Loading</h4>
+                  <p class="case-lede case-lede--sm">Makes the UI less overwhelming and more straightforward.</p>
+                  <ul class="case-checklist">
+                    <li><span class="material-symbols-outlined">check</span><span>Checkbox to select the tool(s) to use</span></li>
+                    <li><span class="material-symbols-outlined">check</span><span>Tab content conditionally loaded based on selection</span></li>
+                  </ul>
+                </div>
+                <div class="case-figure__media case-figure__media--video">
+                  <img src="assets/projects/enterprise/tool-selection.png" alt="Screen showing a tool selection module with tabbed navigation and content"/>
                 </div>
               </div>
             </article>
 
-            <article class="bg-card rounded-2xl border border-divider p-8 md:p-12">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="lg:col-span-1 flex flex-col gap-4">
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #2</p>
-                  <h4 class="text-white text-2xl lg:text-3xl font-bold leading-tight">Contextual Auto-Population and Defaulting</h4>
-                  <p class="text-md text-muted"> Removes the hassle of hunting for the right data from multiple sources.</p>
-                  <ul class="flex flex-col gap-2">
-                    <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Auto-population from integrated enterprise database and API</span></li>
-                    <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Default based on desired logic</span></li>
+            <article class="case-card case-card--lg">
+              <div class="case-split">
+                <div class="case-split__heading">
+                  <p class="case-insight__eyebrow">Design Decision #2</p>
+                  <h4 class="case-h4">Contextual Auto-Population and Defaulting</h4>
+                  <p class="case-lede case-lede--sm">Removes the hassle of hunting for the right data from multiple sources.</p>
+                  <ul class="case-checklist">
+                    <li><span class="material-symbols-outlined">check</span><span>Auto-population from integrated enterprise database and API</span></li>
+                    <li><span class="material-symbols-outlined">check</span><span>Default based on desired logic</span></li>
                   </ul>
                 </div>
-                <div class="lg:col-span-2">
-                  <div class="relative aspect-video overflow-hidden">
-                    <img src="assets/projects/enterprise/contextual-auto-population.png" alt="Screen showing a data table auto-populated via API and defaulted to the first option" class="absolute inset-0 h-full w-full object-cover"/>
-                  </div>
+                <div class="case-figure__media case-figure__media--video">
+                  <img src="assets/projects/enterprise/contextual-auto-population.png" alt="Screen showing a data table auto-populated via API and defaulted to the first option"/>
                 </div>
               </div>
             </article>
 
-            <article class="bg-card rounded-2xl border border-divider p-8 md:p-12">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                <div class="lg:col-span-1 flex flex-col gap-4">
-                  <p class="text-primary font-bold tracking-widest text-xs uppercase">Design Decision #3</p>
-                  <h4 class="text-white text-2xl lg:text-3xl font-bold leading-tight">Guided Data Entry</h4>
-                  <p class="text-md text-muted">The workflow was boiled down to its core and became more learnable.</p>
-                  <ul class="flex flex-col gap-2">
-                    <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Stepped data entry via tabbed navigation</span></li>
-                    <li class="flex items-start gap-3 text-white"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">check</span><span>Progressive disclosure to keep user focused and less overwhelmed</span></li>
+            <article class="case-card case-card--lg">
+              <div class="case-split">
+                <div class="case-split__heading">
+                  <p class="case-insight__eyebrow">Design Decision #3</p>
+                  <h4 class="case-h4">Guided Data Entry</h4>
+                  <p class="case-lede case-lede--sm">The workflow was boiled down to its core and became more learnable.</p>
+                  <ul class="case-checklist">
+                    <li><span class="material-symbols-outlined">check</span><span>Stepped data entry via tabbed navigation</span></li>
+                    <li><span class="material-symbols-outlined">check</span><span>Progressive disclosure to keep user focused and less overwhelmed</span></li>
                   </ul>
                 </div>
-                <div class="lg:col-span-2">
-                  <div class="relative aspect-video overflow-hidden">
-                    <img src="assets/projects/enterprise/guided-data-entry.png" alt="Screens showing a guided data entry process with tabbed navigation and progressive disclosure" class="absolute inset-0 h-full w-full object-cover"/>
-                  </div>
+                <div class="case-figure__media case-figure__media--video">
+                  <img src="assets/projects/enterprise/guided-data-entry.png" alt="Screens showing a guided data entry process with tabbed navigation and progressive disclosure"/>
                 </div>
               </div>
             </article>
           </div>
         </section>
-
 
         <!-- Section 08 — Outcome / Results -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full bg-section-alt scroll-mt-4" id="results" aria-labelledby="outcome-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-6">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">08 / Outcome</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
-            <div class="flex flex-col gap-4 max-w-4xl px-6 md:px-0">
-              <h3 id="outcome-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">New designs were intuitive and easy to use</h3>
-              <p class="text-muted text-lg leading-relaxed">To evaluate if I was on the right track, I conducted quick usability study using wireframes.</p>
+        <section class="case-section case-section--alt" id="results" aria-labelledby="outcome-heading">
+          <div class="case-section__inner">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">08 / Outcome</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
+            <div class="px-6 md:px-0 flex flex-col gap-4">
+              <h3 id="outcome-heading" class="case-h3">New designs were intuitive and easy to use</h3>
+              <p class="case-lede">To evaluate if I was on the right track, I conducted quick usability study using wireframes.</p>
             </div>
 
-            <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
+            <article class="case-card">
               <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
                 <div class="md:col-span-2 flex flex-col gap-2">
-                  <span class="text-5xl lg:text-6xl font-bold text-primary tracking-tighter">93%</span>
-                  <span class="text-white font-medium">Self-reported satisfaction</span>                </div>
+                  <span class="case-stat-big">93%</span>
+                  <span class="case-stat__label">Self-reported satisfaction</span>
+                </div>
                 <div class="md:col-span-3 flex items-center">
-                  <blockquote class="border-l-4 border-primary pl-6">
-                    <p class="text-white text-2xl lg:text-3xl font-bold leading-snug">&ldquo;I won&rsquo;t go back to legacy tools.&rdquo;</p>
-                    <footer class="mt-3 text-xs text-muted uppercase tracking-widest">— Participant, wireframe usability study</footer>
+                  <blockquote class="case-pull-quote">
+                    <p>&ldquo;I won&rsquo;t go back to legacy tools.&rdquo;</p>
+                    <footer>— Participant, wireframe usability study</footer>
                   </blockquote>
                 </div>
               </div>
             </article>
-            <div class="flex flex-col gap-2 mt-16 mb-6 px-6 md:px-0">
-            <h3 id="outcome-heading" class="text-3xl lg:text-4xl font-bold text-white leading-tight">Metrics to track</h3>
-            <p class="text-muted text-lg leading-relaxed">The project was cancelled before it shipped. Below is how I intended to track the metrics.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined">speed</span>
+
+            <div class="px-6 md:px-0 flex flex-col gap-2 mt-16 mb-6">
+              <h3 class="case-h3">Metrics to track</h3>
+              <p class="case-lede">The project was cancelled before it shipped. Below is how I intended to track the metrics.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div class="case-metric-block">
+                  <div class="case-metric-block__head">
+                    <div class="case-icon-circle"><span class="material-symbols-outlined">speed</span></div>
+                    <h4 class="case-metric-block__title">Usability Metrics</h4>
                   </div>
-                  <h4 class="text-white text-2xl lg:text-3xl font-bold">Usability Metrics</h4>
+                  <p class="case-metric-block__body">Baselined for comparing legacy tools with final designs.</p>
+                  <ul class="case-metric-block__list">
+                    <li>Time on task</li>
+                    <li>Task success rate</li>
+                    <li>Critical error counts</li>
+                  </ul>
                 </div>
-                <p class="text-sm text-muted">Baselined for comparing legacy tools with final designs.</p>
-                <ul class="list-disc list-inside flex flex-col gap-1 mt-1 text-muted text-sm">
-                  <li>Time on task</li>
-                  <li>Task success rate</li>
-                  <li>Critical error counts</li>
-                </ul>
-              </div>
-              <div class="flex flex-col gap-4">
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <span class="material-symbols-outlined">insights</span>
+                <div class="case-metric-block">
+                  <div class="case-metric-block__head">
+                    <div class="case-icon-circle"><span class="material-symbols-outlined">insights</span></div>
+                    <h4 class="case-metric-block__title">Business Metrics</h4>
                   </div>
-                  <h4 class="text-white text-2xl lg:text-3xl font-bold">Business Metrics</h4>
+                  <p class="case-metric-block__body">Planned for collection with stakeholders after rollout.</p>
+                  <ul class="case-metric-block__list">
+                    <li>Training time</li>
+                    <li>Satisfaction rating (business surveys)</li>
+                    <li>Adoption and usage rate</li>
+                  </ul>
                 </div>
-                <p class="text-sm text-muted">Planned for collection with stakeholders after rollout.</p>
-                <ul class="list-disc list-inside flex flex-col gap-1 mt-1 text-muted text-sm">
-                  <li>Training time</li>
-                  <li>Satisfaction rating (business surveys)</li>
-                  <li>Adoption and usage rate</li>
-                </ul>
               </div>
             </div>
-          </div>
 
-            <article class="bg-card rounded-2xl border border-divider p-6 md:p-8">
-              <div class="flex flex-col gap-4">
-                <p class="text-primary font-bold tracking-widest text-xs uppercase">Projected Targets (If Launched)</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div class="flex flex-col gap-2">
-                    <span class="text-5xl lg:text-6xl font-bold text-gray-200 tracking-tighter">50%</span>
-                    <span class="text-white font-medium">Faster task completion*</span>
+            <article class="case-card">
+              <div class="case-stats-strip">
+                <p class="case-insight__eyebrow">Projected Targets (If Launched)</p>
+                <div class="case-stats-strip__grid">
+                  <div class="case-stats-strip__cell">
+                    <span class="case-stat-big case-stat-big--muted">50%</span>
+                    <span class="case-stat__label">Faster task completion*</span>
                   </div>
-                  <div class="flex flex-col gap-2">
-                    <span class="text-5xl lg:text-6xl font-bold text-gray-200 tracking-tighter">80%</span>
-                    <span class="text-white font-medium">Reduced training time*</span>
+                  <div class="case-stats-strip__cell">
+                    <span class="case-stat-big case-stat-big--muted">80%</span>
+                    <span class="case-stat__label">Reduced training time*</span>
                   </div>
-                  <div class="flex flex-col gap-2">
-                    <span class="text-5xl lg:text-6xl font-bold text-gray-200 tracking-tighter">75%+</span>
-                    <span class="text-white font-medium">Satisfaction rate in surveys*</span>
+                  <div class="case-stats-strip__cell">
+                    <span class="case-stat-big case-stat-big--muted">75%+</span>
+                    <span class="case-stat__label">Satisfaction rate in surveys*</span>
                   </div>
                 </div>
-                <p class="text-sm italic text-muted mt-2">*Note: These metrics are targets, not actually measured.</p>
+                <p class="case-stats-strip__footnote">*Note: These metrics are targets, not actually measured.</p>
               </div>
             </article>
           </div>
         </section>
 
         <!-- Section 09 — Takeaways / Retrospection -->
-        <section class="px-4 py-20 md:px-12 lg:px-20 w-full scroll-mt-4" id="takeaways" aria-labelledby="takeaways-heading">
-          <div class="max-w-4xl mx-auto flex flex-col gap-12">
-            <div class="flex items-center gap-4">
-              <h2 class="text-primary font-bold text-sm uppercase tracking-widest">09 / Takeaways</h2>
-              <div class="h-px bg-white/10 flex-1"></div>
-            </div>
+        <section class="case-section" id="takeaways" aria-labelledby="takeaways-heading">
+          <div class="case-section__inner" style="gap: 3rem;">
+            <header class="case-section__eyebrow">
+              <h2 class="case-section__eyebrow-label">09 / Takeaways</h2>
+              <div class="case-section__eyebrow-rule"></div>
+            </header>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <article class="bg-card p-6 md:p-8 rounded-2xl border border-divider flex flex-col gap-4">
-                <p class="text-primary font-bold tracking-widest text-xs uppercase">Learning</p>
-                <h3 id="takeaways-heading" class="text-2xl lg:text-3xl font-bold text-white leading-tight">What I learned</h3>
-                <ul class="flex flex-col gap-3 mt-2">
-                  <li class="flex items-start gap-3 text-muted"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">person_search</span><span><span class="text-gray-200 font-medium">Tradeoff between user convenience and expert expectations:</span> We need to carefully evaluate experts' assumptions and balance them with user reality.</span></li>
-                  <li class="flex items-start gap-3 text-muted"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">handshake</span><span><span class="text-gray-200 font-medium">Co-design with experts</span> is important for designing specialized tools. Experts can help you evaluate early concepts.</span></li>
+              <article class="case-takeaway">
+                <p class="case-takeaway__eyebrow">Learning</p>
+                <h3 id="takeaways-heading" class="case-takeaway__title">What I learned</h3>
+                <ul class="case-takeaway__list">
+                  <li><span class="material-symbols-outlined">person_search</span><span><span class="case-takeaway__lead">Tradeoff between user convenience and expert expectations:</span> We need to carefully evaluate experts' assumptions and balance them with user reality.</span></li>
+                  <li><span class="material-symbols-outlined">handshake</span><span><span class="case-takeaway__lead">Co-design with experts</span> is important for designing specialized tools. Experts can help you evaluate early concepts.</span></li>
                 </ul>
               </article>
-              <article class="bg-card p-6 md:p-8 rounded-2xl border border-divider flex flex-col gap-4">
-                <p class="text-primary font-bold tracking-widest text-xs uppercase">Retrospection</p>
-                <h3 class="text-2xl lg:text-3xl font-bold text-white leading-tight">What I'd do differently</h3>
-                <ul class="flex flex-col gap-3 mt-2">
-                  <li class="flex items-start gap-3 text-muted"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">monitoring</span><span><span class="text-gray-200 font-medium">Measure learnability and cognitive load,</span> not just satisfaction. Knowing users liked it isn't the same as knowing they could actually learn it.</span></li>
-                  <li class="flex items-start gap-3 text-muted"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">group_add</span><span><span class="text-gray-200 font-medium">More stakeholder involvement in UX activities:</span> specifically cognitive walkthroughs with domain experts, engineers, and product owners.</span></li>
+              <article class="case-takeaway">
+                <p class="case-takeaway__eyebrow">Retrospection</p>
+                <h3 class="case-takeaway__title">What I'd do differently</h3>
+                <ul class="case-takeaway__list">
+                  <li><span class="material-symbols-outlined">monitoring</span><span><span class="case-takeaway__lead">Measure learnability and cognitive load,</span> not just satisfaction. Knowing users liked it isn't the same as knowing they could actually learn it.</span></li>
+                  <li><span class="material-symbols-outlined">group_add</span><span><span class="case-takeaway__lead">More stakeholder involvement in UX activities:</span> specifically cognitive walkthroughs with domain experts, engineers, and product owners.</span></li>
                 </ul>
               </article>
             </div>
@@ -736,79 +651,61 @@
       </ol>
     </nav>
 
-    <!-- Section 10 — Bottom case-study navigation (template strip) -->
-    <section class="px-4 py-16 md:px-12 lg:px-20 w-full border-t border-divider bg-section-alt" aria-label="Case study navigation">
-      <nav class="max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-        <a href="#" aria-disabled="true" tabindex="-1" class="flex items-center gap-2 text-muted/50 uppercase tracking-widest text-sm font-bold pointer-events-none select-none cursor-not-allowed justify-self-start">
+    <!-- Section 10 — Bottom case-study navigation -->
+    <section class="case-pager" aria-label="Case study navigation">
+      <nav class="case-pager__nav">
+        <a href="#" aria-disabled="true" tabindex="-1" class="case-pager__prev">
           <span class="material-symbols-outlined">arrow_back</span>
           <span>Previous case study</span>
         </a>
-        <a href="index.html#work" class="flex items-center justify-center gap-2 text-primary hover:text-white transition-colors uppercase tracking-widest text-sm font-bold group justify-self-center focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 focus:ring-offset-section-alt rounded-full px-3 py-1">
+        <a href="index.html#work" class="case-pager__home">
           <span>All work</span>
-          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
         </a>
-        <a href="#" aria-disabled="true" tabindex="-1" class="flex items-center gap-2 text-muted/50 uppercase tracking-widest text-sm font-bold pointer-events-none select-none cursor-not-allowed justify-self-end">
+        <a href="#" aria-disabled="true" tabindex="-1" class="case-pager__next">
           <span>Next case study</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </nav>
     </section>
 
-    <div data-footer-placeholder></div>
+    <footer class="border-t border-[#29382f] w-full pt-6 pb-6 px-4 md:px-8 lg:px-20 lg:pb-4">
+    <div class="mx-auto flex flex-col md:flex-row md:items-start justify-between md:gap-8 gap-2 mb-2">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <p class="inline-flex items-center gap-2 text-white font-mono uppercase">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          <span class="tracking-tight" data-footer-status>Open to work</span>
+        </p>
+        <div class="flex flex-col md:flex-row items-center gap-2">
+          <div class="inline-flex justify-center md:justify-end md:items-end md:gap-4 gap-8 text-gray-400">
+            <a class="link-footer group" href="mailto:yatong4wang@gmail.com">
+              <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">mail</span>
+              <span class="link-footer-text">Email</span>
+            </a>
+            <a class="link-footer group" href="https://www.linkedin.com/in/yatong-wang/" target="_blank">
+              <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+              <span class="link-footer-text">LinkedIn</span>
+            </a>
+            <a class="link-footer group" href="https://github.com/yatong-wang" target="_blank">
+              <span class="material-symbols-outlined text-xl group-hover:rotate-6 group-hover:translate-x-1 transform transition-all">arrow_outward</span>
+              <span class="link-footer-text">GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-col-reverse md:items-end items-center md:gap-2 gap-3">
+        <p class="text-gray-500 tracking-tight" data-footer-copyright>© 2025-2026 Yatong Wang. All rights reserved.</p>
+        <img src="assets/images/vibe-coded-in-cursor-with-claude-code.svg" alt="A badge for Vibe Coded in Cursor with Claude Code" class="w-30 h-8">
+      </div>
+    </div>
+  </footer>
   </div>
 
-  <script src="js/content-loader.js"></script>
+  <script type="module" src="js/main.js"></script>
   <script src="js/scripts.js"></script>
-  <script>
-    (function () {
-      var nav = document.querySelector('.case-nav');
-      if (!nav) return;
-      var links = Array.from(nav.querySelectorAll('a[href^="#"]'));
-      var sections = links.map(function (a) {
-        return document.getElementById(a.getAttribute('href').slice(1));
-      }).filter(Boolean);
-      var byId = {};
-      links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          var link = byId[e.target.id];
-          if (!link) return;
-          if (e.isIntersecting) link.dataset.visible = '1';
-          else delete link.dataset.visible;
-        });
-        var firstVisible = links.find(function (a) { return a.dataset.visible === '1'; });
-        links.forEach(function (a) { a.classList.toggle('is-active', a === firstVisible); });
-      }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
-      sections.forEach(function (s) { io.observe(s); });
-
-      function updateVisibility() {
-        var scroll = window.scrollY || document.documentElement.scrollTop;
-        nav.classList.toggle('is-visible', scroll > window.innerHeight);
-      }
-      var rafId = null;
-      window.addEventListener('scroll', function () {
-        if (rafId !== null) return;
-        rafId = window.requestAnimationFrame(function () {
-          rafId = null;
-          updateVisibility();
-        });
-      }, { passive: true });
-      window.addEventListener('resize', updateVisibility, { passive: true });
-      updateVisibility();
-
-      var toggle = nav.querySelector('.case-nav__toggle');
-      toggle.addEventListener('click', function () {
-        var open = nav.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      nav.querySelector('.case-nav__list').addEventListener('click', function (e) {
-        if (e.target.closest('a')) {
-          nav.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-  </script>
+  <script src="js/case-study.js" defer></script>
 </body>
 </html>
